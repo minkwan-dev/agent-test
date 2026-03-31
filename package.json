@@ -1,0 +1,17 @@
+{
+  "name": "novitas",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "dev:web": "pnpm --filter @novitas/web dev",
+    "dev:api": "pnpm --filter @novitas/api start:dev",
+    "dev:fastapi": "cd services/fastapi && python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4",
+    "typescript": "^5.7.3"
+  }
+}

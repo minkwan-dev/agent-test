@@ -1,0 +1,63 @@
+/* @import 순서: 외부 폰트 → tailwind */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import "tailwindcss";
+
+@keyframes protocol-stack-wobble {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  18% {
+    transform: translate3d(-2px, 1px, 0) rotate(-0.75deg);
+  }
+  36% {
+    transform: translate3d(2px, -1px, 0) rotate(0.65deg);
+  }
+  54% {
+    transform: translate3d(-1px, -1px, 0) rotate(-0.45deg);
+  }
+  72% {
+    transform: translate3d(1px, 1px, 0) rotate(0.4deg);
+  }
+}
+
+@theme {
+  --font-sans: "Pretendard", var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --animate-protocol-stack-wobble: protocol-stack-wobble 0.55s ease-in-out both;
+
+  /* 라이트 토스톤: 화이트 / 그레이-50·100 / 블루 포인트 */
+  --color-background: #f2f4f6;
+  --color-surface: #ffffff;
+  --color-border: #e5e8eb;
+  --color-border-strong: #d1d6db;
+  --color-foreground: #191f28;
+  --color-muted: #8b95a1;
+  --color-primary: #3182f6;
+  --color-primary-hover: #256dd4;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply min-h-dvh bg-[var(--color-background)] text-[var(--color-foreground)];
+  }
+}
+
+/* 페이지 배경: 단색, 장식 최소 */
+.nv-bg {
+  @apply bg-[var(--color-background)];
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d6db transparent;
+}

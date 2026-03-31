@@ -1,0 +1,57 @@
+import { CheckCircle2 } from "lucide-react";
+import { landingProtocols } from "@/components/landing/landing-data";
+import { ProtocolStackVisual } from "@/components/landing/protocol-stack-visual";
+import { Reveal, RevealItem, RevealStagger } from "@/components/landing/reveal";
+
+export function LandingFeaturesSection() {
+  return (
+    <section
+      id="features"
+      className="scroll-mt-24 flex min-h-[80vh] flex-col justify-center py-16 sm:py-20"
+    >
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-12 px-4 sm:gap-16 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-center lg:gap-16 xl:gap-20">
+        <div className="flex flex-col gap-10 lg:sticky lg:top-28">
+          <Reveal className="max-w-xl">
+            <h2 className="text-3xl font-bold sm:text-4xl lg:text-[2.5rem]">
+              프로토콜·기능
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-[#8b95a1] sm:text-xl">
+              범용 프로토콜을 조합해 재고·협업·거래·감사를 한 제품 안에 묶었어요.
+              팀은 화면 한 곳에서 연결 상태와 정책을 함께 봐요.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1} y={36}>
+            <ProtocolStackVisual />
+          </Reveal>
+        </div>
+        <RevealStagger className="grid gap-5 sm:grid-cols-2 sm:gap-6">
+          {landingProtocols.map((p) => (
+            <RevealItem key={p.id}>
+              <article className="flex h-full flex-col rounded-2xl border border-[#e5e8eb] bg-white p-6 shadow-sm transition hover:border-[#d1d6db] sm:p-7">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#eff6ff] text-[#3182f6] sm:h-12 sm:w-12">
+                  <p.icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                </div>
+                <p className="mt-5 text-xs font-bold uppercase tracking-wide text-[#3182f6]">
+                  {p.id}
+                </p>
+                <h3 className="mt-1 text-lg font-bold sm:text-xl">{p.title}</h3>
+                <p className="mt-1 text-sm text-[#8b95a1]">{p.subtitle}</p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-[#4e5968] sm:text-base">
+                  {p.desc}
+                </p>
+                <ul className="mt-5 space-y-2 border-t border-[#f2f4f6] pt-4 text-sm text-[#191f28]">
+                  {p.points.map((pt) => (
+                    <li key={pt} className="flex gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#3182f6]" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </RevealItem>
+          ))}
+        </RevealStagger>
+      </div>
+    </section>
+  );
+}
