@@ -30,18 +30,18 @@ function Bullet({
   className?: string;
 }) {
   return (
-    <li className={cn("flex gap-3 text-[#4e5968]", className)}>
-      <CheckCircle2 className="mt-1 h-6 w-6 shrink-0 text-[#3182f6]" strokeWidth={2} />
-      <span className="text-lg leading-relaxed sm:text-xl">{children}</span>
+    <li className={cn("flex gap-2 text-[#4e5968]", className)}>
+      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#3182f6] sm:h-5 sm:w-5" strokeWidth={2} />
+      <span className="text-sm leading-snug sm:text-[15px] sm:leading-relaxed">{children}</span>
     </li>
   );
 }
 
 function TipBox({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex gap-3 rounded-2xl border border-[#e5e8eb] bg-[#f8fafc] px-5 py-4 sm:px-6 sm:py-5">
-      <Lightbulb className="mt-0.5 h-7 w-7 shrink-0 text-amber-500" strokeWidth={2} />
-      <div className="text-base leading-relaxed text-[#4e5968] sm:text-lg">{children}</div>
+    <div className="flex gap-2 rounded-xl border border-[#e5e8eb] bg-[#f8fafc] px-3 py-2.5 sm:gap-2.5 sm:px-4 sm:py-3">
+      <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-amber-500 sm:h-5 sm:w-5" strokeWidth={2} />
+      <div className="text-xs leading-snug text-[#4e5968] sm:text-sm sm:leading-relaxed">{children}</div>
     </div>
   );
 }
@@ -68,27 +68,27 @@ export function OnboardingWizard() {
   const progress = (step / TOTAL) * 100;
 
   return (
-    <div className="mx-auto w-full max-w-3xl lg:max-w-4xl">
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 sm:mb-6">
-        <p className="text-base font-bold uppercase tracking-wider text-[#3182f6] sm:text-lg">
+    <div className="mx-auto flex w-full max-w-2xl flex-col lg:max-w-3xl">
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-x-2 gap-y-1 sm:mb-3">
+        <p className="text-xs font-bold uppercase tracking-wider text-[#3182f6] sm:text-sm">
           시작하기
         </p>
-        <div className="ml-auto flex items-center gap-2 sm:gap-3">
+        <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
           <button
             type="button"
             onClick={finish}
-            className="rounded-lg border border-transparent px-2.5 py-1.5 text-xs font-medium text-[#8b95a1] transition hover:border-[#e5e8eb] hover:bg-[#fafbfc] hover:text-[#4e5968] sm:px-3 sm:text-sm"
+            className="rounded-md border border-transparent px-2 py-1 text-[11px] font-medium text-[#8b95a1] transition hover:border-[#e5e8eb] hover:bg-[#fafbfc] hover:text-[#4e5968] sm:text-xs"
           >
             건너뛰기
           </button>
-          <span className="h-4 w-px shrink-0 bg-[#e5e8eb]" aria-hidden />
-          <span className="text-xl font-bold tabular-nums text-[#8b95a1] sm:text-2xl">
+          <span className="h-3 w-px shrink-0 bg-[#e5e8eb]" aria-hidden />
+          <span className="text-base font-bold tabular-nums text-[#8b95a1] sm:text-lg">
             <span className="text-[#191f28]">{step}</span> / {TOTAL}
           </span>
         </div>
       </div>
 
-      <div className="mb-6 h-3 overflow-hidden rounded-full bg-[#e5e8eb] sm:h-3.5">
+      <div className="mb-3 h-2 overflow-hidden rounded-full bg-[#e5e8eb] sm:h-2.5">
         <motion.div
           className="h-full rounded-full bg-[#3182f6]"
           initial={false}
@@ -97,8 +97,8 @@ export function OnboardingWizard() {
         />
       </div>
 
-      <div className="overflow-hidden rounded-[2rem] border border-[#e8ecf0] bg-white shadow-[0_8px_40px_rgba(15,23,42,0.08)]">
-        <div className="px-6 pb-0 pt-3 sm:px-10 sm:pt-4 lg:px-12">
+      <div className="flex max-h-[min(520px,calc(100dvh-8rem))] flex-col overflow-hidden rounded-2xl border border-[#e8ecf0] bg-white shadow-[0_4px_24px_rgba(15,23,42,0.06)] sm:max-h-[min(580px,calc(100dvh-8.5rem))] sm:rounded-[1.75rem]">
+        <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-0 pt-2 sm:px-6 sm:pt-3 lg:px-8">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={step}
@@ -113,21 +113,21 @@ export function OnboardingWizard() {
                 damping: 32,
                 mass: 0.9,
               }}
-              className="py-10 sm:py-12 lg:py-14"
+              className="py-4 sm:py-5 lg:py-6"
             >
               {step === 1 ? (
-                <div className="space-y-6 sm:space-y-8">
-                  <div className="space-y-4">
-                    <h2 className="text-3xl font-bold leading-tight tracking-tight text-[#191f28] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="space-y-2 sm:space-y-2.5">
+                    <h2 className="text-xl font-bold leading-snug tracking-tight text-[#191f28] sm:text-2xl lg:text-[1.65rem] lg:leading-tight">
                       실제 재고 숫자를 맞춰요
                     </h2>
-                    <p className="text-lg leading-relaxed text-[#4e5968] sm:text-xl sm:leading-relaxed">
+                    <p className="text-sm leading-relaxed text-[#4e5968] sm:text-[15px]">
                       이 서비스는 <strong className="text-[#191f28]">재고 숫자가 확정된 뒤</strong>에 감시
                       에이전트와 자동구매 흐름이 의미 있게 돌아가요. POS에서 자동으로 빠져나가지 않는다면, 직접{" "}
                       <strong className="text-[#191f28]">반영한 시점</strong>이 곧 운영 기준이 됩니다.
                     </p>
                   </div>
-                  <ul className="space-y-4 sm:space-y-5">
+                  <ul className="space-y-2 sm:space-y-2.5">
                     <Bullet>
                       <strong className="text-[#191f28]">품목·안전재고</strong>가 있어야 “부족하다”를 판단할 수
                       있어요.
@@ -149,17 +149,17 @@ export function OnboardingWizard() {
               ) : null}
 
               {step === 2 ? (
-                <div className="space-y-6 sm:space-y-8">
-                  <div className="space-y-4">
-                    <h2 className="text-3xl font-bold leading-tight text-[#191f28] sm:text-4xl lg:text-[2.75rem]">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="space-y-2 sm:space-y-2.5">
+                    <h2 className="text-xl font-bold leading-snug text-[#191f28] sm:text-2xl lg:text-[1.65rem]">
                       먼저 품목을 등록해요
                     </h2>
-                    <p className="text-lg leading-relaxed text-[#4e5968] sm:text-xl">
+                    <p className="text-sm leading-relaxed text-[#4e5968] sm:text-[15px]">
                       이름과 안전재고(상한)만 있어도 “지금 얼마나 부족한지”를 숫자로 볼 수 있어요. 바코드·내부 SKU는
                       나중에 넣어도 됩니다.
                     </p>
                   </div>
-                  <ul className="space-y-4 sm:space-y-5">
+                  <ul className="space-y-2 sm:space-y-2.5">
                     <Bullet>
                       <strong className="text-[#191f28]">품목명</strong>은 매장에서 부르는 이름과 같게 쓰면
                       검색·알림에 유리해요.
@@ -178,7 +178,7 @@ export function OnboardingWizard() {
                   </TipBox>
                   <Link
                     href="/dashboard/stock/register"
-                    className="inline-flex w-full items-center justify-center rounded-xl bg-[#3182f6] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#256dd4]"
+                    className="inline-flex w-full items-center justify-center rounded-lg bg-[#3182f6] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#256dd4] sm:text-sm"
                   >
                     재고 등록으로 이동
                   </Link>
@@ -186,18 +186,18 @@ export function OnboardingWizard() {
               ) : null}
 
               {step === 3 ? (
-                <div className="space-y-6 sm:space-y-8">
-                  <div className="space-y-4">
-                    <h2 className="text-3xl font-bold leading-tight text-[#191f28] sm:text-4xl lg:text-[2.75rem]">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="space-y-2 sm:space-y-2.5">
+                    <h2 className="text-xl font-bold leading-snug text-[#191f28] sm:text-2xl lg:text-[1.65rem]">
                       팔리고 들어올 때마다 반영해요
                     </h2>
-                    <p className="text-lg leading-relaxed text-[#4e5968] sm:text-xl">
+                    <p className="text-sm leading-relaxed text-[#4e5968] sm:text-[15px]">
                       자동 차감이 없을 때는 <strong className="text-[#191f28]">재고 반영</strong>으로 현재고를 고치는
                       순간이, 시스템이 보는 “최신 스냅샷”이에요. 그 시각을 기준으로 긴급·주의 배지와 자동구매
                       파이프라인이 맞춰져요.
                     </p>
                   </div>
-                  <ul className="space-y-4 sm:space-y-5">
+                  <ul className="space-y-2 sm:space-y-2.5">
                     <Bullet>
                       재고 현황에서 <strong className="text-[#191f28]">내가 등록한 품목</strong> 행의 「재고 반영」을
                       누르면 수량을 고칠 수 있어요.
@@ -215,7 +215,7 @@ export function OnboardingWizard() {
                   </TipBox>
                   <Link
                     href="/dashboard/stock"
-                    className="inline-flex w-full items-center justify-center rounded-xl border border-[#e5e8eb] bg-white px-5 py-3 text-sm font-semibold text-[#191f28] transition hover:bg-[#f9fafb]"
+                    className="inline-flex w-full items-center justify-center rounded-lg border border-[#e5e8eb] bg-white px-4 py-2 text-xs font-semibold text-[#191f28] transition hover:bg-[#f9fafb] sm:text-sm"
                   >
                     재고 현황 열기
                   </Link>
@@ -223,17 +223,17 @@ export function OnboardingWizard() {
               ) : null}
 
               {step === 4 ? (
-                <div className="space-y-6 sm:space-y-8">
-                  <div className="space-y-4">
-                    <h2 className="text-3xl font-bold leading-tight text-[#191f28] sm:text-4xl lg:text-[2.75rem]">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="space-y-2 sm:space-y-2.5">
+                    <h2 className="text-xl font-bold leading-snug text-[#191f28] sm:text-2xl lg:text-[1.65rem]">
                       이제 대시보드에서 운영해요
                     </h2>
-                    <p className="text-lg leading-relaxed text-[#4e5968] sm:text-xl">
+                    <p className="text-sm leading-relaxed text-[#4e5968] sm:text-[15px]">
                       개요에서는 오늘 지표와 재고 테이블 일부를, 구매 내역에서는 발주 흐름을 볼 수 있어요. 에이전트·프로토콜
                       화면은 멀티에이전트 구조를 눈으로 확인하는 용도예요.
                     </p>
                   </div>
-                  <ul className="space-y-4 sm:space-y-5">
+                  <ul className="space-y-2 sm:space-y-2.5">
                     <Bullet>
                       <strong className="text-[#191f28]">개요</strong> — 누적 지표, 재고 스냅샷, AI 패널까지 한 화면에
                       모였어요.
@@ -252,7 +252,7 @@ export function OnboardingWizard() {
                   <button
                     type="button"
                     onClick={finish}
-                    className="w-full rounded-xl bg-[#3182f6] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#256dd4]"
+                    className="w-full rounded-lg bg-[#3182f6] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#256dd4] sm:text-sm"
                   >
                     대시보드로 이동
                   </button>
@@ -263,12 +263,12 @@ export function OnboardingWizard() {
         </div>
 
         {step < TOTAL ? (
-          <div className="flex items-center gap-2 border-t border-[#f2f4f6] px-6 py-5 sm:px-10 sm:py-6 lg:px-12">
+          <div className="flex shrink-0 items-center gap-2 border-t border-[#f2f4f6] px-4 py-3 sm:px-6 sm:py-3.5 lg:px-8">
             {step > 1 ? (
               <button
                 type="button"
                 onClick={goBack}
-                className="rounded-lg border border-[#e5e8eb] bg-white px-4 py-2.5 text-sm font-semibold text-[#4e5968] transition hover:bg-[#f9fafb] sm:min-w-[5.5rem]"
+                className="rounded-md border border-[#e5e8eb] bg-white px-3 py-1.5 text-xs font-semibold text-[#4e5968] transition hover:bg-[#f9fafb] sm:min-w-[4.5rem] sm:py-2 sm:text-sm"
               >
                 이전
               </button>
@@ -277,7 +277,7 @@ export function OnboardingWizard() {
             <button
               type="button"
               onClick={goNext}
-              className="rounded-lg bg-[#3182f6] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#256dd4] sm:min-w-[5.5rem]"
+              className="rounded-md bg-[#3182f6] px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-[#256dd4] sm:min-w-[4.5rem] sm:py-2 sm:text-sm"
             >
               다음
             </button>
@@ -285,17 +285,17 @@ export function OnboardingWizard() {
         ) : null}
       </div>
 
-      <div className="mt-5 flex justify-center gap-2.5 sm:mt-6" aria-hidden>
+      <div className="mt-2 flex justify-center gap-2 sm:mt-3" aria-hidden>
         {Array.from({ length: TOTAL }, (_, i) => {
           const active = i + 1 === step;
           const done = i + 1 < step;
           return (
             <motion.span
               key={i}
-              className="h-3 rounded-full sm:h-3.5"
+              className="h-2 rounded-full sm:h-2.5"
               initial={false}
               animate={{
-                width: active ? 36 : 10,
+                width: active ? 28 : 8,
                 backgroundColor: active ? "#3182f6" : done ? "#93c5fd" : "#e5e8eb",
               }}
               transition={{ type: "spring", stiffness: 500, damping: 35 }}
