@@ -1,16 +1,36 @@
 "use client";
 
-import { Bot, Lock, Package, ShieldCheck } from "lucide-react";
+import { Bell, Headset, Lock, LogIn, ShieldCheck } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-import {
-  AppleMark,
-  GoogleMark,
-  KakaoMark,
-  NaverMark,
-} from "@/components/login/login-provider-icons";
+import { motion } from "framer-motion";
+import { GoogleMark } from "@/components/login/login-provider-icons";
+import { loginContainerVariants, loginItemVariants } from "@/components/login/login-motion";
 import { setPostOnboardingDestination } from "@/lib/onboarding";
 import { SESSION_COOKIE, SESSION_VALUE } from "@/lib/session";
+
+const infoRows = [
+  {
+    Icon: LogIn,
+    title: "Google 계정으로 시작",
+    desc: "익숙한 Google 계정으로 로그인할 수 있어요.",
+  },
+  {
+    Icon: ShieldCheck,
+    title: "안전한 로그인",
+    desc: "운영에 필요한 정보만 서비스에 연결돼요.",
+  },
+  {
+    Icon: Bell,
+    title: "공지·안내",
+    desc: "점검 일정이나 중요한 변경은 알림으로 즉시 안내드려요.",
+  },
+  {
+    Icon: Headset,
+    title: "문의·지원",
+    desc: "이용·결제 문의는 콘솔 안 고객센터나 안내 메일로 연락해 주시면 돼요.",
+  },
+] as const;
 
 export function LoginFormPanel() {
   const router = useRouter();
@@ -26,17 +46,37 @@ export function LoginFormPanel() {
 
   return (
     <section className="order-1 flex h-full min-h-0 w-full min-w-0 flex-col lg:order-2">
-      <div className="flex h-full min-h-0 flex-col rounded-2xl border border-[#e5e8eb] bg-white p-6 shadow-sm sm:p-8 lg:p-10">
-        <p className="text-xs font-bold uppercase tracking-wider text-[#3182f6]">Sign in</p>
-        <h1 className="mt-2 text-2xl font-bold tracking-tight text-[#191f28] sm:text-[1.75rem]">
-          로그인
-        </h1>
-        <p className="mt-4 text-sm leading-relaxed text-[#4e5968] sm:text-[15px]">
-          소셜 계정으로 계속하면 세션을 쿠키에 저장하고 <strong className="text-[#191f28]">시작하기</strong>{" "}
-          화면으로 이동해요.
-        </p>
+      <motion.div
+        className="flex h-full min-h-0 flex-col rounded-2xl border border-[#e5e8eb] bg-white p-6 shadow-sm sm:p-8 lg:p-10"
+        variants={loginContainerVariants}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div
+          variants={loginItemVariants}
+          className="h-1 w-11 rounded-full bg-gradient-to-r from-[#3182f6] to-[#60a5fa]"
+          aria-hidden
+        />
+        <motion.p
+          variants={loginItemVariants}
+          className="mt-5 text-xs font-bold uppercase tracking-wider text-[#3182f6]"
+        >
+          Sign in
+        </motion.p>
+        <motion.h1
+          variants={loginItemVariants}
+          className="mt-2 text-2xl font-bold leading-tight tracking-tight text-[#191f28] sm:text-[1.75rem]"
+        >
+          소셜 계정으로 시작하기
+        </motion.h1>
+        <motion.p
+          variants={loginItemVariants}
+          className="mt-4 text-sm leading-relaxed text-[#4e5968] sm:text-[15px]"
+        >
+          짧은 온보딩 절차만 거치면 서비스를 바로 이용할 수 있어요.
+        </motion.p>
 
-        <div className="mt-8 flex flex-col gap-3">
+        <motion.div variants={loginItemVariants} className="mt-8 flex flex-col gap-3">
           <button
             type="button"
             onClick={onSocialLogin}
@@ -45,69 +85,33 @@ export function LoginFormPanel() {
             <GoogleMark />
             Google로 계속하기
           </button>
-          <button
-            type="button"
-            onClick={onSocialLogin}
-            className="flex w-full items-center justify-center gap-3 rounded-2xl border border-[#f5dc00] bg-[#FEE500] py-3.5 text-sm font-bold text-[#191919] transition hover:bg-[#f5dc00]/90 active:scale-[0.99] sm:py-4 sm:text-base"
-          >
-            <KakaoMark />
-            카카오로 계속하기
-          </button>
-          <button
-            type="button"
-            onClick={onSocialLogin}
-            className="flex w-full items-center justify-center gap-3 rounded-2xl border border-[#03C75A] bg-[#03C75A] py-3.5 text-sm font-bold text-white transition hover:bg-[#02b351] active:scale-[0.99] sm:py-4 sm:text-base"
-          >
-            <NaverMark />
-            네이버로 계속하기
-          </button>
-          <button
-            type="button"
-            onClick={onSocialLogin}
-            className="flex w-full items-center justify-center gap-3 rounded-2xl border border-[#1d1d1f] bg-[#000000] py-3.5 text-sm font-bold text-white transition hover:bg-[#1d1d1f] active:scale-[0.99] sm:py-4 sm:text-base"
-          >
-            <AppleMark />
-            Apple로 계속하기
-          </button>
-        </div>
+        </motion.div>
 
-        <div className="mt-8 space-y-0 divide-y divide-[#f2f4f6] rounded-xl border border-[#f2f4f6] bg-[#fafbfc]">
-          <div className="flex gap-3 px-4 py-3.5 sm:px-5 sm:py-4">
-            <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#3182f6]" />
-            <div>
-              <p className="text-sm font-semibold text-[#191f28]">세션 · 보안</p>
-              <p className="mt-1 text-xs leading-relaxed text-[#8b95a1]">
-                운영 환경에서는 SSO·역할 기반 접근으로 바꿀 수 있어요.
-              </p>
+        <motion.div
+          variants={loginItemVariants}
+          className="mt-8 flex flex-col divide-y divide-[#f2f4f6] overflow-hidden rounded-xl border border-[#f2f4f6] bg-[#fafbfc]"
+        >
+          {infoRows.map(({ Icon, title, desc }) => (
+            <div key={title} className="flex gap-3 px-4 py-3.5 sm:px-5 sm:py-4">
+              <Icon className="mt-0.5 h-5 w-5 shrink-0 text-[#3182f6]" />
+              <div>
+                <p className="text-sm font-semibold text-[#191f28]">{title}</p>
+                <p className="mt-1 text-xs leading-relaxed text-[#8b95a1]">{desc}</p>
+              </div>
             </div>
-          </div>
-          <div className="flex gap-3 px-4 py-3.5 sm:px-5 sm:py-4">
-            <Package className="mt-0.5 h-5 w-5 shrink-0 text-[#3182f6]" />
-            <div>
-              <p className="text-sm font-semibold text-[#191f28]">대시보드 데이터</p>
-              <p className="mt-1 text-xs leading-relaxed text-[#8b95a1]">
-                지표·테이블·에이전트 상태는 연동·정책에 따라 실시간으로 갱신돼요.
-              </p>
-            </div>
-          </div>
-          <div className="flex gap-3 px-4 py-3.5 sm:px-5 sm:py-4">
-            <Bot className="mt-0.5 h-5 w-5 shrink-0 text-[#3182f6]" />
-            <div>
-              <p className="text-sm font-semibold text-[#191f28]">스택</p>
-              <p className="mt-1 text-xs leading-relaxed text-[#8b95a1]">
-                Next.js · Nest · FastAPI 구성을 전제로 한 UI예요.
-              </p>
-            </div>
-          </div>
-        </div>
+          ))}
+        </motion.div>
 
-        <p className="mt-auto flex items-start gap-2 pt-6 text-center text-[11px] leading-relaxed text-[#8b95a1] sm:text-left sm:text-xs lg:pt-8">
-          <Lock className="mx-auto mt-0.5 h-3.5 w-3.5 shrink-0 sm:mx-0" />
-          <span>
-            계속하면 서비스 이용약관 및 개인정보 처리에 동의하는 것으로 간주돼요.
+        <motion.p
+          variants={loginItemVariants}
+          className="mt-auto flex items-start gap-2 pt-6 text-left text-xs leading-relaxed text-[#8b95a1] lg:pt-8"
+        >
+          <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />
+          <span className="min-w-0 flex-1">
+            소셜 계정으로 시작하면, 서비스 이용약관 및 개인정보 처리에 동의하는 것으로 간주돼요.
           </span>
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </section>
   );
 }

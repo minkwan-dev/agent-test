@@ -11,10 +11,10 @@ export function LandingFlowSection() {
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 sm:gap-14 sm:px-8">
         <Reveal className="max-w-3xl">
           <h2 className="text-3xl font-bold sm:text-4xl lg:text-[2.5rem]">
-            운영 플로우
+            하루 업무가 어떻게 돌아가나요
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-[#8b95a1] sm:text-xl">
-            데이터가 들어와 발주가 나가기까지의 기본 경로예요.{" "}
+            재고를 살피고 발주가 나가기까지의 기본 순서예요.
           </p>
         </Reveal>
         <Reveal delay={0.08} y={32}>

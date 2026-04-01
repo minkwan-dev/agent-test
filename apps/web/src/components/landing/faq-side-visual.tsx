@@ -13,12 +13,13 @@ export function FaqSideVisual() {
           <div>
             <p className="text-base font-bold text-[#191f28]">도입 전 체크리스트</p>
             <p className="mt-2 text-sm leading-relaxed text-[#4e5968]">
-              연동 범위·승인 흐름·로그 보관 기간을 팀과 맞춰 두면 이후 확장이 수월해요.
+              어디까지 자동으로 돌릴지, 누가 마지막에 확인할지, 기록을 얼마나 남길지만 팀이랑 맞춰 두면
+              나중에 늘리기 쉬워요.
             </p>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
-          {["MCP 어댑터", "한도·정책", "알림 채널", "감사 로그"].map((tag) => (
+          {["시스템 연결", "한도·규칙", "알림 방법", "처리 기록"].map((tag) => (
             <span
               key={tag}
               className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-[#4e5968] ring-1 ring-[#e5e8eb]"

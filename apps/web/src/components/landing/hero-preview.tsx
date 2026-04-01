@@ -29,19 +29,14 @@ export function HeroPreview() {
         </div>
         <div className="mt-4 space-y-2 rounded-xl bg-white p-4 shadow-sm ring-1 ring-[#e5e8eb]">
           <p className="text-xs font-semibold uppercase tracking-wide text-[#8b95a1]">
-            에이전트
+            자동 업무 단계
           </p>
-          {["InventoryWatcher", "PurchaseDecider", "OrderExecutor", "AuditLogger"].map(
-            (name) => (
-              <div
-                key={name}
-                className="flex items-center justify-between text-sm"
-              >
-                <span className="truncate font-medium text-[#191f28]">{name}</span>
-                <span className="text-emerald-600">●</span>
-              </div>
-            ),
-          )}
+          {["재고 살피기", "발주안 만들기", "주문 실행", "기록·알림"].map((name) => (
+            <div key={name} className="flex items-center justify-between text-sm">
+              <span className="truncate font-medium text-[#191f28]">{name}</span>
+              <span className="text-emerald-600">●</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

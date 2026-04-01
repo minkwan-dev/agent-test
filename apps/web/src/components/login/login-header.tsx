@@ -8,12 +8,6 @@ export function LoginHeader() {
         <Link href="/" className="min-w-0 shrink-0">
           <Brand.NovitasLogoLockup size="md" />
         </Link>
-        <Link
-          href="/"
-          className="shrink-0 text-sm font-semibold text-[#4e5968] transition hover:text-[#191f28]"
-        >
-          ← 랜딩으로
-        </Link>
       </div>
     </header>
   );

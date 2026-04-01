@@ -16,9 +16,9 @@ export function CtaVisual() {
         </div>
         <div className="mt-6 space-y-3">
           {[
-            { t: "대시보드 개요", s: "KPI · 경보 · 발주" },
-            { t: "에이전트 & 플로우", s: "4역할 · 단계 로그" },
-            { t: "AI 패널", s: "요약 · 제안" },
+            { t: "오늘 개요", s: "숫자 · 알림 · 발주" },
+            { t: "진행 단계", s: "4단계 · 처리 기록" },
+            { t: "요약 패널", s: "하루 정리 · 제안" },
           ].map((row) => (
             <div
               key={row.t}
@@ -30,7 +30,7 @@ export function CtaVisual() {
           ))}
         </div>
         <div className="mt-6 rounded-xl border border-dashed border-[#cbd5e1] bg-white/80 px-4 py-8 text-center text-sm text-[#8b95a1]">
-          로그인 후 바로 탐색할 수 있는 운영 레이아웃이에요.
+          로그인 후 바로 쓸 수 있는 운영 화면이에요.
         </div>
       </div>
     </div>

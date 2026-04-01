@@ -11,8 +11,8 @@ export function LandingCtaSection() {
             지금 바로 콘솔을 열어보세요
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-[#8b95a1] sm:text-xl">
-            로그인하면 대시보드·AI 패널·플로우 로그를 바로 확인할 수 있어요.
-            운영팀과 함께 화면을 보며 다음 연동 범위를 정하기 좋아요.
+            로그인하면 오늘 숫자와 진행 상황, 오른쪽 요약까지 바로 볼 수 있어요.
+            팀이랑 같이 화면 보면서 어디까지 자동화할지 정하기 좋아요.
           </p>
           <Link
             href="/login"

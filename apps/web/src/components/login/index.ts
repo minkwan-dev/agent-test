@@ -1,9 +1,4 @@
-import {
-  AppleMark,
-  GoogleMark,
-  KakaoMark,
-  NaverMark,
-} from "./login-provider-icons";
+import { GoogleMark } from "./login-provider-icons";
 import { LoginAside } from "./login-aside";
 import { LoginFallback } from "./login-fallback";
 import { LoginFormPanel } from "./login-form-panel";
@@ -17,9 +12,6 @@ export const Login = {
   Fallback: LoginFallback,
   marks: {
     Google: GoogleMark,
-    Kakao: KakaoMark,
-    Naver: NaverMark,
-    Apple: AppleMark,
   },
 } as const;
 

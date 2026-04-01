@@ -5,20 +5,20 @@ import { Reveal } from "@/components/landing/reveal";
 const previewHighlights = [
   {
     i: "01",
-    t: "KPI · 경보 · 발주",
-    d: "지표와 이슈를 같은 타임라인에서 봐요.",
+    t: "숫자·알림·발주",
+    d: "오늘 지표와 급한 일을 한 줄로 볼 수 있어요.",
     icon: BarChart3,
   },
   {
     i: "02",
-    t: "에이전트 & 로그",
-    d: "역할별 상태와 최근 결정을 바로 확인해요.",
+    t: "진행 상황",
+    d: "어디까지 처리됐는지 단계별로 확인해요.",
     icon: Bot,
   },
   {
     i: "03",
-    t: "AI 패널",
-    d: "요약과 다음 액션 제안을 우측에서 검토해요.",
+    t: "요약 패널",
+    d: "오른쪽에서 하루 요약과 다음에 할 일을 짚어 드려요.",
     icon: Sparkles,
   },
 ];
@@ -35,8 +35,8 @@ export function LandingPreviewSection() {
             운영 화면 미리보기
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-[#8b95a1] sm:text-xl">
-            대시보드에서 지표·에이전트·재고 경보·최근 발주를 한 번에 봐요. 우측
-            패널에서 AI 요약과 플로우 로그를 확인할 수 있어요.
+            대시보드에서 오늘 숫자·재고 알림·최근 발주를 한 번에 볼 수 있어요.
+            오른쪽 패널에서는 하루 요약과 처리 기록을 이어서 확인해요.
           </p>
           <div className="mt-8 hidden lg:block">
             <div className="relative overflow-hidden rounded-2xl border border-[#e8ecf0] bg-gradient-to-br from-white to-[#f9fafb] p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)]">

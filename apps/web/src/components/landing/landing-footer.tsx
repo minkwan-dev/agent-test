@@ -11,8 +11,8 @@ export function LandingFooter() {
                 <Brand.NovitasLogoLockup size="lg" />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#4e5968]">
-              식료품 매장·단체급식·소매 운영을 위한 멀티에이전트 자동구매 콘솔. 재고부터 발주·감사까지 하나의
-              흐름으로 관리하세요.
+              식료품 매장·단체급식·소매 팀을 위한 운영 콘솔이에요. 재고부터 발주·기록까지 한 흐름으로
+              다룰 수 있어요.
             </p>
           </div>
 
@@ -32,7 +32,7 @@ export function LandingFooter() {
                 </li>
                 <li>
                   <a href="#flow" className="transition hover:text-[#191f28]">
-                    자동구매 플로우
+                    업무 순서
                   </a>
                 </li>
                 <li>

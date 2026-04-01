@@ -13,11 +13,11 @@ export function LandingFeaturesSection() {
         <div className="flex flex-col gap-10 lg:sticky lg:top-28">
           <Reveal className="max-w-xl">
             <h2 className="text-3xl font-bold sm:text-4xl lg:text-[2.5rem]">
-              프로토콜·기능
+              무엇을 도와주나요
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-[#8b95a1] sm:text-xl">
-              범용 프로토콜을 조합해 재고·협업·거래·감사를 한 제품 안에 묶었어요.
-              팀은 화면 한 곳에서 연결 상태와 정책을 함께 봐요.
+              재고부터 발주·기록까지 매장 운영에 필요한 덩어리를 한 제품에 모았어요.
+              팀은 같은 화면에서 연결 상태와 규칙만 보면 돼요.
             </p>
           </Reveal>
           <Reveal delay={0.1} y={36}>
@@ -26,13 +26,13 @@ export function LandingFeaturesSection() {
         </div>
         <RevealStagger className="grid gap-5 sm:grid-cols-2 sm:gap-6">
           {landingProtocols.map((p) => (
-            <RevealItem key={p.id}>
+            <RevealItem key={p.key}>
               <article className="flex h-full flex-col rounded-2xl border border-[#e5e8eb] bg-white p-6 shadow-sm transition hover:border-[#d1d6db] sm:p-7">
                 <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#eff6ff] text-[#3182f6] sm:h-12 sm:w-12">
                   <p.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
                 <p className="mt-5 text-xs font-bold uppercase tracking-wide text-[#3182f6]">
-                  {p.id}
+                  {p.badge}
                 </p>
                 <h3 className="mt-1 text-lg font-bold sm:text-xl">{p.title}</h3>
                 <p className="mt-1 text-sm text-[#8b95a1]">{p.subtitle}</p>

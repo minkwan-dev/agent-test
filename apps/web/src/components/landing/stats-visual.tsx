@@ -9,7 +9,7 @@ export function StatsVisual() {
           <p className="text-xs font-semibold uppercase tracking-wide text-[#8b95a1]">
             주간 처리량
           </p>
-          <p className="mt-1 text-lg font-bold text-[#191f28]">발주 · 경보 추이</p>
+          <p className="mt-1 text-lg font-bold text-[#191f28]">발주·알림 추이</p>
         </div>
         <BarChart3 className="h-8 w-8 text-[#3182f6]" />
       </div>

@@ -43,10 +43,10 @@ const kpis = [
 ] as const;
 
 const agents = [
-  { abbr: "IW", name: "Inventory", tone: "bg-blue-500" },
-  { abbr: "PD", name: "Purchase", tone: "bg-indigo-500" },
-  { abbr: "OE", name: "Order", tone: "bg-amber-500" },
-  { abbr: "AL", name: "Audit", tone: "bg-emerald-500" },
+  { short: "재", name: "재고", tone: "bg-blue-500" },
+  { short: "안", name: "발주안", tone: "bg-indigo-500" },
+  { short: "실", name: "실행", tone: "bg-amber-500" },
+  { short: "기", name: "기록", tone: "bg-emerald-500" },
 ];
 
 export function PreviewDashboardPanel() {
@@ -58,12 +58,12 @@ export function PreviewDashboardPanel() {
           <div className="min-w-0">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200/80 bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-emerald-800 shadow-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 ring-2 ring-emerald-400/40" />
-              파이프라인 정상
+              오늘 흐름 정상
             </div>
             <p className="mt-3 text-[15px] font-bold text-[#191f28] sm:text-base">오늘 누적 자동구매</p>
             <p className="mt-1 flex items-center gap-2 text-xs text-[#8b95a1]">
               <Clock className="h-3.5 w-3.5" />
-              다음 스캔 약 12분 후
+              다음 재고 확인 약 12분 후
             </p>
           </div>
           <div className="text-left sm:text-right">
@@ -126,20 +126,20 @@ export function PreviewDashboardPanel() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <Bot className="h-4 w-4 text-[#3182f6]" />
-            <span className="text-xs font-bold text-[#191f28]">에이전트</span>
+            <span className="text-xs font-bold text-[#191f28]">자동 업무</span>
             <span className="rounded-full bg-white px-2 py-0.5 text-[10px] font-semibold text-emerald-700 ring-1 ring-emerald-200">
-              4기 실행 중
+              4단계 동작 중
             </span>
           </div>
           <div className="flex items-center gap-2">
             {agents.map((a) => (
               <div
-                key={a.abbr}
+                key={a.name}
                 className="flex items-center gap-2 rounded-xl border border-[#e8ecf0] bg-white px-2.5 py-1.5 shadow-sm"
                 title={a.name}
               >
                 <span className={`flex h-6 w-6 items-center justify-center rounded-lg text-[10px] font-bold text-white ${a.tone}`}>
-                  {a.abbr}
+                  {a.short}
                 </span>
                 <span className="hidden text-[11px] font-medium text-[#4e5968] sm:inline">{a.name}</span>
               </div>
@@ -152,7 +152,7 @@ export function PreviewDashboardPanel() {
         {[
           { t: "재고 경보", s: "7건 · 긴급 우선", icon: Activity },
           { t: "최근 자동구매", s: "34건 처리됐어요", icon: ShoppingCart },
-          { t: "AI · 플로우", s: "요약 · 단계 로그", icon: Sparkles },
+          { t: "요약·진행", s: "하루 정리·처리 기록", icon: Sparkles },
         ].map((row) => (
           <div
             key={row.t}
@@ -171,24 +171,24 @@ export function PreviewDashboardPanel() {
 
       <div className="border-t border-[#f2f4f6] bg-[#f9fafb] px-4 py-3.5 sm:px-6">
         <div className="flex flex-wrap items-center justify-center gap-2 text-[11px] text-[#8b95a1] sm:text-xs">
-          <span className="rounded-lg bg-white px-2 py-1 font-mono text-[#4e5968] shadow-sm ring-1 ring-[#e8ecf0]">
-            InventoryWatcher
+          <span className="rounded-lg bg-white px-2 py-1 text-[11px] font-semibold text-[#4e5968] shadow-sm ring-1 ring-[#e8ecf0]">
+            재고 살피기
           </span>
           <span className="text-[#d1d6db]">→</span>
-          <span className="rounded-lg bg-white px-2 py-1 font-mono text-[#4e5968] shadow-sm ring-1 ring-[#e8ecf0]">
-            PurchaseDecider
+          <span className="rounded-lg bg-white px-2 py-1 text-[11px] font-semibold text-[#4e5968] shadow-sm ring-1 ring-[#e8ecf0]">
+            발주안
           </span>
           <span className="text-[#d1d6db]">→</span>
-          <span className="rounded-lg bg-white px-2 py-1 font-mono text-[#4e5968] shadow-sm ring-1 ring-[#e8ecf0]">
-            OrderExecutor
+          <span className="rounded-lg bg-white px-2 py-1 text-[11px] font-semibold text-[#4e5968] shadow-sm ring-1 ring-[#e8ecf0]">
+            주문 실행
           </span>
           <span className="text-[#d1d6db]">→</span>
-          <span className="rounded-lg bg-white px-2 py-1 font-mono text-[#4e5968] shadow-sm ring-1 ring-[#e8ecf0]">
-            AuditLogger
+          <span className="rounded-lg bg-white px-2 py-1 text-[11px] font-semibold text-[#4e5968] shadow-sm ring-1 ring-[#e8ecf0]">
+            기록·알림
           </span>
         </div>
         <p className="mt-2.5 text-center text-[11px] leading-relaxed text-[#8b95a1] sm:text-xs">
-          로그인하면 데이터·웹훅·알림을 같은 레이아웃에서 다룰 수 있어요.
+          로그인하면 알림과 처리 내역을 같은 화면에서 이어서 볼 수 있어요.
         </p>
       </div>
     </div>

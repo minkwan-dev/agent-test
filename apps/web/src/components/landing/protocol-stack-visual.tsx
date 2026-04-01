@@ -12,10 +12,10 @@ export function ProtocolStackVisual() {
             style={{ zIndex: i + 1 }}
           >
             <div
-              className={`flex items-center justify-between gap-4 rounded-xl bg-gradient-to-r ${layer.tone} px-6 py-5 sm:px-7 sm:py-6`}
+              className={`flex flex-col gap-2 rounded-xl bg-gradient-to-r ${layer.tone} px-6 py-5 sm:px-7 sm:py-6 sm:gap-1`}
             >
-              <span className="text-xl font-bold text-[#191f28] sm:text-2xl">{layer.id}</span>
-              <span className="text-base font-medium text-[#4e5968] sm:text-xl">{layer.label}</span>
+              <span className="text-xl font-bold text-[#191f28] sm:text-2xl">{layer.headline}</span>
+              <span className="text-base font-medium text-[#4e5968] sm:text-lg">{layer.sub}</span>
             </div>
           </div>
         ))}

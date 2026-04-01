@@ -10,7 +10,6 @@ export const userProfile = {
 
 export const connectedAccounts = [
   { id: "google", label: "Google", status: "connected" as const, hint: "로그인에 사용 중" },
-  { id: "kakao", label: "카카오", status: "available" as const, hint: "연결 시 알림 연동" },
 ];
 
 export const recentSessions = [

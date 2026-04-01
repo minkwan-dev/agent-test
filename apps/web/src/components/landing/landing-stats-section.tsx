@@ -14,7 +14,7 @@ export function LandingStatsSection() {
             운영을 숫자로 요약하면
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-[#8b95a1] sm:text-xl">
-            에이전트 수·프로토콜·채널·패널 구성을 한눈에 보여줘요. 대시보드에서 지표를 실시간으로 확인할 수 있어요.
+            자동으로 돌아가는 단계와 화면 구성을 숫자로만 빠르게 짚어요. 들어가면 같은 지표를 대시보드에서 다시 볼 수 있어요.
           </p>
         </Reveal>
 

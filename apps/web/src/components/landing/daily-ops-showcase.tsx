@@ -45,7 +45,7 @@ export function DailyOpsShowcase() {
                 "0 2px 20px rgba(0,0,0,0.45), 0 0 2px rgba(0,0,0,0.35), 0 8px 48px rgba(0,0,0,0.35)",
             }}
           >
-            꼭 필요했던 운영 파이프라인
+            매장 운영, 한 흐름으로
           </h2>
         </motion.div>
       </div>
