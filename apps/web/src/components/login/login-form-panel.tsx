@@ -3,7 +3,7 @@
 import { Bell, Headset, Lock, LogIn, ShieldCheck } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/framer-motion";
 import { GoogleMark } from "@/components/login/login-provider-icons";
 import { loginContainerVariants, loginItemVariants } from "@/components/login/login-motion";
 import { setPostOnboardingDestination } from "@/lib/onboarding";
