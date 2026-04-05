@@ -1,7 +1,7 @@
 export function SettingsAutobuySection() {
   return (
     <section>
-      <h2 className="text-sm font-bold text-[#191f28]">자동구매 · 재고</h2>
+      <h2 className="text-sm font-bold text-[#191f28]">자동 발주 · 재고</h2>
       <p className="mt-1 text-xs text-[#8b95a1]">스캔 주기와 예산 상한은 운영 정책에 맞게 조정해요.</p>
       <div className="mt-4 space-y-3">
         <label className="flex flex-col gap-2 rounded-xl border border-[#e5e8eb] bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
@@ -15,11 +15,11 @@ export function SettingsAutobuySection() {
           />
         </label>
         <label className="flex flex-col gap-2 rounded-xl border border-[#e5e8eb] bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-          <span className="text-sm font-medium text-[#191f28]">긴급 임계치 도달 시 즉시 발주</span>
-          <input type="checkbox" defaultChecked className="h-4 w-4 accent-[#3182f6]" />
+          <span className="text-sm font-medium text-[#191f28]">안전재고 아래로 떨어지면 바로 발주</span>
+          <input type="checkbox" defaultChecked className="h-4 w-4 accent-[#b8dcc8]" />
         </label>
         <label className="flex flex-col gap-2 rounded-xl border border-[#e5e8eb] bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-          <span className="text-sm font-medium text-[#191f28]">자동구매 예산 상한 (일)</span>
+          <span className="text-sm font-medium text-[#191f28]">자동 발주 예산 상한 (일)</span>
           <span className="text-sm font-semibold tabular-nums text-[#191f28]">₩ 2,000,000</span>
         </label>
       </div>
@@ -31,21 +31,21 @@ export function SettingsNotifySection() {
   return (
     <section>
       <h2 className="text-sm font-bold text-[#191f28]">알림</h2>
-      <p className="mt-1 text-xs text-[#8b95a1]">푸시·이메일·슬랙 등 채널은 아래에서 켜고 끌 수 있어요.</p>
+      <p className="mt-1 text-xs text-[#8b95a1]">푸시·이메일 등은 나중에 붙이면 여기서 켜고 끌 수 있게 둘 수 있어요.</p>
       <div className="mt-4 space-y-3">
         <label className="flex items-center justify-between gap-4 rounded-xl border border-[#e5e8eb] bg-white px-4 py-3 shadow-sm">
           <span className="text-sm font-medium text-[#191f28]">긴급 알림 푸시</span>
-          <input type="checkbox" defaultChecked className="h-4 w-4 accent-[#3182f6]" />
+          <input type="checkbox" defaultChecked className="h-4 w-4 accent-[#b8dcc8]" />
         </label>
         <label className="flex items-center justify-between gap-4 rounded-xl border border-[#e5e8eb] bg-white px-4 py-3 shadow-sm">
           <span className="text-sm font-medium text-[#191f28]">일일 요약 메일 (오전 8시)</span>
-          <input type="checkbox" className="h-4 w-4 accent-[#3182f6]" />
+          <input type="checkbox" className="h-4 w-4 accent-[#b8dcc8]" />
         </label>
         <label className="flex flex-col gap-2 rounded-xl border border-[#e5e8eb] bg-white px-4 py-3 shadow-sm">
-          <span className="text-sm font-medium text-[#191f28]">웹훅 URL (선택)</span>
+          <span className="text-sm font-medium text-[#191f28]">외부로 알림 보낼 주소 (선택)</span>
           <input
             type="url"
-            placeholder="https://hooks.slack.com/..."
+            placeholder="나중에 연결할 알림 주소"
             className="w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-sm placeholder:text-[#8b95a1]"
           />
         </label>
@@ -57,24 +57,26 @@ export function SettingsNotifySection() {
 export function SettingsApiSection() {
   return (
     <section>
-      <h2 className="text-sm font-bold text-[#191f28]">연동 · API</h2>
-      <p className="mt-1 text-xs text-[#8b95a1]">공급사·내부 API 키는 환경 변수나 비밀 저장소로 관리해 주세요.</p>
+      <h2 className="text-sm font-bold text-[#191f28]">나중에 연동할 때</h2>
+      <p className="mt-1 text-xs text-[#8b95a1]">
+        지금은 혼자 만드는 단계라 공급처·결제를 자동으로 붙이는 칸은 비워 두었어요. 실제로 붙일 때
+        주소·키는 안전한 곳에만 두면 돼요.
+      </p>
       <div className="mt-4 space-y-3">
         <div className="rounded-xl border border-[#e5e8eb] bg-white px-4 py-3 shadow-sm">
-          <p className="text-sm font-medium text-[#191f28]">Nest API 베이스 URL</p>
+          <p className="text-sm font-medium text-[#191f28]">공급처 주문 페이지·연락처 메모</p>
           <input
             type="text"
-            defaultValue="/api"
-            readOnly
-            className="mt-2 w-full rounded-lg border border-dashed border-[#e5e8eb] bg-[#fafbfc] px-3 py-2 font-mono text-xs text-[#4e5968]"
+            placeholder="나중에 정리해 둘 자리예요"
+            className="mt-2 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-xs"
           />
         </div>
         <div className="rounded-xl border border-[#e5e8eb] bg-white px-4 py-3 shadow-sm">
-          <p className="text-sm font-medium text-[#191f28]">FastAPI 분석 엔드포인트</p>
+          <p className="text-sm font-medium text-[#191f28]">결제·정산 쪽 메모</p>
           <input
             type="text"
-            placeholder="연결 예정"
-            className="mt-2 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 font-mono text-xs"
+            placeholder="연결 예정이면 여기 적어 두세요"
+            className="mt-2 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-xs"
           />
         </div>
       </div>
@@ -93,7 +95,7 @@ export function SettingsFormActions() {
       </button>
       <button
         type="button"
-        className="rounded-xl bg-[#3182f6] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#256dd4]"
+        className="rounded-xl bg-[#6eb89a] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5aa688]"
       >
         저장
       </button>

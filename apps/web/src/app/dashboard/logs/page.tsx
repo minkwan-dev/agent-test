@@ -4,8 +4,8 @@ export default function LogsPage() {
   return (
     <div className="flex flex-col">
       <Novitas.PageHeader
-        title="전체 로그"
-        description="에이전트·API 이벤트 스트림을 검색·필터링해요."
+        title="처리 기록"
+        description="재고 반영 이후 어떤 일이 있었는지, 단계별로 찾아볼 수 있어요."
       />
       <Novitas.DashboardContent>
         <Novitas.LogsViewer />

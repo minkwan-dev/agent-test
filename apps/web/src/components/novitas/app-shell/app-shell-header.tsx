@@ -19,33 +19,20 @@ export function AppShellHeader({ onMenuClick }: AppShellHeaderProps) {
       </button>
 
       <Link href="/" className="flex shrink-0 items-center">
-        <Brand.NovitasLogoLockup size="sm" />
+        <Brand.SemosoLogoLockup size="sm" />
       </Link>
 
       <div className="min-w-0 flex-1" aria-hidden />
 
-      <div className="hidden flex-wrap items-center justify-end gap-1.5 sm:flex">
-        {(["MCP", "A2A", "UCP", "AP2"] as const).map((p) => (
-          <span
-            key={p}
-            className="rounded-md border border-[#e5e8eb] bg-[#f9fafb] px-2 py-0.5 text-[10px] font-bold text-[#4e5968]"
-          >
-            {p}
-          </span>
-        ))}
-      </div>
-
       <div className="flex items-center gap-2">
         <Link
           href="/dashboard/admin"
-          className="flex items-center gap-2 rounded-full border border-[#e5e8eb] bg-white py-1 pl-1 pr-2.5 text-[#191f28] shadow-sm transition hover:bg-[#f9fafb] sm:pr-3"
+          className="flex items-center rounded-full border border-[#e5e8eb] bg-white p-0.5 text-[#191f28] shadow-sm transition hover:bg-[#f9fafb]"
           title="내 계정"
+          aria-label="내 계정"
         >
-          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#eff6ff] to-[#dbeafe] text-xs font-bold text-[#2563eb]">
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#e4f6ee] to-[#f5faf8] text-xs font-bold text-[#5aa688]">
             원
-          </span>
-          <span className="hidden max-w-[7rem] truncate text-xs font-semibold sm:inline">
-            원민관
           </span>
         </Link>
       </div>

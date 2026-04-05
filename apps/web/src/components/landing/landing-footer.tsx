@@ -8,7 +8,7 @@ export function LandingFooter() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.9fr)] lg:gap-16">
           <div>
             <Link href="/" className="inline-block">
-                <Brand.NovitasLogoLockup size="lg" />
+                <Brand.SemosoLogoLockup size="lg" />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#4e5968]">
               식료품 매장·단체급식·소매 팀을 위한 운영 콘솔이에요. 재고부터 발주·기록까지 한 흐름으로
@@ -18,7 +18,7 @@ export function LandingFooter() {
 
           <div className="grid gap-10 sm:grid-cols-2 lg:gap-12">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#3182f6]">서비스</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#6eb89a]">서비스</p>
               <ul className="mt-4 space-y-3 text-sm text-[#4e5968]">
                 <li>
                   <a href="#features" className="transition hover:text-[#191f28]">
@@ -44,13 +44,13 @@ export function LandingFooter() {
             </div>
 
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#3182f6]">
+              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#6eb89a]">
                 법인 · 고객센터
               </p>
               <dl className="mt-4 space-y-4 text-sm text-[#4e5968]">
                 <div>
                   <dt className="text-xs font-semibold text-[#8b95a1]">상호</dt>
-                  <dd className="mt-1 text-[#191f28]">Novitas</dd>
+                  <dd className="mt-1 text-[#191f28]">semoso</dd>
                 </div>
                 <div>
                   <dt className="text-xs font-semibold text-[#8b95a1]">주소</dt>
@@ -63,9 +63,9 @@ export function LandingFooter() {
                   <dd className="mt-1">
                     <a
                       href="mailto:business@novitas.io"
-                      className="font-medium text-[#191f28] underline-offset-2 transition hover:text-[#3182f6] hover:underline"
+                      className="font-medium text-[#191f28] underline-offset-2 transition hover:text-[#6eb89a] hover:underline"
                     >
-                      business@novitas.io
+                      business@semoso.io
                     </a>
                     <p className="mt-2 text-xs leading-relaxed text-[#8b95a1]">
                       평일 10:00 – 18:00 (점심 12:00 – 13:00, 주말·공휴일 휴무)
@@ -79,7 +79,7 @@ export function LandingFooter() {
 
         <div className="mt-12 flex flex-col gap-6 border-t border-[#e5e8eb] pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs leading-relaxed text-[#8b95a1]">
-            © {new Date().getFullYear()} Novitas. All rights reserved.
+            © {new Date().getFullYear()} semoso. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-[#8b95a1]">
             <a href="#features" className="transition hover:text-[#191f28]">

@@ -58,7 +58,7 @@ export default function NotifyPage() {
     <div className="flex flex-col">
       <Novitas.PageHeader
         title="알림"
-        description={`재고·발주·연동·에이전트 알림이에요. 읽지 않음 ${unreadCount}건`}
+        description={`재고·발주·자동 처리 알림이에요. 읽지 않음 ${unreadCount}건`}
         actions={
           <button
             type="button"
@@ -66,32 +66,47 @@ export default function NotifyPage() {
             disabled={unreadCount === 0}
             className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#e5e8eb] bg-white px-4 py-2 text-sm font-semibold text-[#4e5968] shadow-sm transition hover:bg-[#f9fafb] disabled:cursor-not-allowed disabled:opacity-50"
           >
-            <Bell className="h-4 w-4 text-[#3182f6]" />
+            <Bell className="h-4 w-4 text-[#6eb89a]" />
             모두 읽음
           </button>
         }
       />
       <Novitas.DashboardContent innerClassName="space-y-4">
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-nowrap items-center gap-2 overflow-x-auto">
             <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#8b95a1]">
               <Filter className="h-3.5 w-3.5" />
               필터
             </span>
-            <FilterPill active={filter === "all"} onClick={() => setFilter("all")}>
-              전체
-            </FilterPill>
-            <FilterPill active={filter === "unread"} onClick={() => setFilter("unread")}>
-              읽지 않음
-            </FilterPill>
-            <FilterPill active={filter === "urgent"} onClick={() => setFilter("urgent")}>
-              긴급
-            </FilterPill>
-            <FilterPill active={filter === "info"} onClick={() => setFilter("info")}>
-              정보
-            </FilterPill>
-            <FilterPill active={filter === "success"} onClick={() => setFilter("success")}>
-              완료
-            </FilterPill>
+            <FilterDot
+              active={filter === "all"}
+              onClick={() => setFilter("all")}
+              title="전체"
+              dotClass="bg-gray-400"
+            />
+            <FilterDot
+              active={filter === "unread"}
+              onClick={() => setFilter("unread")}
+              title="읽지 않음"
+              dotClass="bg-[#8ec5e8]"
+            />
+            <FilterDot
+              active={filter === "urgent"}
+              onClick={() => setFilter("urgent")}
+              title="긴급"
+              dotClass="bg-[#f5a0b8]"
+            />
+            <FilterDot
+              active={filter === "info"}
+              onClick={() => setFilter("info")}
+              title="정보"
+              dotClass="bg-[#b8a0e8]"
+            />
+            <FilterDot
+              active={filter === "success"}
+              onClick={() => setFilter("success")}
+              title="완료"
+              dotClass="bg-[#7ec8e3]"
+            />
           </div>
 
           <ul className="divide-y divide-[#e5e8eb] overflow-hidden rounded-xl border border-[#e5e8eb] bg-white shadow-sm">
@@ -114,13 +129,13 @@ export default function NotifyPage() {
                   >
                     <SeverityDot severity={n.severity} />
                     <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2">
+                      <div className="flex flex-nowrap items-center gap-2 overflow-x-auto">
                         <span className="text-xs tabular-nums text-[#8b95a1]">{n.t}</span>
                         <span className="rounded-md bg-[#f2f4f6] px-1.5 py-0.5 text-[10px] font-bold text-[#4e5968]">
                           {n.category}
                         </span>
                         {!n.read ? (
-                          <span className="h-2 w-2 rounded-full bg-[#3182f6]" title="읽지 않음" />
+                          <span className="h-2 w-2 rounded-full bg-[#6eb89a]" title="읽지 않음" />
                         ) : null}
                       </div>
                       <p className="mt-1 text-sm text-[#191f28]">{n.msg}</p>
@@ -148,32 +163,40 @@ export default function NotifyPage() {
 
 function SeverityDot({ severity }: { severity: NotificationSeverity }) {
   const map = {
-    urgent: "bg-rose-500",
-    info: "bg-[#3182f6]",
-    success: "bg-emerald-500",
+    urgent: "bg-[#f5a0b8]",
+    info: "bg-[#b8a0e8]",
+    success: "bg-[#7ec8e3]",
   } as const;
   return <span className={cn("mt-1.5 h-2 w-2 shrink-0 rounded-full", map[severity])} />;
 }
 
-function FilterPill({
-  children,
+function FilterDot({
   active,
   onClick,
+  title,
+  dotClass,
 }: {
-  children: React.ReactNode;
   active: boolean;
   onClick: () => void;
+  title: string;
+  dotClass: string;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
+      title={title}
       className={cn(
-        "rounded-full px-3 py-1 text-xs font-semibold transition",
-        active ? "bg-[#3182f6] text-white" : "bg-white text-[#4e5968] ring-1 ring-[#e5e8eb] hover:bg-[#f9fafb]",
+        "inline-flex h-8 min-w-[2rem] items-center justify-center rounded-full px-2 transition",
+        active
+          ? "bg-[#6eb89a] ring-2 ring-[#6eb89a]/35"
+          : "bg-white ring-1 ring-[#e5e8eb] hover:bg-[#f9fafb]",
       )}
     >
-      {children}
+      <span
+        className={cn("h-2.5 w-2.5 rounded-full", active ? "bg-white" : dotClass)}
+      />
+      <span className="sr-only">{title}</span>
     </button>
   );
 }

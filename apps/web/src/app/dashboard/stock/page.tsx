@@ -7,11 +7,11 @@ export default function StockPage() {
     <div className="flex flex-col">
       <Novitas.PageHeader
         title="재고 현황"
-        description="임계치 이하 품목과 스캔 주기를 한눈에 확인해요."
+        description="부족한 품목과 마지막으로 맞춰 둔 재고를 한눈에 볼 수 있어요."
         actions={
           <Link
             href="/dashboard/stock/register"
-            className="inline-flex shrink-0 items-center justify-center rounded-lg bg-[#3182f6] px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[#256dd4]"
+            className="inline-flex shrink-0 items-center justify-center rounded-lg bg-[#6eb89a] px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[#5aa688]"
           >
             재고 등록
           </Link>

@@ -18,7 +18,7 @@ export const recentSessions = [
 ];
 
 export const notificationPrefs = [
-  { label: "재고 임계치·발주 결과", on: true },
-  { label: "에이전트 오류·플로우 중단", on: true },
+  { label: "재고 부족·발주 결과", on: true },
+  { label: "자동 처리 멈춤·오류", on: true },
   { label: "주간 운영 리포트 이메일", on: false },
 ];

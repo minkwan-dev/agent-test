@@ -1,11 +1,11 @@
 "use client";
 
-import { Dancing_Script } from "next/font/google";
+import { Fredoka } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const wordmark = Dancing_Script({
+const wordmark = Fredoka({
   subsets: ["latin"],
-  weight: ["700"],
+  weight: ["600"],
   display: "swap",
 });
 
@@ -16,10 +16,11 @@ const sizeClass = {
 } as const;
 
 /**
- * Novitas 워드마크 — 아이콘 없이 글자만 (캘리그라피 톤).
+ * semoso 워드마크 — 아이콘 없이 글자만 (둥근·친근한 톤, Fredoka).
+ * 세상의 모든 소상공인을 위한다(Small business owners, every one).
  * 본문과 동일한 진한 그레이·블랙 (#191f28)으로 가독성 유지.
  */
-export function NovitasLogoLockup({
+export function SemosoLogoLockup({
   className,
   textClassName,
   size = "md",
@@ -33,7 +34,11 @@ export function NovitasLogoLockup({
   if (!showText) return null;
 
   return (
-    <span className={cn("inline-flex items-baseline", className)}>
+    <span
+      className={cn("inline-flex items-baseline", className)}
+      role="img"
+      aria-label="semoso. 세상의 모든 소상공인을 위한 서비스"
+    >
       <span
         className={cn(
           wordmark.className,
@@ -42,7 +47,7 @@ export function NovitasLogoLockup({
           textClassName,
         )}
       >
-        Novitas
+        semoso
       </span>
     </span>
   );

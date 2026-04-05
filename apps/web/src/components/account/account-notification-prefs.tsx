@@ -5,7 +5,7 @@ export function AccountNotificationPrefs() {
   return (
     <div className="rounded-2xl border border-[#e5e8eb] bg-white p-5 shadow-sm">
       <div className="flex items-center gap-2">
-        <Bell className="h-4 w-4 text-[#3182f6]" />
+        <Bell className="h-4 w-4 text-[#6eb89a]" />
         <h3 className="text-sm font-bold text-[#191f28]">알림 수신</h3>
       </div>
       <p className="mt-1 text-xs text-[#8b95a1]">저장하면 계정 알림 설정에 반영돼요.</p>
@@ -19,7 +19,7 @@ export function AccountNotificationPrefs() {
             <span
               className={
                 row.on
-                  ? "text-[11px] font-bold text-emerald-700"
+                  ? "text-[11px] font-bold text-[#3d6b57]"
                   : "text-[11px] font-semibold text-[#8b95a1]"
               }
             >

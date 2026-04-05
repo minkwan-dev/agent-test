@@ -11,18 +11,18 @@ import {
 
 const kpis = [
   {
-    label: "오늘 자동구매",
+    label: "오늘 자동 발주",
     value: "₩84,720",
     sub: "어제 대비 +12.4%",
     icon: BarChart3,
-    accent: "bg-[#eff6ff] text-[#3182f6]",
+    accent: "bg-[#e8f5ee] text-[#6eb89a]",
   },
   {
     label: "발주",
     value: "34건",
     sub: "대기 2",
     icon: ShoppingCart,
-    accent: "bg-indigo-50 text-indigo-600",
+    accent: "bg-[#f3f0ff] text-[#7c6aaa]",
   },
   {
     label: "재고 경보",
@@ -30,7 +30,7 @@ const kpis = [
     unit: "개",
     sub: "긴급 3 · 주의 4",
     icon: Activity,
-    accent: "bg-rose-50 text-rose-600",
+    accent: "bg-[#fff1f4] text-[#c75b7a]",
   },
   {
     label: "가동률",
@@ -38,29 +38,35 @@ const kpis = [
     unit: "%",
     sub: "오류 0건",
     icon: LayoutDashboard,
-    accent: "bg-emerald-50 text-emerald-700",
+    accent: "bg-[#e8f6fc] text-[#3d8ba8]",
   },
 ] as const;
 
 const agents = [
-  { short: "재", name: "재고", tone: "bg-blue-500" },
-  { short: "안", name: "발주안", tone: "bg-indigo-500" },
-  { short: "실", name: "실행", tone: "bg-amber-500" },
-  { short: "기", name: "기록", tone: "bg-emerald-500" },
+  { short: "재", name: "재고", tone: "bg-[#6eb89a]" },
+  { short: "안", name: "발주안", tone: "bg-[#b8a0e8]" },
+  { short: "실", name: "실행", tone: "bg-[#f0b885]" },
+  { short: "기", name: "기록", tone: "bg-[#7ec8e3]" },
 ];
 
 export function PreviewDashboardPanel() {
   return (
     <div className="overflow-hidden rounded-3xl border border-[#e8ecf0] bg-white shadow-[0_12px_48px_rgba(15,23,42,0.1)]">
-      <div className="relative border-b border-[#dbeafe]/60 bg-gradient-to-br from-[#eff6ff] via-white to-[#f8fafc] px-5 py-6 sm:px-7 sm:py-7">
-        <div className="pointer-events-none absolute -right-16 -top-12 h-40 w-40 rounded-full bg-[#3182f6]/10 blur-3xl" />
+      <div className="relative border-b border-[#c8e4d6]/60 bg-gradient-to-br from-[#e4f6ee] via-white to-[#f5faf8] px-5 py-6 sm:px-7 sm:py-7">
+        <div className="pointer-events-none absolute -right-16 -top-12 h-40 w-40 rounded-full bg-[#6eb89a]/10 blur-3xl" />
         <div className="relative flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200/80 bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-emerald-800 shadow-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 ring-2 ring-emerald-400/40" />
-              오늘 흐름 정상
+            <div
+              className="inline-flex items-center rounded-full border border-[#c8e4d6]/80 bg-white/90 px-2 py-1 shadow-sm"
+              title="오늘 흐름 정상"
+            >
+              <span
+                className="h-2 w-2 rounded-full bg-[#6eb89a] ring-2 ring-[#a8dcc4]/45"
+                role="img"
+                aria-label="오늘 흐름 정상"
+              />
             </div>
-            <p className="mt-3 text-[15px] font-bold text-[#191f28] sm:text-base">오늘 누적 자동구매</p>
+            <p className="mt-3 text-[15px] font-bold text-[#191f28] sm:text-base">오늘 누적 자동 발주</p>
             <p className="mt-1 flex items-center gap-2 text-xs text-[#8b95a1]">
               <Clock className="h-3.5 w-3.5" />
               다음 재고 확인 약 12분 후
@@ -75,7 +81,7 @@ export function PreviewDashboardPanel() {
               {[35, 52, 44, 68, 55, 72, 48, 80].map((h, i) => (
                 <span
                   key={i}
-                  className="inline-block w-1.5 rounded-sm bg-gradient-to-t from-[#3182f6] to-[#93c5fd]"
+                  className="inline-block w-1.5 rounded-sm bg-gradient-to-t from-[#6eb89a] to-[#a8dcc4]"
                   style={{ height: `${Math.max(10, h * 0.35)}px` }}
                 />
               ))}
@@ -109,9 +115,9 @@ export function PreviewDashboardPanel() {
               )}
             </p>
             <p className="mt-1 flex items-center gap-1 text-[11px] text-[#8b95a1] sm:text-xs">
-              {m.label === "오늘 자동구매" ? (
+              {m.label === "오늘 자동 발주" ? (
                 <>
-                  <TrendingUp className="h-3 w-3 text-emerald-600" />
+                  <TrendingUp className="h-3 w-3 text-[#5b8f7e]" />
                   {m.sub}
                 </>
               ) : (
@@ -125,10 +131,20 @@ export function PreviewDashboardPanel() {
       <div className="border-t border-[#f2f4f6] bg-[#fafbfc] px-4 py-4 sm:px-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Bot className="h-4 w-4 text-[#3182f6]" />
+            <Bot className="h-4 w-4 text-[#6eb89a]" />
             <span className="text-xs font-bold text-[#191f28]">자동 업무</span>
-            <span className="rounded-full bg-white px-2 py-0.5 text-[10px] font-semibold text-emerald-700 ring-1 ring-emerald-200">
-              4단계 동작 중
+            <span
+              className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 ring-1 ring-[#c8e4d6]"
+              title="4단계 동작 중"
+            >
+              {[0, 1, 2, 3].map((i) => (
+                <span
+                  key={i}
+                  className="h-1.5 w-1.5 rounded-full bg-[#6eb89a]"
+                  aria-hidden
+                />
+              ))}
+              <span className="sr-only">4단계 동작 중</span>
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -151,14 +167,14 @@ export function PreviewDashboardPanel() {
       <div className="grid gap-3 border-t border-[#f2f4f6] bg-white px-4 py-4 sm:grid-cols-3 sm:px-6 sm:py-5">
         {[
           { t: "재고 경보", s: "7건 · 긴급 우선", icon: Activity },
-          { t: "최근 자동구매", s: "34건 처리됐어요", icon: ShoppingCart },
+          { t: "최근 자동 발주", s: "34건 처리됐어요", icon: ShoppingCart },
           { t: "요약·진행", s: "하루 정리·처리 기록", icon: Sparkles },
         ].map((row) => (
           <div
             key={row.t}
             className="flex items-start gap-3 rounded-xl border border-[#f0f2f4] bg-gradient-to-b from-[#fafbfc] to-white p-3.5 shadow-sm"
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#eff6ff] text-[#3182f6]">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#e8f5ee] text-[#6eb89a]">
               <row.icon className="h-4 w-4" />
             </div>
             <div className="min-w-0">

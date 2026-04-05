@@ -41,16 +41,16 @@ function StepRail({ step }: { step: number }) {
               key={s.id}
               className={cn(
                 "flex gap-3 rounded-2xl border p-4 transition",
-                active && "border-[#3182f6] bg-[#eff6ff] shadow-[0_0_0_3px_rgba(49,130,246,0.12)]",
-                done && !active && "border-emerald-200 bg-emerald-50/90",
+                active && "border-[#6eb89a] bg-[#e8f5ee] shadow-[0_0_0_3px_rgba(110,184,154,0.12)]",
+                done && !active && "border-[#c8e4d6] bg-[#f2faf6]/95",
                 !active && !done && "border-[#e8ecf0] bg-white",
               )}
             >
               <div
                 className={cn(
                   "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border text-sm font-bold transition",
-                  done && "border-emerald-200 bg-white text-emerald-700",
-                  active && !done && "border-[#3182f6] bg-white text-[#3182f6]",
+                  done && "border-[#c8e4d6] bg-white text-[#3d6b57]",
+                  active && !done && "border-[#6eb89a] bg-white text-[#6eb89a]",
                   !active && !done && "border-[#e5e8eb] bg-[#fafbfc] text-[#8b95a1]",
                 )}
               >
@@ -68,7 +68,7 @@ function StepRail({ step }: { step: number }) {
       </div>
       <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-[#e5e8eb]">
         <div
-          className="h-full rounded-full bg-[#3182f6] transition-[width] duration-300 ease-out"
+          className="h-full rounded-full bg-[#6eb89a] transition-[width] duration-300 ease-out"
           style={{ width: `${((step - 1) / (STEPS.length - 1)) * 100}%` }}
         />
       </div>
@@ -127,7 +127,7 @@ export function InventoryRegisterWizard() {
   }, [step1Ok, step2Ok, icon, name, sku, curN, maxN, router]);
 
   const inputClass =
-    "w-full rounded-lg border border-[#e5e8eb] px-3 py-2.5 text-sm text-[#191f28] placeholder:text-[#8b95a1] outline-none transition focus:border-[#3182f6] focus:ring-2 focus:ring-[#3182f6]/20";
+    "w-full rounded-lg border border-[#e5e8eb] px-3 py-2.5 text-sm text-[#191f28] placeholder:text-[#8b95a1] outline-none transition focus:border-[#6eb89a] focus:ring-2 focus:ring-[#6eb89a]/20";
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -138,7 +138,7 @@ export function InventoryRegisterWizard() {
           <div className="space-y-6">
             <div>
               <label htmlFor="inv-name" className="text-sm font-bold text-[#191f28]">
-                품목명 <span className="text-rose-500">*</span>
+                품목명 <span className="text-[#e0859a]">*</span>
               </label>
               <p className="mt-1 text-xs text-[#8b95a1]">
                 매장에서 쓰는 표기와 같게 적으면 검색·알림에 반영되기 쉬워요.
@@ -179,7 +179,7 @@ export function InventoryRegisterWizard() {
                     className={cn(
                       "flex h-11 w-11 items-center justify-center rounded-xl border text-xl transition",
                       icon === em
-                        ? "border-[#3182f6] bg-[#eff6ff] shadow-[0_0_0_3px_rgba(49,130,246,0.12)]"
+                        ? "border-[#6eb89a] bg-[#e8f5ee] shadow-[0_0_0_3px_rgba(110,184,154,0.12)]"
                         : "border-[#e5e8eb] bg-[#fafbfc] hover:border-[#cbd5e1]",
                     )}
                     aria-pressed={icon === em}
@@ -220,19 +220,26 @@ export function InventoryRegisterWizard() {
             {step2Ok ? (
               <div
                 className={cn(
-                  "rounded-xl border px-4 py-3 text-sm",
+                  "flex items-start gap-3 rounded-xl border px-4 py-3 text-sm",
                   summaryLevel === "urgent"
-                    ? "border-rose-200 bg-rose-50 text-rose-900"
-                    : "border-amber-200 bg-amber-50 text-amber-950",
+                    ? "border-[#f5c4d0] bg-[#fff5f7] text-[#8b3a4a]"
+                    : "border-[#fcd9a8] bg-[#fff8f0] text-[#8b5a1a]",
                 )}
               >
-                <span className="font-bold">
-                  {summaryLevel === "urgent" ? "긴급 구간" : "주의 구간"}
-                </span>
+                <span
+                  className={cn(
+                    "mt-0.5 h-2.5 w-2.5 shrink-0 rounded-full ring-2",
+                    summaryLevel === "urgent"
+                      ? "bg-[#f5a0b8] ring-[#f5a0b8]/30"
+                      : "bg-[#f0b885] ring-[#f0b885]/30",
+                  )}
+                  title={summaryLevel === "urgent" ? "긴급 구간" : "주의 구간"}
+                  role="img"
+                  aria-label={summaryLevel === "urgent" ? "긴급 구간" : "주의 구간"}
+                />
                 <span className="text-[#4e5968]">
-                  {" "}
-                  — 현재고가 안전재고 대비{" "}
-                  {Math.round((curN / maxN) * 100)}%예요. (35% 미만이면 긴급으로 분류)
+                  현재고가 안전재고 대비 {Math.round((curN / maxN) * 100)}%예요. (35% 미만이면 긴급으로
+                  분류)
                 </span>
               </div>
             ) : (
@@ -263,16 +270,29 @@ export function InventoryRegisterWizard() {
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt className="text-[#8b95a1]">초기 상태</dt>
-                  <dd className="text-[#191f28]">
-                    {step2Ok ? (summaryLevel === "urgent" ? "긴급" : "주의") : "—"}
+                  <dd className="flex justify-end">
+                    {step2Ok ? (
+                      <span
+                        className={cn(
+                          "h-2.5 w-2.5 rounded-full ring-2",
+                          summaryLevel === "urgent"
+                            ? "bg-[#f5a0b8] ring-[#f5a0b8]/30"
+                            : "bg-[#f0b885] ring-[#f0b885]/30",
+                        )}
+                        title={summaryLevel === "urgent" ? "긴급" : "주의"}
+                        role="img"
+                        aria-label={summaryLevel === "urgent" ? "긴급" : "주의"}
+                      />
+                    ) : (
+                      "—"
+                    )}
                   </dd>
                 </div>
               </dl>
             </div>
             <p className="text-xs leading-relaxed text-[#8b95a1]">
-              등록 후에는 재고 현황 목록 상단에 표시되며, 브라우저에 저장돼요. 이때 재고 기준이 확정되면 그
-              시점부터 자동구매·에이전트 감시 파이프라인이 트리거돼요. 동일 필드로 API를 붙이면 서버와 동기화할
-              수 있어요.
+              등록 후에는 재고 현황 목록 상단에 표시되며, 브라우저에 저장돼요. 재고 기준이 확정되면 그
+              시점부터 자동 발주·알림이 맞춰져요. 나중에 서버에 옮기면 같은 정보를 계정에 맞춰 둘 수 있어요.
             </p>
           </div>
         ) : null}
@@ -303,7 +323,7 @@ export function InventoryRegisterWizard() {
                 type="button"
                 onClick={goNext}
                 disabled={(step === 1 && !step1Ok) || (step === 2 && !step2Ok)}
-                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#3182f6] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#256dd4] disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
+                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#6eb89a] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#5aa688] disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
               >
                 다음
                 <ArrowRight className="h-4 w-4" />
@@ -313,7 +333,7 @@ export function InventoryRegisterWizard() {
                 type="button"
                 onClick={onSubmit}
                 disabled={!step1Ok || !step2Ok || submitting}
-                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#3182f6] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#256dd4] disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
+                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#6eb89a] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#5aa688] disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
               >
                 {submitting ? "등록 중…" : "등록하기"}
               </button>

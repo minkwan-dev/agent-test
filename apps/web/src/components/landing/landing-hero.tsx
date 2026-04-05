@@ -15,24 +15,24 @@ export function LandingHero() {
             한 번에 이어서 처리해요
           </h1>
           <p className="mt-6 max-w-xl text-base leading-[1.7] text-[#8b95a1] sm:text-lg">
-            Novitas는 식료품 매장·단체급식·소매 팀을 위해 만든 운영 콘솔이에요.
+            semoso는 세상의 모든 소상공인을 위해 만든 운영 콘솔이에요. 식료품 매장·단체급식·소매 팀의
             재고가 부족해지기 전부터 발주·결제 흐름까지 자동으로 맞추고,
             사람은 예외 상황과 매장 규칙만 신경 쓰면 돼요.
           </p>
           <ul className="mt-8 space-y-2 text-sm text-[#4e5968] sm:text-base">
             <li className="flex gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3182f6]" />
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6eb89a]" />
               매장 데이터·발주·기록을 한 제품 안에 묶었어요
             </li>
             <li className="flex gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3182f6]" />
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6eb89a]" />
               오늘 숫자와 진행 기록을 한 화면에서 볼 수 있어요
             </li>
           </ul>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
               href="/login"
-              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#3182f6] px-7 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#256dd4] sm:px-8 sm:text-base"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#6eb89a] px-7 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#5aa688] sm:px-8 sm:text-base"
             >
               무료로 시작하기
               <ArrowRight className="h-4 w-4" />

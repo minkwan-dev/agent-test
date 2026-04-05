@@ -24,7 +24,7 @@ export function LandingFlowSection() {
           {landingFlowSteps.map((s) => (
             <RevealItem key={s.n}>
               <div className="relative flex h-full flex-col rounded-2xl border border-[#e5e8eb] bg-[#f9fafb] p-6 sm:p-7">
-                <span className="text-sm font-bold text-[#3182f6]">{s.n}</span>
+                <span className="text-sm font-bold text-[#6eb89a]">{s.n}</span>
                 <span className="mt-3 inline-flex w-fit rounded-full bg-white px-2.5 py-0.5 text-[11px] font-semibold text-[#4e5968] ring-1 ring-[#e5e8eb]">
                   {s.tag}
                 </span>

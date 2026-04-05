@@ -13,8 +13,8 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Novitas — 멀티에이전트 식료품 자동구매 어드민",
-  description: "재고·에이전트·자동구매 운영 대시보드",
+  title: "semoso — 세상의 모든 소상공인을 위한 운영 콘솔",
+  description: "재고만 맞춰 두면 발주부터 결제까지 이어 주는 소상공인용 운영 화면",
 };
 
 export default function RootLayout({

@@ -15,7 +15,7 @@ function BannerInner() {
   if (!registered || dismissed) return null;
 
   return (
-    <div className="mb-6 flex flex-col gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/90 p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+    <div className="mb-6 flex flex-col gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/90 p-4 shadow-sm @min-[40rem]:flex-row @min-[40rem]:items-center @min-[40rem]:justify-between">
       <div className="flex min-w-0 gap-3">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-emerald-600 shadow-sm">
           <CheckCircle2 className="h-5 w-5" />
@@ -27,7 +27,7 @@ function BannerInner() {
           </p>
         </div>
       </div>
-      <div className="flex shrink-0 flex-wrap items-center gap-2 sm:justify-end">
+      <div className="flex shrink-0 flex-nowrap items-center gap-2 @min-[40rem]:justify-end">
         <Link
           href="/dashboard/stock/register"
           className="inline-flex items-center justify-center rounded-lg bg-emerald-700 px-3 py-2 text-xs font-bold text-white transition hover:bg-emerald-800"

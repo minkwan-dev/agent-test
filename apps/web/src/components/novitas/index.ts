@@ -1,14 +1,11 @@
 import { AppShell } from "./app-shell";
-import { AgentRowsMinimal } from "./agent-rows-minimal";
-import { ProtoChip, StatusBadge } from "./badge";
+import { StepChip, StatusBadge } from "./badge";
 import { DashboardContent } from "./dashboard-content";
-import { DemoToast } from "./demo-toast";
 import { InventoryRegisterWizard } from "./inventory-register-wizard";
 import { LogsViewer } from "./logs-viewer";
 import { OnboardingWizard } from "./onboarding-wizard";
 import { PageHeader } from "./page-header";
 import { PipelineBaselineHint } from "./pipeline-baseline-hint";
-import { ProtoProtocolList } from "./proto-protocol-list";
 import { ReflectInventoryDialog } from "./reflect-inventory-dialog";
 import { RightPanel } from "./right-panel";
 import { TablePagination } from "./table-pagination";
@@ -31,15 +28,12 @@ export const Novitas = {
   DashboardContent,
   PageHeader,
   OverviewContent,
-  AgentRowsMinimal,
-  ProtoChip,
+  StepChip,
   StatusBadge,
-  DemoToast,
   InventoryRegisterWizard,
   LogsViewer,
   OnboardingWizard,
   PipelineBaselineHint,
-  ProtoProtocolList,
   ReflectInventoryDialog,
   TablePagination,
   InventoryTableBlock,

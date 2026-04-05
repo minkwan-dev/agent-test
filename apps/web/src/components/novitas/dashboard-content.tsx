@@ -11,8 +11,8 @@ export function DashboardContent({
   innerClassName?: string;
 }) {
   return (
-    <div className={cn("px-4 py-6 sm:px-6 lg:px-8", className)}>
-      <div className={cn("mx-auto w-full max-w-[1600px]", innerClassName)}>
+    <div className={cn("px-3 py-5 @min-[40rem]:px-5 @min-[64rem]:px-6", className)}>
+      <div className={cn("mx-auto w-full max-w-[1440px]", innerClassName)}>
         {children}
       </div>
     </div>

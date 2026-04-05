@@ -6,7 +6,7 @@ export default function InventoryRegisterPage() {
     <div className="flex flex-col">
       <Novitas.PageHeader
         title="재고 등록"
-        description="품목과 수량을 입력하면 감시·자동구매 정책에 맞춰 경보가 동작해요."
+        description="품목과 수량을 넣어 두면, 부족할 때 알림과 자동 발주 규칙이 맞춰져요."
         actions={
           <Link
             href="/dashboard/stock"

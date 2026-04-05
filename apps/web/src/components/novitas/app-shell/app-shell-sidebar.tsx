@@ -2,7 +2,7 @@
 
 import { User } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { navAgents, navMain, navSystem } from "@/components/novitas/app-shell/nav-config";
+import { navMain, navSystem } from "@/components/novitas/app-shell/nav-config";
 import { NavLink } from "@/components/novitas/app-shell/nav-link";
 import { NavSection } from "@/components/novitas/app-shell/nav-section";
 
@@ -40,19 +40,6 @@ export function AppShellSidebar({ pathname, open, onNavigate }: AppShellSidebarP
                   pathname === item.href ||
                   (item.href === "/dashboard/stock" && pathname.startsWith("/dashboard/stock"))
                 }
-                onNavigate={onNavigate}
-                icon={<item.icon className="h-4 w-4" />}
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </NavSection>
-          <NavSection label="에이전트">
-            {navAgents.map((item) => (
-              <NavLink
-                key={item.id}
-                href={item.href}
-                active={pathname === item.href}
                 onNavigate={onNavigate}
                 icon={<item.icon className="h-4 w-4" />}
               >

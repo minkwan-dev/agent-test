@@ -19,8 +19,8 @@ export const landingProtocols: {
     key: "connect",
     badge: "연결",
     title: "매장 데이터를 한곳에",
-    subtitle: "POS·재고표·쓰시던 파일까지",
-    desc: "들어오는 숫자와 알림을 한 흐름으로 모으면, 여러 프로그램을 오갈 일이 줄어요. 연결 방식을 바꿔도 운영 화면은 그대로 쓸 수 있게 맞춰 둘 수 있어요.",
+    subtitle: "적어 둔 재고·엑셀·쓰시던 방식까지",
+    desc: "숫자와 알림을 한곳에서 보면, 장부와 화면을 왔다 갔다 할 일이 줄어요. 처음엔 수기·엑셀로 시작하셔도 되고, 나중에 익숙해지면 더 붙여 가면 돼요.",
     points: ["알림과 업무 요청을 한곳에서 받기", "누가 무엇을 처리했는지 나중에 찾기 쉬움"],
     icon: Radio,
   },
@@ -82,8 +82,8 @@ export const landingFlowSteps = [
 
 export const landingFaqs = [
   {
-    q: "기존 ERP나 재고 시스템과 연동할 수 있나요?",
-    a: "가능해요. 처음에는 엑셀·수기 입력으로 시작하시다가, 준비되면 기존 시스템과 차근차근 맞춰 가시면 됩니다. 팀이 쓰기 편한 순서로 옮기는 걸 추천해요.",
+    q: "기존에 쓰던 재고 프로그램이랑 붙일 수 있나요?",
+    a: "나중에 차근차근 맞춰 갈 수 있어요. 지금은 혼자 만드는 단계라 자동으로 긁어 오는 연동보다, 매장에서 재고만 정확히 반영해 주시는 쪽을 먼저 염두에 두었어요.",
   },
   {
     q: "실제 결제·주문까지 자동으로 나가나요?",
@@ -106,13 +106,13 @@ export const landingFaqs = [
 export const landingStatsGrid = [
   { label: "자동 업무 단계", value: "4", unit: "단계", hint: "살피기·정하기·실행·기록" },
   { label: "운영 구성 블록", value: "4", unit: "가지", hint: "연결·역할·발주·점검" },
-  { label: "연동 예시 채널", value: "4", unit: "곳", hint: "컬리·쿠팡·SSG·이마트" },
+  { label: "납품처 예시", value: "4", unit: "곳", hint: "화면에 보이는 샘플" },
   { label: "핵심 화면", value: "2", unit: "개", hint: "요약 · 진행 기록" },
 ] as const;
 
 export const protocolLayers = [
-  { id: "L1", headline: "재고·데이터 연결", sub: "매장에서 쓰는 자료를 한곳으로", tone: "from-[#dbeafe] to-[#eff6ff]" },
-  { id: "L2", headline: "역할 나누기", sub: "단계마다 맡는 일을 정리", tone: "from-[#e0e7ff] to-[#eef2ff]" },
-  { id: "L3", headline: "발주·거래", sub: "채널별 발주를 같은 흐름으로", tone: "from-[#dcfce7] to-[#f0fdf4]" },
-  { id: "L4", headline: "기록·점검", sub: "규칙 확인과 남길 기록", tone: "from-[#ffedd5] to-[#fff7ed]" },
+  { id: "L1", headline: "재고·데이터 연결", sub: "매장에서 쓰는 자료를 한곳으로", tone: "from-[#e4f6ee] to-[#f5faf8]" },
+  { id: "L2", headline: "역할 나누기", sub: "단계마다 맡는 일을 정리", tone: "from-[#ede9fe] to-[#f7f5ff]" },
+  { id: "L3", headline: "발주·거래", sub: "채널별 발주를 같은 흐름으로", tone: "from-[#ffedd5] to-[#fff8f0]" },
+  { id: "L4", headline: "기록·점검", sub: "규칙 확인과 남길 기록", tone: "from-[#e0f2fe] to-[#f6fbff]" },
 ] as const;

@@ -6,10 +6,10 @@ export function HeroPreview() {
       <div className="rounded-2xl bg-[#f8f9fb] p-5 sm:p-6">
         <div className="flex items-center justify-between border-b border-[#e5e8eb] pb-4">
           <div className="flex items-center gap-2">
-            <BarChart3 className="h-5 w-5 text-[#3182f6]" />
+            <BarChart3 className="h-5 w-5 text-[#6eb89a]" />
             <span className="text-base font-bold text-[#191f28]">요약</span>
           </div>
-          <CheckCircle2 className="h-5 w-5 text-emerald-500" />
+          <CheckCircle2 className="h-5 w-5 text-[#7ec8e3]" />
         </div>
         <div className="mt-4 flex gap-3">
           <div className="flex-1 rounded-xl bg-white p-4 shadow-sm ring-1 ring-[#e5e8eb]">
@@ -34,7 +34,7 @@ export function HeroPreview() {
           {["재고 살피기", "발주안 만들기", "주문 실행", "기록·알림"].map((name) => (
             <div key={name} className="flex items-center justify-between text-sm">
               <span className="truncate font-medium text-[#191f28]">{name}</span>
-              <span className="text-emerald-600">●</span>
+              <span className="text-[#6eb89a]">●</span>
             </div>
           ))}
         </div>

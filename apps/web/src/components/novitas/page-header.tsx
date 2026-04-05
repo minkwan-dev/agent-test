@@ -35,19 +35,19 @@ export function PageHeader({
   }, [description]);
 
   return (
-    <header className="shrink-0 border-b border-[#e5e8eb] bg-white">
-      <div className="mx-auto w-full max-w-[1600px] px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+    <header className="sticky top-0 z-20 shrink-0 border-b border-[#e5e8eb] bg-white shadow-[0_1px_0_rgba(15,23,42,0.06)]">
+      <div className="mx-auto w-full max-w-[1440px] px-3 py-3.5 @min-[40rem]:px-5 @min-[64rem]:px-6">
+        <div className="flex min-w-0 flex-col gap-3 @min-[40rem]:flex-row @min-[40rem]:items-center @min-[40rem]:justify-between @min-[40rem]:gap-4">
           <div className="min-w-0 flex-1">
-            <h1 className="text-lg font-bold leading-snug tracking-tight text-[#191f28] sm:text-xl">
+            <h1 className="text-lg font-bold leading-snug tracking-tight text-[#191f28] @min-[40rem]:text-xl">
               {title}
             </h1>
-            <p className="mt-1 break-words text-xs leading-snug text-[#8b95a1] sm:text-sm">
+            <p className="mt-1 break-words text-xs leading-snug text-[#8b95a1] @min-[40rem]:text-sm">
               {description !== undefined ? description : now}
             </p>
           </div>
           {actions ? (
-            <div className="flex min-w-0 w-full shrink-0 flex-col gap-2 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-end">
+            <div className="flex min-w-0 w-full shrink-0 flex-col gap-2 @min-[40rem]:w-auto @min-[40rem]:flex-row @min-[40rem]:flex-nowrap @min-[40rem]:justify-end">
               {actions}
             </div>
           ) : null}

@@ -3,10 +3,15 @@
 import { Activity, Search, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ProtoChip, StatusBadge } from "@/components/novitas/badge";
+import { StepChip, StatusBadge } from "@/components/novitas/badge";
 import { ReflectInventoryDialog } from "@/components/novitas/reflect-inventory-dialog";
 import { TablePagination } from "@/components/novitas/table-pagination";
-import { type InventoryAlertRow, inventoryAlerts, orders } from "@/lib/mock-data";
+import {
+  type InventoryAlertRow,
+  inventoryAlerts,
+  orders,
+  processStepStyles,
+} from "@/lib/mock-data";
 import { isUserInventoryRowId, loadUserInventory } from "@/lib/user-inventory";
 import { cn } from "@/lib/utils";
 
@@ -64,28 +69,28 @@ export function InventoryTableBlock({
         open={reflectRow !== null}
         onClose={() => setReflectRow(null)}
       />
-      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-4 flex flex-col gap-3 @min-[40rem]:flex-row @min-[40rem]:items-center @min-[40rem]:justify-between">
         <h2 className="flex items-center gap-2 text-sm font-bold text-[#191f28]">
-          <Activity className="h-4 w-4 text-[#3182f6]" />
+          <Activity className="h-4 w-4 text-[#6eb89a]" />
           {title}
         </h2>
-        <div className="flex flex-1 flex-wrap items-center justify-end gap-2 sm:max-w-xs">
-          <div className="relative min-w-0 flex-1 sm:max-w-[200px]">
+        <div className="flex flex-1 flex-nowrap items-center justify-end gap-2 @min-[40rem]:max-w-xs">
+          <div className="relative min-w-0 flex-1 @min-[40rem]:max-w-[200px]">
             <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#8b95a1]" />
             <input
               type="search"
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="품목 검색"
-              className="w-full rounded-lg border border-[#e5e8eb] py-1.5 pl-8 pr-2 text-xs text-[#191f28] placeholder:text-[#8b95a1] outline-none focus:border-[#3182f6]"
+              className="w-full rounded-lg border border-[#e5e8eb] py-1.5 pl-8 pr-2 text-xs text-[#191f28] placeholder:text-[#8b95a1] outline-none focus:border-[#6eb89a]"
             />
           </div>
           {showAutoBuy ? (
             <button
               type="button"
-              className="shrink-0 rounded-lg bg-[#3182f6] px-3 py-1.5 text-xs font-bold text-white hover:bg-[#256dd4]"
+              className="shrink-0 rounded-lg bg-[#6eb89a] px-3 py-1.5 text-xs font-bold text-white hover:bg-[#5aa688]"
             >
-              자동구매
+              자동 발주
             </button>
           ) : null}
         </div>
@@ -97,7 +102,7 @@ export function InventoryTableBlock({
               <th className="pb-2 pr-2">품목</th>
               <th className="pb-2 pr-2">재고</th>
               <th className="pb-2 pr-2">상태</th>
-              <th className="pb-2 w-[100px] text-right sm:w-[120px]">반영</th>
+              <th className="pb-2 w-[100px] text-right @min-[40rem]:w-[120px]">반영</th>
             </tr>
           </thead>
           <tbody>
@@ -111,7 +116,7 @@ export function InventoryTableBlock({
             {(paginate ? pagedRows : rows).map((row) => {
               const pct = Math.round((row.cur / row.max) * 100);
               const bar =
-                row.level === "urgent" ? "bg-rose-500" : "bg-amber-500";
+                row.level === "urgent" ? "bg-[#f5b8c8]" : "bg-[#fcd9a8]";
               return (
                 <tr
                   key={row.id}
@@ -150,7 +155,7 @@ export function InventoryTableBlock({
                       <button
                         type="button"
                         onClick={() => setReflectRow(row)}
-                        className="rounded-lg border border-[#dbeafe] bg-[#eff6ff] px-2.5 py-1 text-[11px] font-bold text-[#2563eb] transition hover:bg-[#dbeafe]"
+                        className="rounded-lg border border-[#6eb89a] bg-[#6eb89a] px-2.5 py-1 text-[11px] font-bold text-white shadow-sm transition hover:bg-[#5aa688]"
                       >
                         재고 반영
                       </button>
@@ -195,7 +200,9 @@ export function OrdersTableBlock({
       (o) =>
         o.name.toLowerCase().includes(s) ||
         o.supplier.toLowerCase().includes(s) ||
-        o.proto.toLowerCase().includes(s),
+        o.step.toLowerCase().includes(s) ||
+        processStepStyles[o.step].chipLabel.includes(s) ||
+        o.agent.toLowerCase().includes(s),
     );
   }, [q]);
 
@@ -217,20 +224,20 @@ export function OrdersTableBlock({
 
   return (
     <section className="rounded-2xl border border-[#e8ecf0] bg-white p-5 shadow-[0_1px_3px_rgba(15,23,42,0.06)]">
-      <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mb-4 flex flex-col gap-3 @min-[64rem]:flex-row @min-[64rem]:items-center @min-[64rem]:justify-between">
         <h2 className="flex items-center gap-2 text-sm font-bold text-[#191f28]">
-          <ShoppingCart className="h-4 w-4 text-[#3182f6]" />
-          최근 자동구매 내역
+          <ShoppingCart className="h-4 w-4 text-[#6eb89a]" />
+          최근 자동 발주 내역
         </h2>
-        <div className="flex flex-1 flex-wrap items-center justify-end gap-2">
-          <div className="relative min-w-0 flex-1 sm:max-w-[220px]">
+        <div className="flex flex-1 flex-nowrap items-center justify-end gap-2">
+          <div className="relative min-w-0 flex-1 @min-[40rem]:max-w-[220px]">
             <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#8b95a1]" />
             <input
               type="search"
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="품목·공급사·프로토콜"
-              className="w-full rounded-lg border border-[#e5e8eb] py-1.5 pl-8 pr-2 text-xs text-[#191f28] placeholder:text-[#8b95a1] outline-none focus:border-[#3182f6]"
+              placeholder="품목·공급처·단계"
+              className="w-full rounded-lg border border-[#e5e8eb] py-1.5 pl-8 pr-2 text-xs text-[#191f28] placeholder:text-[#8b95a1] outline-none focus:border-[#6eb89a]"
             />
           </div>
           <button
@@ -256,9 +263,9 @@ export function OrdersTableBlock({
               <th className="pb-3 pr-3">품목</th>
               <th className="pb-3 pr-3">수량</th>
               <th className="pb-3 pr-3">금액</th>
-              <th className="pb-3 pr-3">프로토콜</th>
-              <th className="pb-3 pr-3">공급업체</th>
-              <th className="pb-3 pr-3 hidden sm:table-cell">결정 에이전트</th>
+              <th className="pb-3 pr-3">단계</th>
+              <th className="pb-3 pr-3">공급처</th>
+              <th className="hidden pb-3 pr-3 @min-[40rem]:table-cell">맡은 역할</th>
               <th className="pb-3 pr-3">상태</th>
               <th className="pb-3">시각</th>
             </tr>
@@ -287,10 +294,10 @@ export function OrdersTableBlock({
                 <td className="py-3 pr-3 text-[#4e5968]">{o.qty}</td>
                 <td className="py-3 pr-3 font-bold text-[#191f28]">{o.price}</td>
                 <td className="py-3 pr-3">
-                  <ProtoChip proto={o.proto} />
+                  <StepChip step={o.step} />
                 </td>
                 <td className="py-3 pr-3 text-[#191f28]">{o.supplier}</td>
-                <td className="py-3 pr-3 hidden text-xs text-[#8b95a1] sm:table-cell">
+                <td className="hidden py-3 pr-3 text-xs text-[#8b95a1] @min-[40rem]:table-cell">
                   {o.agent}
                 </td>
                 <td className="py-3 pr-3">

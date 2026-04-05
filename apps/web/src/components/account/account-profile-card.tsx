@@ -5,7 +5,7 @@ export function AccountProfileCard() {
   return (
     <div className="rounded-2xl border border-[#e5e8eb] bg-white p-6 shadow-sm">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#eff6ff] to-[#dbeafe] text-xl font-bold text-[#2563eb] ring-2 ring-white ring-offset-2 ring-offset-[#f9fafb]">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#e4f6ee] to-[#f5faf8] text-xl font-bold text-[#5aa688] ring-2 ring-white ring-offset-2 ring-offset-[#f9fafb]">
           원
         </div>
         <div className="min-w-0 flex-1">
@@ -15,7 +15,7 @@ export function AccountProfileCard() {
             {userProfile.org} {userProfile.title}
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
-            <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-800">
+            <span className="rounded-full bg-[#f0faf6] px-2.5 py-0.5 text-[11px] font-bold text-[#2d5244]">
               세션 활성
             </span>
             <span className="rounded-full bg-[#f2f4f6] px-2.5 py-0.5 text-[11px] font-semibold text-[#4e5968]">

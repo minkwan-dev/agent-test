@@ -27,15 +27,15 @@
 
   --animate-protocol-stack-wobble: protocol-stack-wobble 0.55s ease-in-out both;
 
-  /* 라이트 토스톤: 화이트 / 그레이-50·100 / 블루 포인트 */
-  --color-background: #f2f4f6;
+  /* 파스텔: 메인 민트 + 보조(라벤더·피치·스카이·로즈)는 메인과 색상 충돌 없음 */
+  --color-background: #f1f4f3;
   --color-surface: #ffffff;
-  --color-border: #e5e8eb;
-  --color-border-strong: #d1d6db;
+  --color-border: #e3e8e6;
+  --color-border-strong: #cfd6d3;
   --color-foreground: #191f28;
   --color-muted: #8b95a1;
-  --color-primary: #3182f6;
-  --color-primary-hover: #256dd4;
+  --color-primary: #6eb89a;
+  --color-primary-hover: #5aa688;
 }
 
 @layer base {

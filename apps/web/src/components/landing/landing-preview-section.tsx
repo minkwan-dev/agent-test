@@ -40,17 +40,17 @@ export function LandingPreviewSection() {
           </p>
           <div className="mt-8 hidden lg:block">
             <div className="relative overflow-hidden rounded-2xl border border-[#e8ecf0] bg-gradient-to-br from-white to-[#f9fafb] p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
-              <div className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-[#3182f6]/10 blur-2xl" />
+              <div className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-[#6eb89a]/10 blur-2xl" />
               <p className="relative text-sm font-bold text-[#191f28]">한 화면에서 할 수 있어요</p>
               <ul className="relative mt-5 space-y-4">
                 {previewHighlights.map((row) => (
                   <li key={row.i} className="flex gap-4">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#eff6ff] text-xs font-bold text-[#3182f6]">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#e8f5ee] text-xs font-bold text-[#6eb89a]">
                       {row.i}
                     </span>
                     <div className="min-w-0">
                       <p className="flex items-center gap-2 text-sm font-semibold text-[#191f28]">
-                        <row.icon className="h-4 w-4 text-[#3182f6]" />
+                        <row.icon className="h-4 w-4 text-[#6eb89a]" />
                         {row.t}
                       </p>
                       <p className="mt-1 text-sm leading-relaxed text-[#8b95a1]">{row.d}</p>

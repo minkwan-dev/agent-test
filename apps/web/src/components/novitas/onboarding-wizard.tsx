@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "../../lib/framer-motion";
 import { CheckCircle2, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -31,7 +31,7 @@ function Bullet({
 }) {
   return (
     <li className={cn("flex gap-2 text-[#4e5968]", className)}>
-      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#3182f6] sm:h-5 sm:w-5" strokeWidth={2} />
+      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#6eb89a] sm:h-5 sm:w-5" strokeWidth={2} />
       <span className="text-sm leading-snug sm:text-[15px] sm:leading-relaxed">{children}</span>
     </li>
   );
@@ -70,7 +70,7 @@ export function OnboardingWizard() {
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col lg:max-w-3xl">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-x-2 gap-y-1 sm:mb-3">
-        <p className="text-xs font-bold uppercase tracking-wider text-[#3182f6] sm:text-sm">
+        <p className="text-xs font-bold uppercase tracking-wider text-[#6eb89a] sm:text-sm">
           시작하기
         </p>
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
@@ -90,7 +90,7 @@ export function OnboardingWizard() {
 
       <div className="mb-3 h-2 overflow-hidden rounded-full bg-[#e5e8eb] sm:h-2.5">
         <motion.div
-          className="h-full rounded-full bg-[#3182f6]"
+          className="h-full rounded-full bg-[#6eb89a]"
           initial={false}
           animate={{ width: `${progress}%` }}
           transition={{ type: "spring", stiffness: 380, damping: 38 }}
@@ -122,9 +122,9 @@ export function OnboardingWizard() {
                       실제 재고 숫자를 맞춰요
                     </h2>
                     <p className="text-sm leading-relaxed text-[#4e5968] sm:text-[15px]">
-                      이 서비스는 <strong className="text-[#191f28]">재고 숫자가 확정된 뒤</strong>에 감시
-                      에이전트와 자동구매 흐름이 의미 있게 돌아가요. POS에서 자동으로 빠져나가지 않는다면, 직접{" "}
-                      <strong className="text-[#191f28]">반영한 시점</strong>이 곧 운영 기준이 됩니다.
+                      이 서비스는 <strong className="text-[#191f28]">재고 숫자가 확정된 뒤</strong>에 자동
+                      발주·알림이 맞게 돌아가요. 판매할 때마다 숫자가 줄어드는 연동이 없다면, 직접 넣은{" "}
+                      <strong className="text-[#191f28]">반영 시점</strong>이 곧 운영 기준이 됩니다.
                     </p>
                   </div>
                   <ul className="space-y-2 sm:space-y-2.5">
@@ -137,8 +137,8 @@ export function OnboardingWizard() {
                       시뮬레이션이 현실에 가까워져요.
                     </Bullet>
                     <Bullet>
-                      <strong className="text-[#191f28]">지표·에이전트</strong>는 연동·정책에 따라 같은 화면에서
-                      실데이터로 바뀌어요.
+                      <strong className="text-[#191f28]">지표·자동 처리</strong>는 나중에 연결을 붙이면 같은
+                      화면에서 실제 데이터로 바뀌어요.
                     </Bullet>
                   </ul>
                   <TipBox>
@@ -178,7 +178,7 @@ export function OnboardingWizard() {
                   </TipBox>
                   <Link
                     href="/dashboard/stock/register"
-                    className="inline-flex w-full items-center justify-center rounded-lg bg-[#3182f6] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#256dd4] sm:text-sm"
+                    className="inline-flex w-full items-center justify-center rounded-lg bg-[#6eb89a] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#5aa688] sm:text-sm"
                   >
                     재고 등록으로 이동
                   </Link>
@@ -193,8 +193,8 @@ export function OnboardingWizard() {
                     </h2>
                     <p className="text-sm leading-relaxed text-[#4e5968] sm:text-[15px]">
                       자동 차감이 없을 때는 <strong className="text-[#191f28]">재고 반영</strong>으로 현재고를 고치는
-                      순간이, 시스템이 보는 “최신 스냅샷”이에요. 그 시각을 기준으로 긴급·주의 배지와 자동구매
-                      파이프라인이 맞춰져요.
+                      순간이,                       화면이 보는 “지금 재고”예요. 그 시각을 기준으로 긴급·주의 배지와 자동 발주가
+                      맞춰져요.
                     </p>
                   </div>
                   <ul className="space-y-2 sm:space-y-2.5">
@@ -229,8 +229,8 @@ export function OnboardingWizard() {
                       이제 대시보드에서 운영해요
                     </h2>
                     <p className="text-sm leading-relaxed text-[#4e5968] sm:text-[15px]">
-                      개요에서는 오늘 지표와 재고 테이블 일부를, 구매 내역에서는 발주 흐름을 볼 수 있어요. 에이전트·프로토콜
-                      화면은 멀티에이전트 구조를 눈으로 확인하는 용도예요.
+                      개요에서는 오늘 지표와 재고 일부를, 구매 내역에서는 발주 흐름을 볼 수 있어요. 자동 처리·연동
+                      화면은 단계가 어떻게 이어지는지 보는 연습용이에요.
                     </p>
                   </div>
                   <ul className="space-y-2 sm:space-y-2.5">
@@ -242,8 +242,8 @@ export function OnboardingWizard() {
                       <strong className="text-[#191f28]">재고 현황</strong> — 등록 품목과 반영, 검색이 이어져요.
                     </Bullet>
                     <Bullet>
-                      <strong className="text-[#191f28]">에이전트·알림</strong> — 나중에 웹훅·슬랙만 붙이면 여기서 상태가
-                      살아나요.
+                      <strong className="text-[#191f28]">자동 처리·알림</strong> — 나중에 문자·카톡 같은 걸
+                      붙이면 여기서도 같이 쓸 수 있어요.
                     </Bullet>
                   </ul>
                   <TipBox>
@@ -252,7 +252,7 @@ export function OnboardingWizard() {
                   <button
                     type="button"
                     onClick={finish}
-                    className="w-full rounded-lg bg-[#3182f6] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#256dd4] sm:text-sm"
+                    className="w-full rounded-lg bg-[#6eb89a] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#5aa688] sm:text-sm"
                   >
                     대시보드로 이동
                   </button>
@@ -277,7 +277,7 @@ export function OnboardingWizard() {
             <button
               type="button"
               onClick={goNext}
-              className="rounded-md bg-[#3182f6] px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-[#256dd4] sm:min-w-[4.5rem] sm:py-2 sm:text-sm"
+              className="rounded-md bg-[#6eb89a] px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-[#5aa688] sm:min-w-[4.5rem] sm:py-2 sm:text-sm"
             >
               다음
             </button>
@@ -296,7 +296,7 @@ export function OnboardingWizard() {
               initial={false}
               animate={{
                 width: active ? 28 : 8,
-                backgroundColor: active ? "#3182f6" : done ? "#93c5fd" : "#e5e8eb",
+                backgroundColor: active ? "#6eb89a" : done ? "#a8dcc4" : "#e5e8eb",
               }}
               transition={{ type: "spring", stiffness: 500, damping: 35 }}
             />

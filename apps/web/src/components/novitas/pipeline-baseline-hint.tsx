@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
+  DEFAULT_AUTOBUY_PIPELINE_STATE,
   formatBaselineTime,
   loadAutobuyPipelineState,
   type AutobuyPipelineState,
 } from "@/lib/autobuy-pipeline";
 
 export function PipelineBaselineHint() {
-  const [state, setState] = useState<AutobuyPipelineState>(() => loadAutobuyPipelineState());
+  const [state, setState] = useState<AutobuyPipelineState>(DEFAULT_AUTOBUY_PIPELINE_STATE);
 
   useEffect(() => {
     const sync = () => setState(loadAutobuyPipelineState());
@@ -20,17 +21,17 @@ export function PipelineBaselineHint() {
 
   if (!state.lastBaselineAt) {
     return (
-      <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50/95 px-4 py-3 text-sm leading-relaxed text-amber-950 shadow-sm">
-        <span className="font-bold">자동구매 감시 전</span>
-        <span className="text-amber-900/90">
-          {" "}
-          — POS·실사 재고를 반영하면 그 시점부터 에이전트·자동구매 파이프라인이 트리거돼요.{" "}
+      <div className="mb-4 rounded-xl border border-[#fcd9a8] bg-[#fff8f0] px-4 py-3 text-sm leading-relaxed text-[#8b5a1a] shadow-sm">
+        <span className="font-bold">자동 발주를 켜기 전</span>
+        <span className="text-[#9a5a12]/95">
+          에는 실제 수량을 여기에 맞춰 두면 그때부터 발주·결제 흐름이 돌아가요. 판매할 때마다 숫자가
+          줄어드는 연동은 아직 없으니 직접 반영하는 식이에요.{" "}
         </span>
-        <Link href="/dashboard/stock/register" className="font-semibold text-amber-900 underline">
+        <Link href="/dashboard/stock/register" className="font-semibold text-[#8b4513] underline">
           품목 등록
         </Link>
-        <span className="text-amber-900/90"> 또는 </span>
-        <Link href="/dashboard/stock" className="font-semibold text-amber-900 underline">
+        <span className="text-[#9a5a12]/90"> 또는 </span>
+        <Link href="/dashboard/stock" className="font-semibold text-[#8b4513] underline">
           재고 반영
         </Link>
         .
@@ -39,15 +40,15 @@ export function PipelineBaselineHint() {
   }
 
   return (
-    <div className="mb-4 rounded-xl border border-emerald-200 bg-emerald-50/90 px-4 py-3 text-sm leading-relaxed text-emerald-950 shadow-sm">
+    <div className="mb-4 rounded-xl border border-[#c8e4d6] bg-[#f0faf6] px-4 py-3 text-sm leading-relaxed text-[#2d5244] shadow-sm">
       마지막 재고 기준:{" "}
       <strong className="tabular-nums">{formatBaselineTime(state.lastBaselineAt)}</strong>
       {state.lastSource === "manual" ? (
-        <span className="text-emerald-900/85"> (수동 반영)</span>
+        <span className="text-[#3d6b57]/90"> (수동 반영)</span>
       ) : state.lastSource === "register" ? (
-        <span className="text-emerald-900/85"> (등록)</span>
+        <span className="text-[#3d6b57]/90"> (등록)</span>
       ) : null}
-      <span className="text-emerald-900/90"> · 자동구매·감시가 이 기준으로 동작 중이에요.</span>
+      <span className="text-[#3d6b57]/92"> · 자동 발주·알림이 이 기준으로 맞춰져 있어요.</span>
     </div>
   );
 }

@@ -1,20 +1,35 @@
 import { cn } from "@/lib/utils";
-import type { Proto } from "@/lib/mock-data";
-import { protoStyles } from "@/lib/mock-data";
+import type { ProcessStep } from "@/lib/mock-data";
+import { processStepStyles } from "@/lib/mock-data";
 
-export function ProtoChip({ proto }: { proto: Proto }) {
+/** 처리 단계 — 라벨은 접근용 title·스크린리더에만 사용 */
+export function StepChip({ step }: { step: ProcessStep }) {
+  const { chipLabel, dot } = processStepStyles[step];
   return (
     <span
+      title={chipLabel}
       className={cn(
-        "inline-flex items-center rounded-md px-1.5 py-0.5 text-[10px] font-bold tracking-wide",
-        protoStyles[proto].chip,
+        "inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#f2f4f6]",
       )}
     >
-      {proto}
+      <span
+        className={cn("h-2.5 w-2.5 rounded-full ring-2 ring-black/[0.06]", dot)}
+        role="img"
+        aria-label={chipLabel}
+      />
     </span>
   );
 }
 
+const statusDotRing = {
+  success: "bg-[#7ec8e3] ring-[#7ec8e3]/35",
+  warning: "bg-[#f0b885] ring-[#f0b885]/35",
+  danger: "bg-[#f5a0b8] ring-[#f5a0b8]/35",
+  neutral: "bg-[#c5ccd4] ring-[#c5ccd4]/35",
+  violet: "bg-[#b8a0e8] ring-[#b8a0e8]/35",
+} as const;
+
+/** 상태 — 점만 표시, 문구는 title·aria-label로만 제공 */
 export function StatusBadge({
   children,
   variant,
@@ -22,24 +37,23 @@ export function StatusBadge({
   children: React.ReactNode;
   variant: "success" | "warning" | "danger" | "neutral" | "violet";
 }) {
-  const map = {
-    success:
-      "border border-emerald-200 bg-emerald-50 text-emerald-800",
-    warning:
-      "border border-amber-200 bg-amber-50 text-amber-900",
-    danger: "border border-rose-200 bg-rose-50 text-rose-800",
-    neutral: "border border-gray-200 bg-gray-50 text-gray-700",
-    violet:
-      "border border-indigo-200 bg-indigo-50 text-indigo-800",
-  } as const;
+  const label =
+    typeof children === "string" || typeof children === "number"
+      ? String(children)
+      : "";
   return (
     <span
-      className={cn(
-        "inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold",
-        map[variant],
-      )}
+      title={label || undefined}
+      className="inline-flex items-center justify-center"
     >
-      {children}
+      <span
+        className={cn(
+          "inline-block h-2.5 w-2.5 shrink-0 rounded-full ring-2",
+          statusDotRing[variant],
+        )}
+        role="img"
+        aria-label={label || undefined}
+      />
     </span>
   );
 }

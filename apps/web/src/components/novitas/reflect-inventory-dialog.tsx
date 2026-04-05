@@ -60,8 +60,8 @@ export function ReflectInventoryDialog({
               재고 반영
             </h2>
             <p className="mt-1 text-xs leading-relaxed text-[#8b95a1]">
-              실사·POS 기준으로 맞춘 뒤 저장하면, 이 시점부터 자동구매·감시 파이프라인이 최신 재고를
-              기준으로 동작해요.
+              실제 매장 수량에 맞게 고친 뒤 저장하면, 그때부터 자동 발주·알림이 이 숫자를 기준으로
+              움직여요. (판매할 때마다 자동으로 빠지는 연동은 없다고 생각하시면 돼요.)
             </p>
           </div>
           <button
@@ -88,7 +88,7 @@ export function ReflectInventoryDialog({
               value={cur}
               onChange={(e) => setCur(e.target.value)}
               className={cn(
-                "mt-1.5 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-sm text-[#191f28] outline-none focus:border-[#3182f6] focus:ring-2 focus:ring-[#3182f6]/20",
+                "mt-1.5 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-sm text-[#191f28] outline-none focus:border-[#6eb89a] focus:ring-2 focus:ring-[#6eb89a]/20",
               )}
             />
           </label>
@@ -100,7 +100,7 @@ export function ReflectInventoryDialog({
               value={max}
               onChange={(e) => setMax(e.target.value)}
               className={cn(
-                "mt-1.5 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-sm text-[#191f28] outline-none focus:border-[#3182f6] focus:ring-2 focus:ring-[#3182f6]/20",
+                "mt-1.5 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-sm text-[#191f28] outline-none focus:border-[#6eb89a] focus:ring-2 focus:ring-[#6eb89a]/20",
               )}
             />
           </label>
@@ -119,9 +119,9 @@ export function ReflectInventoryDialog({
           <button
             type="button"
             onClick={save}
-            className="rounded-lg bg-[#3182f6] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#256dd4]"
+            className="rounded-lg bg-[#6eb89a] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#5aa688]"
           >
-            반영하고 파이프라인 갱신
+            반영하고 자동 발주 기준 맞추기
           </button>
         </div>
       </div>

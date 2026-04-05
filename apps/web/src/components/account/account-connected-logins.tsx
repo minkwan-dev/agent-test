@@ -22,7 +22,7 @@ export function AccountConnectedLogins() {
             <span
               className={
                 acc.status === "connected"
-                  ? "rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-800"
+                  ? "rounded-full bg-[#f0faf6] px-2 py-0.5 text-[11px] font-bold text-[#2d5244]"
                   : "rounded-full bg-[#f2f4f6] px-2 py-0.5 text-[11px] font-semibold text-[#4e5968]"
               }
             >

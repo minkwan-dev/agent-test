@@ -1,17 +1,15 @@
-import type { Proto } from "@/lib/mock-data";
-import { protoStyles } from "@/lib/mock-data";
+import type { ProcessStep } from "@/lib/mock-data";
+import { processStepStyles } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
-type LogRow = { id: string; proto: Proto; src: string; msg: string; t: string };
+type LogRow = { id: string; step: ProcessStep; src: string; msg: string; t: string };
 
 export function RightPanelLog({ logs }: { logs: LogRow[] }) {
   return (
     <div className="flex min-h-0 flex-1 flex-col bg-[#f9fafb]">
       <div className="flex shrink-0 items-center gap-2 border-b border-[#e5e8eb] bg-white px-4 py-3">
-        <span className="h-2 w-2 rounded-full bg-emerald-500" />
-        <span className="text-xs font-bold text-[#4e5968]">
-          실시간 플로우 로그
-        </span>
+        <span className="h-2 w-2 rounded-full bg-[#7ec8e3]" />
+        <span className="text-xs font-bold text-[#4e5968]">최근 처리</span>
         <span className="ml-auto text-[11px] text-[#8b95a1]">
           {logs.length}개
         </span>
@@ -22,11 +20,11 @@ export function RightPanelLog({ logs }: { logs: LogRow[] }) {
             <div className="flex flex-col items-center">
               <div
                 className={cn(
-                  "flex h-7 w-7 items-center justify-center rounded-lg text-[10px] font-bold",
-                  protoStyles[log.proto].chip,
+                  "flex h-7 min-w-[1.75rem] items-center justify-center rounded-lg px-1 text-[10px] font-bold",
+                  processStepStyles[log.step].chip,
                 )}
               >
-                {log.proto}
+                {processStepStyles[log.step].chipLabel}
               </div>
               <div className="mt-1 min-h-[8px] w-px flex-1 bg-[#e5e8eb]" />
             </div>
@@ -35,7 +33,7 @@ export function RightPanelLog({ logs }: { logs: LogRow[] }) {
                 <span
                   className={cn(
                     "text-xs font-bold",
-                    protoStyles[log.proto].label,
+                    processStepStyles[log.step].label,
                   )}
                 >
                   {log.src}
