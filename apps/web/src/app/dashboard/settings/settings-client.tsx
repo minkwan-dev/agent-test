@@ -8,11 +8,13 @@ import {
   SettingsApiSection,
   SettingsAutobuySection,
   SettingsFormActions,
+  SettingsIntegrationPolicySection,
   SettingsNotifySection,
 } from "@/app/dashboard/settings/settings-sections";
 import { accessTokenAtom } from "@/lib/auth-atoms";
 import { getApiUrl } from "@/lib/api";
 import {
+  DEFAULT_INTEGRATION_POLICY,
   fetchUserSettings,
   isSettingsFetchNetworkError,
   patchUserSettings,
@@ -27,6 +29,10 @@ function dtoToFormState(d: UserSettingsDto) {
     notify_push_urgent: d.notify_push_urgent,
     notify_daily_email: d.notify_daily_email,
     notify_webhook_url: d.notify_webhook_url ?? "",
+    integration_policy: {
+      ...DEFAULT_INTEGRATION_POLICY,
+      ...d.integration_policy,
+    },
   };
 }
 
@@ -113,6 +119,7 @@ export function SettingsClient() {
       notify_push_urgent: form.notify_push_urgent,
       notify_daily_email: form.notify_daily_email,
       notify_webhook_url: form.notify_webhook_url.trim() || null,
+      integration_policy: form.integration_policy,
     });
   }, [form, token, mutation]);
 
@@ -129,7 +136,7 @@ export function SettingsClient() {
           description="자동 발주·알림 규칙은 계정에 저장돼요."
         />
         <Novitas.DashboardContent>
-          <p className="text-sm text-[#8b95a1]">불러오는 중…</p>
+          <p className="text-xs leading-relaxed text-[var(--color-muted)]">불러오는 중…</p>
         </Novitas.DashboardContent>
       </div>
     );
@@ -143,7 +150,9 @@ export function SettingsClient() {
           description="자동 발주·알림 규칙은 계정에 저장돼요."
         />
         <Novitas.DashboardContent>
-          <p className="text-sm text-[#8b95a1]">세션을 연결하는 중이에요…</p>
+          <p className="text-xs leading-relaxed text-[var(--color-muted)]">
+            세션을 연결하는 중이에요…
+          </p>
         </Novitas.DashboardContent>
       </div>
     );
@@ -157,7 +166,7 @@ export function SettingsClient() {
           description="자동 발주·알림 규칙은 계정에 저장돼요."
         />
         <Novitas.DashboardContent>
-          <p className="text-sm text-[#8b95a1]">로그인이 필요해요.</p>
+          <p className="text-xs leading-relaxed text-[var(--color-muted)]">로그인이 필요해요.</p>
         </Novitas.DashboardContent>
       </div>
     );
@@ -174,13 +183,13 @@ export function SettingsClient() {
         />
         <Novitas.DashboardContent>
           {network ? (
-            <p className="text-sm text-rose-600">
+            <p className="text-xs leading-relaxed text-rose-600">
               API 서버에 연결할 수 없어요. apps/api에서 개발 서버를 켜 주세요. (예: npm run dev,
               기본 포트 4000) 웹 앱의 NEXT_PUBLIC_API_URL이 지금{" "}
               <span className="font-mono text-xs">{apiBase}</span> 로 맞는지도 확인해 주세요.
             </p>
           ) : (
-            <p className="text-sm text-rose-600">
+            <p className="text-xs leading-relaxed text-rose-600">
               설정을 불러오지 못했어요. 로그인·NEXT_PUBLIC_API_URL·Supabase 마이그레이션을 확인해
               주세요.
             </p>
@@ -198,7 +207,9 @@ export function SettingsClient() {
           description="자동 발주·알림 규칙은 계정에 저장돼요. 재고 스캔 주기는 이후 에이전트가 참고합니다."
         />
         <Novitas.DashboardContent>
-          <p className="text-sm text-[#8b95a1]">설정을 불러오는 중이에요…</p>
+          <p className="text-xs leading-relaxed text-[var(--color-muted)]">
+            설정을 불러오는 중이에요…
+          </p>
         </Novitas.DashboardContent>
       </div>
     );
@@ -210,7 +221,7 @@ export function SettingsClient() {
         title="설정"
         description="자동 발주·알림 규칙은 계정에 저장돼요. 재고 스캔 주기는 이후 에이전트가 참고합니다."
       />
-      <Novitas.DashboardContent innerClassName="space-y-8">
+      <Novitas.DashboardContent innerClassName="space-y-10 pb-10 sm:pb-12">
         <SettingsAutobuySection
           scanInterval={form.inventory_scan_interval_minutes}
           onScanIntervalChange={(v) =>
@@ -239,9 +250,22 @@ export function SettingsClient() {
             setForm((f) => (f ? { ...f, notify_webhook_url: v } : f))
           }
         />
+        <SettingsIntegrationPolicySection
+          policy={form.integration_policy}
+          onPolicyChange={(patch) =>
+            setForm((f) =>
+              f
+                ? {
+                    ...f,
+                    integration_policy: { ...f.integration_policy, ...patch },
+                  }
+                : f,
+            )
+          }
+        />
         <SettingsApiSection />
         {saveErr ? (
-          <p className="text-sm font-medium text-rose-600" role="alert">
+          <p className="text-xs font-medium leading-relaxed text-rose-600" role="alert">
             {saveErr}
           </p>
         ) : null}

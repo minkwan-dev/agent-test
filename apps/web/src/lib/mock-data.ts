@@ -6,9 +6,9 @@ export const processStepStyles: Record<
   { label: string; chip: string; dot: string; chipLabel: string }
 > = {
   stock: {
-    label: "text-[#3d6b57]",
-    chip: "border border-[#bfe0d0] bg-[#e8f5ee] text-[#2d5244]",
-    dot: "bg-[#6eb89a]",
+    label: "text-[#6d28d9]",
+    chip: "border border-[#e9d5ff] bg-[#f5f3ff] text-[#1e293b]",
+    dot: "bg-[#a78bfa]",
     chipLabel: "재고",
   },
   decide: {
@@ -41,10 +41,10 @@ export const agents = [
     status: "running" as const,
     badge: "실행 중",
     badgeClass:
-      "border border-[#c8e4d6] bg-[#f2faf6] text-[#2d5244]",
+      "border border-[#ede9fe] bg-[#f8fafc] text-[#1e293b]",
     stat: "15분마다 확인 · 마지막 확인 2분 전",
     pct: 72,
-    bar: "bg-[#6eb89a]",
+    bar: "bg-[#a78bfa]",
   },
   {
     id: "dec",

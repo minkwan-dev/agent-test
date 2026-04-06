@@ -18,7 +18,7 @@ export function LandingFooter() {
 
           <div className="grid gap-10 sm:grid-cols-2 lg:gap-12">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#6eb89a]">서비스</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#a78bfa]">서비스</p>
               <ul className="mt-4 space-y-3 text-sm text-[#4e5968]">
                 <li>
                   <a href="#features" className="transition hover:text-[#191f28]">
@@ -44,7 +44,7 @@ export function LandingFooter() {
             </div>
 
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#6eb89a]">
+              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#a78bfa]">
                 법인 · 고객센터
               </p>
               <dl className="mt-4 space-y-4 text-sm text-[#4e5968]">
@@ -63,7 +63,7 @@ export function LandingFooter() {
                   <dd className="mt-1">
                     <a
                       href="mailto:business@novitas.io"
-                      className="font-medium text-[#191f28] underline-offset-2 transition hover:text-[#6eb89a] hover:underline"
+                      className="font-medium text-[#191f28] underline-offset-2 transition hover:text-[#a78bfa] hover:underline"
                     >
                       business@semoso.io
                     </a>

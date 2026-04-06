@@ -69,7 +69,7 @@ export function TablePagination({
               className={cn(
                 "min-w-[2rem] rounded-lg px-2 py-1.5 text-xs font-semibold tabular-nums transition",
                 p === safePage
-                  ? "bg-[#6eb89a] text-white"
+                  ? "bg-[#a78bfa] text-white"
                   : "text-[#4e5968] hover:bg-[#f2f4f6]",
               )}
             >

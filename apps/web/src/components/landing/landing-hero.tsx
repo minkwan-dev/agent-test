@@ -21,18 +21,18 @@ export function LandingHero() {
           </p>
           <ul className="mt-8 space-y-2 text-sm text-[#4e5968] sm:text-base">
             <li className="flex gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6eb89a]" />
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#a78bfa]" />
               매장 데이터·발주·기록을 한 제품 안에 묶었어요
             </li>
             <li className="flex gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6eb89a]" />
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#a78bfa]" />
               오늘 숫자와 진행 기록을 한 화면에서 볼 수 있어요
             </li>
           </ul>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
               href="/login"
-              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#6eb89a] px-7 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#5aa688] sm:px-8 sm:text-base"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#a78bfa] px-7 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#8b5cf6] sm:px-8 sm:text-base"
             >
               무료로 시작하기
               <ArrowRight className="h-4 w-4" />

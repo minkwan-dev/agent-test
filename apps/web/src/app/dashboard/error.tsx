@@ -30,7 +30,7 @@ export default function DashboardError({
         <button
           type="button"
           onClick={() => reset()}
-          className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-[#6eb89a] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#5aa688]"
+          className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-[#a78bfa] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#8b5cf6]"
         >
           <RefreshCw className="h-4 w-4" />
           다시 시도

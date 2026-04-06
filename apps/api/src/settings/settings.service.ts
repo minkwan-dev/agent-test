@@ -1,5 +1,10 @@
 import { BadRequestException, Injectable, Logger } from "@nestjs/common";
 import { SupabaseService } from "../supabase/supabase.service";
+import {
+  DEFAULT_INTEGRATION_POLICY,
+  mergeIntegrationPolicy,
+  validateIntegrationPolicyPatch,
+} from "./integration-policy";
 import type { PatchUserSettingsDto, UserSettingsDto } from "./settings.types";
 
 type UserSettingsRow = {
@@ -10,6 +15,7 @@ type UserSettingsRow = {
   notify_push_urgent: boolean;
   notify_daily_email: boolean;
   notify_webhook_url: string | null;
+  integration_policy: unknown | null;
   updated_at: string;
 };
 
@@ -20,6 +26,7 @@ const DEFAULTS: Omit<UserSettingsDto, "profile_id" | "updated_at"> = {
   notify_push_urgent: true,
   notify_daily_email: false,
   notify_webhook_url: null,
+  integration_policy: DEFAULT_INTEGRATION_POLICY,
 };
 
 @Injectable()
@@ -37,6 +44,7 @@ export class SettingsService {
       notify_push_urgent: row.notify_push_urgent,
       notify_daily_email: row.notify_daily_email,
       notify_webhook_url: row.notify_webhook_url,
+      integration_policy: mergeIntegrationPolicy(row.integration_policy),
       updated_at: row.updated_at,
     };
   }
@@ -81,6 +89,9 @@ export class SettingsService {
         throw new BadRequestException("notify_webhook_url too long");
       }
     }
+    if (patch.integration_policy !== undefined) {
+      validateIntegrationPolicyPatch(patch.integration_policy);
+    }
   }
 
   async patchForProfile(
@@ -89,9 +100,18 @@ export class SettingsService {
   ): Promise<UserSettingsDto> {
     this.validatePatch(patch);
     const current = await this.getForProfile(profileId);
+    const nextIntegrationPolicy =
+      patch.integration_policy !== undefined
+        ? mergeIntegrationPolicy({
+            ...current.integration_policy,
+            ...patch.integration_policy,
+          })
+        : current.integration_policy;
+
     const next: UserSettingsDto = {
       ...current,
       ...patch,
+      integration_policy: nextIntegrationPolicy,
       notify_webhook_url:
         patch.notify_webhook_url === undefined
           ? current.notify_webhook_url
@@ -109,6 +129,7 @@ export class SettingsService {
       notify_push_urgent: next.notify_push_urgent,
       notify_daily_email: next.notify_daily_email,
       notify_webhook_url: next.notify_webhook_url,
+      integration_policy: next.integration_policy,
       updated_at: now,
     };
 

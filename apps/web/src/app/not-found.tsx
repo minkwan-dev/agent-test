@@ -11,7 +11,7 @@ export default function NotFound() {
         </Link>
       </header>
       <main className="flex flex-1 flex-col items-center justify-center px-4 py-16">
-        <p className="text-sm font-bold uppercase tracking-wider text-[#6eb89a]">404</p>
+        <p className="text-sm font-bold uppercase tracking-wider text-[#a78bfa]">404</p>
         <h1 className="mt-2 text-center text-2xl font-bold tracking-tight text-[#191f28] sm:text-3xl">
           페이지를 찾을 수 없어요
         </h1>
@@ -23,12 +23,12 @@ export default function NotFound() {
             href="/"
             className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#e5e8eb] bg-white px-5 py-3 text-sm font-semibold text-[#191f28] shadow-sm transition hover:bg-[#f9fafb]"
           >
-            <Home className="h-4 w-4 text-[#6eb89a]" />
+            <Home className="h-4 w-4 text-[#a78bfa]" />
             홈으로
           </Link>
           <Link
             href="/dashboard/overview"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6eb89a] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5aa688]"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#a78bfa] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#8b5cf6]"
           >
             <LayoutDashboard className="h-4 w-4" />
             운영 대시보드
@@ -36,7 +36,7 @@ export default function NotFound() {
         </div>
         <Link
           href="/"
-          className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-[#8b95a1] transition hover:text-[#6eb89a]"
+          className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-[#8b95a1] transition hover:text-[#a78bfa]"
         >
           <ArrowLeft className="h-4 w-4" />
           이전 페이지로 (랜딩)

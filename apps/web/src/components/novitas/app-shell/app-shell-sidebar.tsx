@@ -26,7 +26,7 @@ export function AppShellSidebar({ pathname, open, onNavigate }: AppShellSidebarP
 
       <aside
         className={cn(
-          "fixed bottom-0 left-0 top-14 z-[106] flex w-[220px] flex-col border-r border-[#e5e8eb] bg-white transition-transform duration-300 lg:static lg:top-auto lg:z-auto lg:min-h-0 lg:w-[220px] lg:translate-x-0 lg:self-stretch",
+          "fixed bottom-0 left-0 top-14 z-[106] flex w-[220px] flex-col border-r border-[var(--color-border)] bg-[#f8f9f9] transition-transform duration-300 lg:static lg:top-auto lg:z-auto lg:min-h-0 lg:w-[220px] lg:translate-x-0 lg:self-stretch",
           open ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
         )}
       >
@@ -61,7 +61,7 @@ export function AppShellSidebar({ pathname, open, onNavigate }: AppShellSidebarP
               </NavLink>
             ))}
           </NavSection>
-          <div className="mt-auto border-t border-[#e5e8eb] pt-3">
+          <div className="mt-auto border-t border-[var(--color-border)] pt-3">
             <NavLink
               href="/dashboard/admin"
               active={pathname === "/dashboard/admin"}

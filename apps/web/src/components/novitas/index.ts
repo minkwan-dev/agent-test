@@ -11,6 +11,7 @@ import { RightPanel } from "./right-panel";
 import { TablePagination } from "./table-pagination";
 import {
   InventoryTableBlock,
+  NotificationsTableBlock,
   OrdersTableBlock,
 } from "./tables";
 import { OverviewContent } from "./overview-content";
@@ -37,6 +38,7 @@ export const Novitas = {
   ReflectInventoryDialog,
   TablePagination,
   InventoryTableBlock,
+  NotificationsTableBlock,
   OrdersTableBlock,
 } as const;
 

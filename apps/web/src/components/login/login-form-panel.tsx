@@ -53,12 +53,12 @@ export function LoginFormPanel() {
       >
         <motion.div
           variants={loginItemVariants}
-          className="h-1 w-11 rounded-full bg-gradient-to-r from-[#6eb89a] to-[#8fd4b8]"
+          className="h-1 w-11 rounded-full bg-gradient-to-r from-[#a78bfa] to-[#d8b4fe]"
           aria-hidden
         />
         <motion.p
           variants={loginItemVariants}
-          className="mt-5 text-xs font-bold uppercase tracking-wider text-[#6eb89a]"
+          className="mt-5 text-xs font-bold uppercase tracking-wider text-[#a78bfa]"
         >
           Sign in
         </motion.p>
@@ -110,7 +110,7 @@ export function LoginFormPanel() {
         >
           {infoRows.map(({ Icon, title, desc }) => (
             <div key={title} className="flex gap-3 px-4 py-3.5 sm:px-5 sm:py-4">
-              <Icon className="mt-0.5 h-5 w-5 shrink-0 text-[#6eb89a]" />
+              <Icon className="mt-0.5 h-5 w-5 shrink-0 text-[#a78bfa]" />
               <div>
                 <p className="text-sm font-semibold text-[#191f28]">{title}</p>
                 <p className="mt-1 text-xs leading-relaxed text-[#8b95a1]">{desc}</p>

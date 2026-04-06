@@ -3,14 +3,14 @@ import { Brand } from "@/components/brand";
 export function CtaVisual() {
   return (
     <div className="relative overflow-hidden rounded-3xl border border-[#e5e8eb] bg-white p-2 shadow-xl">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#6eb89a]/[0.07] via-transparent to-[#a8dcc4]/10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#a78bfa]/[0.07] via-transparent to-[#e9d5ff]/10" />
       <div className="relative rounded-2xl bg-[#f8f9fb] p-6 sm:p-8">
         <div className="flex items-center justify-between">
           <div className="flex items-baseline gap-2">
             <Brand.SemosoLogoLockup size="md" />
             <span className="text-lg font-bold text-[#191f28]">콘솔</span>
           </div>
-          <span className="rounded-full bg-[#f0faf6] px-3 py-1 text-xs font-semibold text-[#3d6b57]">
+          <span className="rounded-full bg-[#f8fafc] px-3 py-1 text-xs font-semibold text-[#6d28d9]">
             준비됨
           </span>
         </div>

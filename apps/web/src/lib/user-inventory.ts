@@ -58,7 +58,19 @@ export function isUserInventoryRowId(id: string): boolean {
 const UUID_RE =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
-/** 로컬 데모 행(`user-`) 또는 서버 저장 품목(uuid)만 재고 반영 가능 */
+/** 로컬 데모 행(`user-`) 또는 서버 저장 품목(uuid)만 재고 반영 저장 가능 */
 export function canReflectInventoryRow(id: string): boolean {
   return id.startsWith("user-") || UUID_RE.test(id);
+}
+
+/**
+ * 개요·재고 목록에서 재고 반영 버튼 노출 여부.
+ * 재고 비율 35% 이하이면 행 종류와 관계없이 버튼을 보여 주고, 그보다 높으면 저장 가능한 행만 버튼을 둡니다.
+ */
+export function shouldShowInventoryReflectButton(
+  id: string,
+  pctRounded: number,
+): boolean {
+  if (pctRounded <= 35) return true;
+  return canReflectInventoryRow(id);
 }

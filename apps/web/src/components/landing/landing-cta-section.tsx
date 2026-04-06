@@ -16,7 +16,7 @@ export function LandingCtaSection() {
           </p>
           <Link
             href="/login"
-            className="mt-10 inline-flex w-full items-center justify-center rounded-2xl bg-[#6eb89a] px-10 py-4 text-base font-bold text-white shadow-sm transition hover:bg-[#5aa688] sm:w-auto sm:px-12 sm:text-lg"
+            className="mt-10 inline-flex w-full items-center justify-center rounded-2xl bg-[#a78bfa] px-10 py-4 text-base font-bold text-white shadow-sm transition hover:bg-[#8b5cf6] sm:w-auto sm:px-12 sm:text-lg"
           >
             로그인하고 시작하기
           </Link>

@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { Brand } from "@/components/brand";
 
 type AppShellHeaderProps = {
@@ -8,7 +11,7 @@ type AppShellHeaderProps = {
 
 export function AppShellHeader({ onMenuClick }: AppShellHeaderProps) {
   return (
-    <header className="z-[110] flex h-14 shrink-0 items-center gap-2 border-b border-[#e5e8eb] bg-white px-3 sm:gap-4 sm:px-5">
+    <header className="z-[110] flex h-14 shrink-0 items-center gap-2 border-b border-[var(--color-border)] bg-[var(--color-surface)] px-3 sm:gap-4 sm:px-5">
       <button
         type="button"
         className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-700 hover:bg-[#f2f4f6] lg:hidden"
@@ -31,9 +34,7 @@ export function AppShellHeader({ onMenuClick }: AppShellHeaderProps) {
           title="내 계정"
           aria-label="내 계정"
         >
-          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#e4f6ee] to-[#f5faf8] text-xs font-bold text-[#5aa688]">
-            원
-          </span>
+          <ProfileAvatar size="sm" />
         </Link>
       </div>
     </header>

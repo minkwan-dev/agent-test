@@ -38,21 +38,21 @@ function LoginAsideIllustration() {
         >
           <defs>
             <linearGradient id="la-flow-line" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#a8dcc4" stopOpacity="0.35" />
-              <stop offset="45%" stopColor="#6eb89a" stopOpacity="0.95" />
-              <stop offset="100%" stopColor="#8fd4b8" stopOpacity="0.55" />
+              <stop offset="0%" stopColor="#e9d5ff" stopOpacity="0.35" />
+              <stop offset="45%" stopColor="#a78bfa" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#d8b4fe" stopOpacity="0.55" />
             </linearGradient>
             <linearGradient id="la-orb" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#a8dcc4" />
-              <stop offset="55%" stopColor="#6eb89a" />
-              <stop offset="100%" stopColor="#3d6b57" />
+              <stop offset="0%" stopColor="#e9d5ff" />
+              <stop offset="55%" stopColor="#a78bfa" />
+              <stop offset="100%" stopColor="#6d28d9" />
             </linearGradient>
             <linearGradient id="la-card" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#ffffff" stopOpacity="0.96" />
-              <stop offset="100%" stopColor="#f0faf6" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#f8fafc" stopOpacity="0.95" />
             </linearGradient>
             <filter id="la-soft-shadow" x="-30%" y="-30%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="#1a3d32" floodOpacity="0.1" />
+              <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="#1e3a5f" floodOpacity="0.1" />
             </filter>
             <filter id="la-glow" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur stdDeviation="6" result="b" />
@@ -64,36 +64,36 @@ function LoginAsideIllustration() {
           </defs>
 
           {/* 배경 소프트 글로우 */}
-          <ellipse cx="220" cy="128" rx="200" ry="100" fill="#6eb89a" opacity="0.04" />
-          <ellipse cx="220" cy="138" rx="160" ry="72" fill="#8fd4b8" opacity="0.06" />
+          <ellipse cx="220" cy="128" rx="200" ry="100" fill="#a78bfa" opacity="0.04" />
+          <ellipse cx="220" cy="138" rx="160" ry="72" fill="#d8b4fe" opacity="0.06" />
 
           {/* 좌: 재고 스택 */}
           <g filter="url(#la-soft-shadow)">
-            <rect x="36" y="88" width="92" height="72" rx="14" fill="url(#la-card)" stroke="#c8e4d6" strokeWidth="1.25" />
-            <rect x="50" y="104" width="64" height="6" rx="2" fill="#6eb89a" opacity="0.15" />
-            <rect x="50" y="116" width="52" height="6" rx="2" fill="#6eb89a" opacity="0.1" />
-            <rect x="50" y="128" width="58" height="6" rx="2" fill="#6eb89a" opacity="0.08" />
-            <rect x="58" y="72" width="48" height="22" rx="6" fill="#e8f5ee" stroke="#a8dcc4" strokeWidth="1" />
-            <path d="M70 78h24M70 84h18" stroke="#3d6b57" strokeWidth="2" strokeLinecap="round" opacity="0.45" />
+            <rect x="36" y="88" width="92" height="72" rx="14" fill="url(#la-card)" stroke="#ede9fe" strokeWidth="1.25" />
+            <rect x="50" y="104" width="64" height="6" rx="2" fill="#a78bfa" opacity="0.15" />
+            <rect x="50" y="116" width="52" height="6" rx="2" fill="#a78bfa" opacity="0.1" />
+            <rect x="50" y="128" width="58" height="6" rx="2" fill="#a78bfa" opacity="0.08" />
+            <rect x="58" y="72" width="48" height="22" rx="6" fill="#f5f3ff" stroke="#e9d5ff" strokeWidth="1" />
+            <path d="M70 78h24M70 84h18" stroke="#6d28d9" strokeWidth="2" strokeLinecap="round" opacity="0.45" />
           </g>
 
           {/* 우: 대시보드 + 결제 카드 느낌 */}
           <g filter="url(#la-soft-shadow)">
-            <rect x="298" y="56" width="108" height="118" rx="16" fill="url(#la-card)" stroke="#c8e4d6" strokeWidth="1.25" />
-            <rect x="312" y="72" width="72" height="8" rx="3" fill="#6eb89a" opacity="0.12" />
+            <rect x="298" y="56" width="108" height="118" rx="16" fill="url(#la-card)" stroke="#ede9fe" strokeWidth="1.25" />
+            <rect x="312" y="72" width="72" height="8" rx="3" fill="#a78bfa" opacity="0.12" />
             <rect x="312" y="88" width="80" height="36" rx="6" fill="#f8fcfa" stroke="#d8ebe2" strokeWidth="1" />
             <path
               d="M322 112 L338 100 L352 108 L368 92 L382 108"
-              stroke="#6eb89a"
+              stroke="#a78bfa"
               strokeWidth="2.2"
               strokeLinecap="round"
               strokeLinejoin="round"
               opacity="0.45"
             />
-            <rect x="312" y="134" width="80" height="28" rx="8" fill="#e8f5ee" stroke="#a8dcc4" strokeWidth="1" />
-            <circle cx="328" cy="148" r="6" fill="#8fd4b8" opacity="0.85" />
-            <rect x="340" y="142" width="44" height="5" rx="2" fill="#2d5244" opacity="0.35" />
-            <rect x="340" y="150" width="32" height="4" rx="2" fill="#a8dcc4" opacity="0.5" />
+            <rect x="312" y="134" width="80" height="28" rx="8" fill="#f5f3ff" stroke="#e9d5ff" strokeWidth="1" />
+            <circle cx="328" cy="148" r="6" fill="#d8b4fe" opacity="0.85" />
+            <rect x="340" y="142" width="44" height="5" rx="2" fill="#1e293b" opacity="0.35" />
+            <rect x="340" y="150" width="32" height="4" rx="2" fill="#e9d5ff" opacity="0.5" />
           </g>
 
           {/* 연결 플로우 라인 */}
@@ -115,7 +115,7 @@ function LoginAsideIllustration() {
                 cx="220"
                 cy="128"
                 r="42"
-                stroke="#6eb89a"
+                stroke="#a78bfa"
                 strokeWidth="1.5"
                 fill="none"
                 initial={{ opacity: 0.12 }}
@@ -127,25 +127,25 @@ function LoginAsideIllustration() {
             <circle cx="220" cy="128" r="38" fill="none" stroke="white" strokeWidth="2" opacity="0.35" />
             {/* 자동 처리 심볼 */}
             <rect x="204" y="112" width="32" height="26" rx="8" fill="white" opacity="0.95" />
-            <circle cx="214" cy="124" r="3.5" fill="#2d5244" />
-            <circle cx="226" cy="124" r="3.5" fill="#2d5244" />
-            <path d="M212 132h16" stroke="#3d6b57" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+            <circle cx="214" cy="124" r="3.5" fill="#1e293b" />
+            <circle cx="226" cy="124" r="3.5" fill="#1e293b" />
+            <path d="M212 132h16" stroke="#6d28d9" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
             {!reduceMotion && (
               <motion.circle
                 cx="220"
                 cy="104"
                 r="4"
-                fill="#c8e4d6"
+                fill="#ede9fe"
                 animate={{ cy: [104, 100, 104] }}
                 transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
               />
             )}
-            {reduceMotion && <circle cx="220" cy="104" r="4" fill="#c8e4d6" />}
+            {reduceMotion && <circle cx="220" cy="104" r="4" fill="#ede9fe" />}
           </g>
 
           {/* 플로우 위 작은 노드 */}
-          <circle cx="132" cy="128" r="5" fill="#6eb89a" opacity="0.65" />
-          <circle cx="308" cy="118" r="5" fill="#8fd4b8" opacity="0.7" />
+          <circle cx="132" cy="128" r="5" fill="#a78bfa" opacity="0.65" />
+          <circle cx="308" cy="118" r="5" fill="#d8b4fe" opacity="0.7" />
 
           {!reduceMotion && (
             <>
@@ -153,7 +153,7 @@ function LoginAsideIllustration() {
                 cx="160"
                 cy="96"
                 r="3"
-                fill="#8fd4b8"
+                fill="#d8b4fe"
                 opacity="0.55"
                 animate={{ opacity: [0.3, 0.9, 0.3], scale: [0.9, 1.15, 0.9] }}
                 transition={{ duration: 2.5, repeat: Infinity, delay: 0.2 }}
@@ -162,7 +162,7 @@ function LoginAsideIllustration() {
                 cx="280"
                 cy="156"
                 r="3"
-                fill="#8fd4b8"
+                fill="#d8b4fe"
                 opacity="0.5"
                 animate={{ opacity: [0.25, 0.85, 0.25], scale: [0.9, 1.1, 0.9] }}
                 transition={{ duration: 2.8, repeat: Infinity, delay: 0.6 }}
@@ -186,17 +186,17 @@ export function LoginAside() {
 
   return (
     <aside className="order-2 flex h-full min-h-0 w-full min-w-0 flex-col lg:order-1">
-      <div className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-[#c8e4d6]/90 bg-gradient-to-br from-[#e4f6ee] via-[#f0faf6] to-[#e8f5ee] shadow-sm ring-1 ring-white/70">
+      <div className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-[#ede9fe]/90 bg-gradient-to-br from-[#f5f3ff] via-[#f8fafc] to-[#f5f3ff] shadow-sm ring-1 ring-white/70">
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-5%,rgba(110,184,154,0.22),transparent_52%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-5%,rgba(167,139,250,0.22),transparent_52%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_45%_at_100%_100%,rgba(110,184,154,0.14),transparent_48%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_45%_at_100%_100%,rgba(167,139,250,0.14),transparent_48%)]"
           aria-hidden
         />
         <motion.div
-          className="pointer-events-none absolute -right-20 top-1/4 h-64 w-64 rounded-full bg-[#6eb89a]/8 blur-2xl"
+          className="pointer-events-none absolute -right-20 top-1/4 h-64 w-64 rounded-full bg-[#a78bfa]/8 blur-2xl"
           aria-hidden
           animate={
             reduceMotion
@@ -209,7 +209,7 @@ export function LoginAside() {
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-[#a8dcc4]/15 blur-2xl"
+          className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-[#e9d5ff]/15 blur-2xl"
           aria-hidden
           animate={
             reduceMotion
@@ -229,13 +229,13 @@ export function LoginAside() {
         >
           <motion.div
             variants={loginItemVariants}
-            className="h-1 w-11 rounded-full bg-gradient-to-r from-[#6eb89a] to-[#8fd4b8]"
+            className="h-1 w-11 rounded-full bg-gradient-to-r from-[#a78bfa] to-[#d8b4fe]"
             aria-hidden
           />
 
           <motion.p
             variants={loginItemVariants}
-            className="mt-5 text-xs font-bold uppercase tracking-wider text-[#6eb89a]"
+            className="mt-5 text-xs font-bold uppercase tracking-wider text-[#a78bfa]"
           >
             재고만 맞추면 이어져요
           </motion.p>
@@ -265,7 +265,7 @@ export function LoginAside() {
                 className="flex gap-3 rounded-xl border border-[#f2f4f6] bg-white/55 px-3.5 py-3 shadow-sm backdrop-blur-sm sm:px-4"
                 whileHover={reduceMotion ? undefined : { y: -2, transition: { duration: 0.2 } }}
               >
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#6eb89a]" />
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#a78bfa]" />
                 <span className="text-sm leading-relaxed text-[#4e5968]">{line}</span>
               </motion.li>
             ))}

@@ -34,7 +34,7 @@ function Bullet({
 }) {
   return (
     <li className={cn("flex gap-2 text-[#4e5968]", className)}>
-      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#6eb89a] sm:h-5 sm:w-5" strokeWidth={2} />
+      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#a78bfa] sm:h-5 sm:w-5" strokeWidth={2} />
       <span className="text-sm leading-snug sm:text-[15px] sm:leading-relaxed">{children}</span>
     </li>
   );
@@ -83,7 +83,7 @@ export function OnboardingWizard() {
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col lg:max-w-3xl">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-x-2 gap-y-1 sm:mb-3">
-        <p className="text-xs font-bold uppercase tracking-wider text-[#6eb89a] sm:text-sm">
+        <p className="text-xs font-bold uppercase tracking-wider text-[#a78bfa] sm:text-sm">
           시작하기
         </p>
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
@@ -104,7 +104,7 @@ export function OnboardingWizard() {
 
       <div className="mb-3 h-2 overflow-hidden rounded-full bg-[#e5e8eb] sm:h-2.5">
         <motion.div
-          className="h-full rounded-full bg-[#6eb89a]"
+          className="h-full rounded-full bg-[#a78bfa]"
           initial={false}
           animate={{ width: `${progress}%` }}
           transition={{ type: "spring", stiffness: 380, damping: 38 }}
@@ -192,7 +192,7 @@ export function OnboardingWizard() {
                   </TipBox>
                   <Link
                     href="/dashboard/stock/register"
-                    className="inline-flex w-full items-center justify-center rounded-lg bg-[#6eb89a] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#5aa688] sm:text-sm"
+                    className="inline-flex w-full items-center justify-center rounded-lg bg-[#a78bfa] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#8b5cf6] sm:text-sm"
                   >
                     재고 등록으로 이동
                   </Link>
@@ -267,7 +267,7 @@ export function OnboardingWizard() {
                     type="button"
                     onClick={() => void finish()}
                     disabled={finishing}
-                    className="w-full rounded-lg bg-[#6eb89a] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#5aa688] enabled:cursor-pointer disabled:opacity-60 sm:text-sm"
+                    className="w-full rounded-lg bg-[#a78bfa] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#8b5cf6] enabled:cursor-pointer disabled:opacity-60 sm:text-sm"
                   >
                     {finishing ? "저장 중…" : "대시보드로 이동"}
                   </button>
@@ -292,7 +292,7 @@ export function OnboardingWizard() {
             <button
               type="button"
               onClick={goNext}
-              className="rounded-md bg-[#6eb89a] px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-[#5aa688] sm:min-w-[4.5rem] sm:py-2 sm:text-sm"
+              className="rounded-md bg-[#a78bfa] px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-[#8b5cf6] sm:min-w-[4.5rem] sm:py-2 sm:text-sm"
             >
               다음
             </button>
@@ -311,7 +311,7 @@ export function OnboardingWizard() {
               initial={false}
               animate={{
                 width: active ? 28 : 8,
-                backgroundColor: active ? "#6eb89a" : done ? "#a8dcc4" : "#e5e8eb",
+                backgroundColor: active ? "#a78bfa" : done ? "#e9d5ff" : "#e5e8eb",
               }}
               transition={{ type: "spring", stiffness: 500, damping: 35 }}
             />

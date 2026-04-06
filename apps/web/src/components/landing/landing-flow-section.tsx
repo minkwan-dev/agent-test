@@ -11,7 +11,7 @@ export function LandingFlowSection() {
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 sm:gap-14 sm:px-8">
         <Reveal className="max-w-3xl">
           <h2 className="text-3xl font-bold sm:text-4xl lg:text-[2.5rem]">
-            하루 업무가 어떻게 돌아가나요
+            하루 업무가 어떻게 진행되나요
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-[#8b95a1] sm:text-xl">
             재고를 살피고 발주가 나가기까지의 기본 순서예요.
@@ -24,7 +24,7 @@ export function LandingFlowSection() {
           {landingFlowSteps.map((s) => (
             <RevealItem key={s.n}>
               <div className="relative flex h-full flex-col rounded-2xl border border-[#e5e8eb] bg-[#f9fafb] p-6 sm:p-7">
-                <span className="text-sm font-bold text-[#6eb89a]">{s.n}</span>
+                <span className="text-sm font-bold text-[#a78bfa]">{s.n}</span>
                 <span className="mt-3 inline-flex w-fit rounded-full bg-white px-2.5 py-0.5 text-[11px] font-semibold text-[#4e5968] ring-1 ring-[#e5e8eb]">
                   {s.tag}
                 </span>

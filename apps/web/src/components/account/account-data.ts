@@ -1,3 +1,4 @@
+/** 데모·계정 카드 기본값. 이름·이메일은 로그인 세션(`auth/me`)이 있으면 그쪽을 우선합니다. */
 export const userProfile = {
   name: "원민관",
   email: "wonmin@novitas.kr",
@@ -5,7 +6,7 @@ export const userProfile = {
   org: "엽기떡볶이 동대문본점",
   timezone: "Asia/Seoul (GMT+9)",
   locale: "한국어",
-  memberSince: "2025.11.12",
+  memberSince: "2026.03.12",
 };
 
 export const connectedAccounts = [

@@ -2,6 +2,7 @@ import { CheckCircle2 } from "lucide-react";
 import { landingProtocols } from "@/components/landing/landing-data";
 import { ProtocolStackVisual } from "@/components/landing/protocol-stack-visual";
 import { Reveal, RevealItem, RevealStagger } from "@/components/landing/reveal";
+import { cn } from "@/lib/utils";
 
 export function LandingFeaturesSection() {
   return (
@@ -28,10 +29,20 @@ export function LandingFeaturesSection() {
           {landingProtocols.map((p) => (
             <RevealItem key={p.key}>
               <article className="flex h-full flex-col rounded-2xl border border-[#e5e8eb] bg-white p-6 shadow-sm transition hover:border-[#d1d6db] sm:p-7">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#e8f5ee] text-[#6eb89a] sm:h-12 sm:w-12">
+                <div
+                  className={cn(
+                    "flex h-11 w-11 items-center justify-center rounded-2xl sm:h-12 sm:w-12",
+                    p.iconWrapClass,
+                  )}
+                >
                   <p.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <p className="mt-5 text-xs font-bold uppercase tracking-wide text-[#6eb89a]">
+                <p
+                  className={cn(
+                    "mt-5 text-xs font-bold uppercase tracking-wide",
+                    p.badgeClass,
+                  )}
+                >
                   {p.badge}
                 </p>
                 <h3 className="mt-1 text-lg font-bold sm:text-xl">{p.title}</h3>
@@ -42,7 +53,9 @@ export function LandingFeaturesSection() {
                 <ul className="mt-5 space-y-2 border-t border-[#f2f4f6] pt-4 text-sm text-[#191f28]">
                   {p.points.map((pt) => (
                     <li key={pt} className="flex gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#6eb89a]" />
+                      <CheckCircle2
+                        className={cn("mt-0.5 h-4 w-4 shrink-0", p.listCheckClass)}
+                      />
                       {pt}
                     </li>
                   ))}

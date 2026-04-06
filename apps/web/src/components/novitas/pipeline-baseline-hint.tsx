@@ -40,15 +40,15 @@ export function PipelineBaselineHint() {
   }
 
   return (
-    <div className="mb-4 rounded-xl border border-[#c8e4d6] bg-[#f0faf6] px-4 py-3 text-sm leading-relaxed text-[#2d5244] shadow-sm">
+    <div className="mb-4 rounded-xl border border-[#ede9fe] bg-[#f8fafc] px-4 py-3 text-sm leading-relaxed text-[#1e293b] shadow-sm">
       마지막 재고 기준:{" "}
       <strong className="tabular-nums">{formatBaselineTime(state.lastBaselineAt)}</strong>
       {state.lastSource === "manual" ? (
-        <span className="text-[#3d6b57]/90"> (수동 반영)</span>
+        <span className="text-[#6d28d9]/90"> (수동 반영)</span>
       ) : state.lastSource === "register" ? (
-        <span className="text-[#3d6b57]/90"> (등록)</span>
+        <span className="text-[#6d28d9]/90"> (등록)</span>
       ) : null}
-      <span className="text-[#3d6b57]/92"> · 자동 발주·알림이 이 기준으로 맞춰져 있어요.</span>
+      <span className="text-[#6d28d9]/92"> · 자동 발주·알림이 이 기준으로 맞춰져 있어요.</span>
     </div>
   );
 }

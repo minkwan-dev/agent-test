@@ -10,7 +10,7 @@ export default function AdminPage() {
         title="내 계정"
         description="프로필·보안·연결 계정을 한곳에서 관리해요."
       />
-      <Novitas.DashboardContent innerClassName="space-y-6">
+      <Novitas.DashboardContent innerClassName="space-y-10">
         <Account.ProfileCard />
         <Account.PermissionCards />
         <Account.ConnectedLogins />

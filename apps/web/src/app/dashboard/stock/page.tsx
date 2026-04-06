@@ -11,14 +11,14 @@ export default function StockPage() {
         actions={
           <Link
             href="/dashboard/stock/register"
-            className="inline-flex shrink-0 items-center justify-center rounded-lg bg-[#6eb89a] px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[#5aa688]"
+            className="inline-flex shrink-0 items-center justify-center rounded-lg bg-[#a78bfa] px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[#8b5cf6]"
           >
             재고 등록
           </Link>
         }
       />
-      <Novitas.DashboardContent>
-        <Novitas.PipelineBaselineHint />
+      <Novitas.DashboardContent innerClassName="space-y-10">
+      
         <StockRegisteredBanner />
         <Novitas.InventoryTableBlock title="재고 목록" showAutoBuy pageSize={100} />
       </Novitas.DashboardContent>

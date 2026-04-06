@@ -122,7 +122,7 @@ export function ReflectInventoryDialog({
               value={cur}
               onChange={(e) => setCur(e.target.value)}
               className={cn(
-                "mt-1.5 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-sm text-[#191f28] outline-none focus:border-[#6eb89a] focus:ring-2 focus:ring-[#6eb89a]/20",
+                "mt-1.5 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-sm text-[#191f28] outline-none focus:border-[#a78bfa] focus:ring-2 focus:ring-[#a78bfa]/20",
               )}
             />
           </label>
@@ -134,7 +134,7 @@ export function ReflectInventoryDialog({
               value={max}
               onChange={(e) => setMax(e.target.value)}
               className={cn(
-                "mt-1.5 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-sm text-[#191f28] outline-none focus:border-[#6eb89a] focus:ring-2 focus:ring-[#6eb89a]/20",
+                "mt-1.5 w-full rounded-lg border border-[#e5e8eb] px-3 py-2 text-sm text-[#191f28] outline-none focus:border-[#a78bfa] focus:ring-2 focus:ring-[#a78bfa]/20",
               )}
             />
           </label>
@@ -154,7 +154,7 @@ export function ReflectInventoryDialog({
             type="button"
             onClick={save}
             disabled={saving}
-            className="rounded-lg bg-[#6eb89a] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#5aa688] disabled:opacity-50"
+            className="rounded-lg bg-[#a78bfa] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#8b5cf6] disabled:opacity-50"
           >
             {saving ? "저장 중…" : "반영하고 자동 발주 기준 맞추기"}
           </button>

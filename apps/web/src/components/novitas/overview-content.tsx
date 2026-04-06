@@ -13,7 +13,7 @@ export function OverviewContent() {
         description="오늘 숫자와 재고·발주 흐름을 한 화면에서 볼 수 있어요."
       />
 
-      <DashboardContent innerClassName="space-y-6">
+      <DashboardContent innerClassName="space-y-10">
         <Overview.TopSummary />
 
         <InventoryTableBlock pageSize={8} />

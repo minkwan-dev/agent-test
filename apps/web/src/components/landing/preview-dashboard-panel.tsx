@@ -15,7 +15,7 @@ const kpis = [
     value: "₩84,720",
     sub: "어제 대비 +12.4%",
     icon: BarChart3,
-    accent: "bg-[#e8f5ee] text-[#6eb89a]",
+    accent: "bg-[#f5f3ff] text-[#a78bfa]",
   },
   {
     label: "발주",
@@ -43,7 +43,7 @@ const kpis = [
 ] as const;
 
 const agents = [
-  { short: "재", name: "재고", tone: "bg-[#6eb89a]" },
+  { short: "재", name: "재고", tone: "bg-[#a78bfa]" },
   { short: "안", name: "발주안", tone: "bg-[#b8a0e8]" },
   { short: "실", name: "실행", tone: "bg-[#f0b885]" },
   { short: "기", name: "기록", tone: "bg-[#7ec8e3]" },
@@ -52,16 +52,16 @@ const agents = [
 export function PreviewDashboardPanel() {
   return (
     <div className="overflow-hidden rounded-3xl border border-[#e8ecf0] bg-white shadow-[0_12px_48px_rgba(15,23,42,0.1)]">
-      <div className="relative border-b border-[#c8e4d6]/60 bg-gradient-to-br from-[#e4f6ee] via-white to-[#f5faf8] px-5 py-6 sm:px-7 sm:py-7">
-        <div className="pointer-events-none absolute -right-16 -top-12 h-40 w-40 rounded-full bg-[#6eb89a]/10 blur-3xl" />
+      <div className="relative border-b border-[#ede9fe]/60 bg-gradient-to-br from-[#f5f3ff] via-white to-[#f8fafc] px-5 py-6 sm:px-7 sm:py-7">
+        <div className="pointer-events-none absolute -right-16 -top-12 h-40 w-40 rounded-full bg-[#a78bfa]/10 blur-3xl" />
         <div className="relative flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
             <div
-              className="inline-flex items-center rounded-full border border-[#c8e4d6]/80 bg-white/90 px-2 py-1 shadow-sm"
+              className="inline-flex items-center rounded-full border border-[#ede9fe]/80 bg-white/90 px-2 py-1 shadow-sm"
               title="오늘 흐름 정상"
             >
               <span
-                className="h-2 w-2 rounded-full bg-[#6eb89a] ring-2 ring-[#a8dcc4]/45"
+                className="h-2 w-2 rounded-full bg-[#a78bfa] ring-2 ring-[#e9d5ff]/45"
                 role="img"
                 aria-label="오늘 흐름 정상"
               />
@@ -81,7 +81,7 @@ export function PreviewDashboardPanel() {
               {[35, 52, 44, 68, 55, 72, 48, 80].map((h, i) => (
                 <span
                   key={i}
-                  className="inline-block w-1.5 rounded-sm bg-gradient-to-t from-[#6eb89a] to-[#a8dcc4]"
+                  className="inline-block w-1.5 rounded-sm bg-gradient-to-t from-[#a78bfa] to-[#e9d5ff]"
                   style={{ height: `${Math.max(10, h * 0.35)}px` }}
                 />
               ))}
@@ -131,16 +131,16 @@ export function PreviewDashboardPanel() {
       <div className="border-t border-[#f2f4f6] bg-[#fafbfc] px-4 py-4 sm:px-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Bot className="h-4 w-4 text-[#6eb89a]" />
+            <Bot className="h-4 w-4 text-[#a78bfa]" />
             <span className="text-xs font-bold text-[#191f28]">자동 업무</span>
             <span
-              className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 ring-1 ring-[#c8e4d6]"
+              className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 ring-1 ring-[#ede9fe]"
               title="4단계 동작 중"
             >
               {[0, 1, 2, 3].map((i) => (
                 <span
                   key={i}
-                  className="h-1.5 w-1.5 rounded-full bg-[#6eb89a]"
+                  className="h-1.5 w-1.5 rounded-full bg-[#a78bfa]"
                   aria-hidden
                 />
               ))}
@@ -174,7 +174,7 @@ export function PreviewDashboardPanel() {
             key={row.t}
             className="flex items-start gap-3 rounded-xl border border-[#f0f2f4] bg-gradient-to-b from-[#fafbfc] to-white p-3.5 shadow-sm"
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#e8f5ee] text-[#6eb89a]">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#f5f3ff] text-[#a78bfa]">
               <row.icon className="h-4 w-4" />
             </div>
             <div className="min-w-0">

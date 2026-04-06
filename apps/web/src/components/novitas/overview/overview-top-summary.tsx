@@ -8,7 +8,7 @@ export function OverviewTopSummary() {
         label="오늘 자동 발주"
         value={
           <>
-            34<span className="text-lg font-semibold text-[#8b95a1]">건</span>
+            34<span className="text-lg font-semibold text-[var(--color-muted)]">건</span>
           </>
         }
         accent="blue"
@@ -18,7 +18,7 @@ export function OverviewTopSummary() {
         value={
           <>
             <span className="text-amber-600">7</span>
-            <span className="text-lg font-semibold text-[#8b95a1]">개</span>
+            <span className="text-lg font-semibold text-[var(--color-muted)]">개</span>
           </>
         }
         accent="rose"
@@ -36,7 +36,7 @@ export function OverviewTopSummary() {
         label="연동 공급 채널"
         value={
           <>
-            4<span className="text-lg font-semibold text-[#8b95a1]">곳</span>
+            4<span className="text-lg font-semibold text-[var(--color-muted)]">곳</span>
           </>
         }
         accent="amber"

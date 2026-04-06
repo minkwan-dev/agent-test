@@ -46,16 +46,16 @@ function StepRail({ step }: { step: number }) {
               key={s.id}
               className={cn(
                 "flex gap-3 rounded-2xl border p-4 transition",
-                active && "border-[#6eb89a] bg-[#e8f5ee] shadow-[0_0_0_3px_rgba(110,184,154,0.12)]",
-                done && !active && "border-[#c8e4d6] bg-[#f2faf6]/95",
+                active && "border-[#a78bfa] bg-[#f5f3ff] shadow-[0_0_0_3px_rgba(167,139,250,0.12)]",
+                done && !active && "border-[#ede9fe] bg-[#f8fafc]/95",
                 !active && !done && "border-[#e8ecf0] bg-white",
               )}
             >
               <div
                 className={cn(
                   "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border text-sm font-bold transition",
-                  done && "border-[#c8e4d6] bg-white text-[#3d6b57]",
-                  active && !done && "border-[#6eb89a] bg-white text-[#6eb89a]",
+                  done && "border-[#ede9fe] bg-white text-[#6d28d9]",
+                  active && !done && "border-[#a78bfa] bg-white text-[#a78bfa]",
                   !active && !done && "border-[#e5e8eb] bg-[#fafbfc] text-[#8b95a1]",
                 )}
               >
@@ -73,7 +73,7 @@ function StepRail({ step }: { step: number }) {
       </div>
       <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-[#e5e8eb]">
         <div
-          className="h-full rounded-full bg-[#6eb89a] transition-[width] duration-300 ease-out"
+          className="h-full rounded-full bg-[#a78bfa] transition-[width] duration-300 ease-out"
           style={{ width: `${((step - 1) / (STEPS.length - 1)) * 100}%` }}
         />
       </div>
@@ -158,13 +158,13 @@ export function InventoryRegisterWizard() {
   ]);
 
   const inputClass =
-    "w-full rounded-lg border border-[#e5e8eb] px-3 py-2.5 text-sm text-[#191f28] placeholder:text-[#8b95a1] outline-none transition focus:border-[#6eb89a] focus:ring-2 focus:ring-[#6eb89a]/20";
+    "w-full rounded-lg border border-[#e5e8eb] px-3 py-2.5 text-sm text-[#191f28] placeholder:text-[#8b95a1] outline-none transition focus:border-[#a78bfa] focus:ring-2 focus:ring-[#a78bfa]/20";
 
   return (
     <div className="mx-auto max-w-3xl">
       <StepRail step={step} />
 
-      <div className="rounded-2xl border border-[#e8ecf0] bg-white p-5 shadow-[0_1px_3px_rgba(15,23,42,0.06)] sm:p-8">
+      <div className="space-y-6">
         {step === 1 ? (
           <div className="space-y-6">
             <div>
@@ -210,7 +210,7 @@ export function InventoryRegisterWizard() {
                     className={cn(
                       "flex h-11 w-11 items-center justify-center rounded-xl border text-xl transition",
                       icon === em
-                        ? "border-[#6eb89a] bg-[#e8f5ee] shadow-[0_0_0_3px_rgba(110,184,154,0.12)]"
+                        ? "border-[#a78bfa] bg-[#f5f3ff] shadow-[0_0_0_3px_rgba(167,139,250,0.12)]"
                         : "border-[#e5e8eb] bg-[#fafbfc] hover:border-[#cbd5e1]",
                     )}
                     aria-pressed={icon === em}
@@ -359,7 +359,7 @@ export function InventoryRegisterWizard() {
                 type="button"
                 onClick={goNext}
                 disabled={(step === 1 && !step1Ok) || (step === 2 && !step2Ok)}
-                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#6eb89a] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#5aa688] disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
+                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#a78bfa] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#8b5cf6] disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
               >
                 다음
                 <ArrowRight className="h-4 w-4" />
@@ -369,7 +369,7 @@ export function InventoryRegisterWizard() {
                 type="button"
                 onClick={onSubmit}
                 disabled={!step1Ok || !step2Ok || submitting}
-                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#6eb89a] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#5aa688] disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
+                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#a78bfa] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#8b5cf6] disabled:cursor-not-allowed disabled:opacity-40 sm:flex-none"
               >
                 {submitting ? "등록 중…" : "등록하기"}
               </button>

@@ -17,8 +17,7 @@ const sizeClass = {
 
 /**
  * semoso 워드마크 — 아이콘 없이 글자만 (둥근·친근한 톤, Fredoka).
- * 세상의 모든 소상공인을 위한다(Small business owners, every one).
- * 본문과 동일한 진한 그레이·블랙 (#191f28)으로 가독성 유지.
+ * 브랜드 보라(#a78bfa 계열)를 은은한 그라데이션으로 녹여 구분감을 줍니다.
  */
 export function SemosoLogoLockup({
   className,
@@ -42,7 +41,7 @@ export function SemosoLogoLockup({
       <span
         className={cn(
           wordmark.className,
-          "!text-[#191f28]",
+          "bg-gradient-to-r from-[#6d28d9] via-[#8b5cf6] to-[#a78bfa] bg-clip-text text-transparent",
           sizeClass[size],
           textClassName,
         )}

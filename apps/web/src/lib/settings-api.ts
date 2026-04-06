@@ -12,6 +12,24 @@ export function isSettingsFetchNetworkError(err: unknown): boolean {
   );
 }
 
+/** 연동 업체·마켓 자동 결제 시 세션/로그인 정책 */
+export type IntegrationPolicyDto = {
+  autobuy_only_linked_partners: boolean;
+  require_store_session_for_autobuy: boolean;
+  on_missing_store_session:
+    | "pause_and_notify"
+    | "notify_only"
+    | "skip_partner_try_next";
+  forbid_ad_hoc_marketplace_login: boolean;
+};
+
+export const DEFAULT_INTEGRATION_POLICY: IntegrationPolicyDto = {
+  autobuy_only_linked_partners: true,
+  require_store_session_for_autobuy: true,
+  on_missing_store_session: "pause_and_notify",
+  forbid_ad_hoc_marketplace_login: true,
+};
+
 export type UserSettingsDto = {
   profile_id?: string;
   inventory_scan_interval_minutes: number;
@@ -20,6 +38,7 @@ export type UserSettingsDto = {
   notify_push_urgent: boolean;
   notify_daily_email: boolean;
   notify_webhook_url: string | null;
+  integration_policy: IntegrationPolicyDto;
   updated_at?: string;
 };
 
@@ -33,7 +52,9 @@ export type PatchUserSettingsDto = Partial<
     | "notify_daily_email"
     | "notify_webhook_url"
   >
->;
+> & {
+  integration_policy?: Partial<IntegrationPolicyDto>;
+};
 
 export async function fetchUserSettings(token: string): Promise<UserSettingsDto> {
   const res = await fetch(`${getApiUrl()}/settings`, {

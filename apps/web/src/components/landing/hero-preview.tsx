@@ -6,7 +6,7 @@ export function HeroPreview() {
       <div className="rounded-2xl bg-[#f8f9fb] p-5 sm:p-6">
         <div className="flex items-center justify-between border-b border-[#e5e8eb] pb-4">
           <div className="flex items-center gap-2">
-            <BarChart3 className="h-5 w-5 text-[#6eb89a]" />
+            <BarChart3 className="h-5 w-5 text-[#a78bfa]" />
             <span className="text-base font-bold text-[#191f28]">요약</span>
           </div>
           <CheckCircle2 className="h-5 w-5 text-[#7ec8e3]" />
@@ -34,7 +34,7 @@ export function HeroPreview() {
           {["재고 살피기", "발주안 만들기", "주문 실행", "기록·알림"].map((name) => (
             <div key={name} className="flex items-center justify-between text-sm">
               <span className="truncate font-medium text-[#191f28]">{name}</span>
-              <span className="text-[#6eb89a]">●</span>
+              <span className="text-[#a78bfa]">●</span>
             </div>
           ))}
         </div>

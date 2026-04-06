@@ -27,15 +27,15 @@
 
   --animate-protocol-stack-wobble: protocol-stack-wobble 0.55s ease-in-out both;
 
-  /* 파스텔: 메인 민트 + 보조(라벤더·피치·스카이·로즈)는 메인과 색상 충돌 없음 */
-  --color-background: #f1f4f3;
+  /* 연한 보라(라벤더) 키 컬러 + 보조(라벤더·피치·스카이·로즈) */
+  --color-background: #faf8ff;
   --color-surface: #ffffff;
-  --color-border: #e3e8e6;
-  --color-border-strong: #cfd6d3;
+  --color-border: #e8e4ef;
+  --color-border-strong: #d4cfe0;
   --color-foreground: #191f28;
   --color-muted: #8b95a1;
-  --color-primary: #6eb89a;
-  --color-primary-hover: #5aa688;
+  --color-primary: #a78bfa;
+  --color-primary-hover: #8b5cf6;
 }
 
 @layer base {

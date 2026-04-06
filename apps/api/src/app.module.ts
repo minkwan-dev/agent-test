@@ -8,6 +8,7 @@ import { RootController } from "./root.controller";
 import { SupabaseModule } from "./supabase/supabase.module";
 import { InventoryModule } from "./inventory/inventory.module";
 import { SettingsModule } from "./settings/index";
+import { ProfileModule } from "./users/profile.module";
 import { UsersModule } from "./users/users.module";
 
 @Module({
@@ -19,6 +20,7 @@ import { UsersModule } from "./users/users.module";
     AuthModule,
     InventoryModule,
     SettingsModule,
+    ProfileModule,
     HttpModule.register({
       timeout: 30_000,
       maxRedirects: 3,

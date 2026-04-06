@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useAtomValue } from "jotai";
 import { accessTokenAtom } from "@/lib/auth-atoms";
+import { useHydrated } from "@/lib/use-hydrated";
 import {
   fetchInventoryItems,
   type InventoryItemDto,
@@ -20,14 +21,16 @@ export function inventoryDtoToAlertRow(r: InventoryItemDto): InventoryAlertRow {
 }
 
 export function useInventoryServerRows() {
+  const hydrated = useHydrated();
   const token = useAtomValue(accessTokenAtom);
+  const sessionToken = hydrated ? token : null;
   return useQuery({
-    queryKey: ["inventory", "items", token],
+    queryKey: ["inventory", "items", sessionToken],
     queryFn: async () => {
-      const rows = await fetchInventoryItems(token!);
+      const rows = await fetchInventoryItems(sessionToken!);
       return rows.map(inventoryDtoToAlertRow);
     },
-    enabled: Boolean(token),
+    enabled: Boolean(sessionToken),
     staleTime: 30_000,
   });
 }

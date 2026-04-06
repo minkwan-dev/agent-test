@@ -11,13 +11,13 @@ export function StatsVisual() {
           </p>
           <p className="mt-1 text-lg font-bold text-[#191f28]">발주·알림 추이</p>
         </div>
-        <BarChart3 className="h-8 w-8 text-[#6eb89a]" />
+        <BarChart3 className="h-8 w-8 text-[#a78bfa]" />
       </div>
       <div className="mt-6 flex h-44 items-end justify-between gap-1.5 sm:h-52 sm:gap-2">
         {bars.map((h, i) => (
           <div
             key={i}
-            className="min-w-0 flex-1 rounded-t-md bg-gradient-to-t from-[#6eb89a] to-[#a8dcc4] opacity-90 transition hover:opacity-100"
+            className="min-w-0 flex-1 rounded-t-md bg-gradient-to-t from-[#a78bfa] to-[#e9d5ff] opacity-90 transition hover:opacity-100"
             style={{ height: `${h}%` }}
           />
         ))}

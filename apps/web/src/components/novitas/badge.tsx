@@ -44,11 +44,13 @@ export function StatusBadge({
   return (
     <span
       title={label || undefined}
-      className="inline-flex items-center justify-center"
+      className={cn(
+        "inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#f2f4f6]",
+      )}
     >
       <span
         className={cn(
-          "inline-block h-2.5 w-2.5 shrink-0 rounded-full ring-2",
+          "h-2.5 w-2.5 shrink-0 rounded-full ring-2",
           statusDotRing[variant],
         )}
         role="img"

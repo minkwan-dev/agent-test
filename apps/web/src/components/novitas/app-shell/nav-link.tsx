@@ -21,21 +21,29 @@ export function NavLink({
       href={href}
       onClick={onNavigate}
       className={cn(
-        "flex w-full items-center gap-2.5 rounded-lg py-2 pl-3 pr-2 text-left text-sm font-medium transition",
+        "grid w-full items-center gap-x-2.5 rounded-lg px-3 py-2 text-left text-sm font-medium transition",
+        badge != null
+          ? "grid-cols-[1rem_minmax(0,1fr)_auto]"
+          : "grid-cols-[1rem_minmax(0,1fr)]",
         active
-          ? "bg-[#f2f4f6] text-[#191f28]"
-          : "text-[#4e5968] hover:bg-[#f9fafb] hover:text-[#191f28]",
+          ? "bg-white text-[var(--color-foreground)] shadow-sm ring-1 ring-[var(--color-border)]"
+          : "text-[#4e5968] hover:bg-white/60 hover:text-[var(--color-foreground)]",
       )}
     >
-      <span className={cn(active ? "text-[#191f28]" : "text-[#8b95a1]")}>
+      <span
+        className={cn(
+          "flex size-4 shrink-0 items-center justify-center [&>svg]:size-4",
+          active ? "text-[#191f28]" : "text-[#8b95a1]",
+        )}
+      >
         {icon}
       </span>
-      <span className="flex-1">{children}</span>
-      {badge != null && (
-        <span className="flex min-w-[1.25rem] items-center justify-center rounded-full bg-[#f84848] px-1.5 text-[10px] font-bold text-white">
+      <span className="min-w-0 leading-snug">{children}</span>
+      {badge != null ? (
+        <span className="flex min-w-[1.25rem] shrink-0 items-center justify-center justify-self-end rounded-full bg-[#f84848] px-1.5 text-[10px] font-bold text-white">
           {badge}
         </span>
-      )}
+      ) : null}
     </Link>
   );
 }

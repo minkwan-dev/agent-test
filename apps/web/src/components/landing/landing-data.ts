@@ -14,6 +14,9 @@ export const landingProtocols: {
   desc: string;
   points: string[];
   icon: LucideIcon;
+  iconWrapClass: string;
+  badgeClass: string;
+  listCheckClass: string;
 }[] = [
   {
     key: "connect",
@@ -23,6 +26,9 @@ export const landingProtocols: {
     desc: "숫자와 알림을 한곳에서 보면, 장부와 화면을 왔다 갔다 할 일이 줄어요. 처음엔 수기·엑셀로 시작하셔도 되고, 나중에 익숙해지면 더 붙여 가면 돼요.",
     points: ["알림과 업무 요청을 한곳에서 받기", "누가 무엇을 처리했는지 나중에 찾기 쉬움"],
     icon: Radio,
+    iconWrapClass: "bg-[#f1f5f9] text-[#475569]",
+    badgeClass: "text-[#475569]",
+    listCheckClass: "text-[#64748b]",
   },
   {
     key: "collab",
@@ -32,6 +38,9 @@ export const landingProtocols: {
     desc: "재고 확인, 발주안 만들기, 실제 주문 넣기, 마지막 점검까지 단계마다 맡는 일이 달라요. 처리해야 할 일만 순서대로 넘어가면 매장은 덜 헷갈려요.",
     points: ["일이 겹치지 않게 단계 정리", "한 단계에서 문제 나면 그 부분만 다시 시도"],
     icon: MessageSquare,
+    iconWrapClass: "bg-[#f5f3ff] text-[#a78bfa]",
+    badgeClass: "text-[#a78bfa]",
+    listCheckClass: "text-[#a78bfa]",
   },
   {
     key: "channels",
@@ -41,6 +50,9 @@ export const landingProtocols: {
     desc: "거래처·플랫폼마다 발주 방식이 달라도, 화면에서는 같은 순서로 진행해요. 품절이나 지연이 나오면 다른 경로를 찾는 것도 규칙에 맞춰 도와줄 수 있어요.",
     points: ["채널별 규칙을 따로 기억하지 않아도 됨", "실패했을 때 자동으로 다시 시도·우회"],
     icon: ShoppingCart,
+    iconWrapClass: "bg-[#fff7ed] text-[#ea580c]",
+    badgeClass: "text-[#c2410c]",
+    listCheckClass: "text-[#ea580c]",
   },
   {
     key: "audit",
@@ -50,6 +62,9 @@ export const landingProtocols: {
     desc: "정해 둔 예산·계약·내부 규칙에 맞는지 자동으로 짚어 주고, 결과는 기록으로 남겨요. 감사나 정산 때 필요한 자료를 한곳에서 모을 수 있어요.",
     points: ["규칙 어긋나면 막거나 알려 줌", "처리 과정을 나중에 따라가기 쉬움"],
     icon: ShieldCheck,
+    iconWrapClass: "bg-[#f0f9ff] text-[#0284c7]",
+    badgeClass: "text-[#0369a1]",
+    listCheckClass: "text-[#0284c7]",
   },
 ];
 
@@ -111,8 +126,18 @@ export const landingStatsGrid = [
 ] as const;
 
 export const protocolLayers = [
-  { id: "L1", headline: "재고·데이터 연결", sub: "매장에서 쓰는 자료를 한곳으로", tone: "from-[#e4f6ee] to-[#f5faf8]" },
-  { id: "L2", headline: "역할 나누기", sub: "단계마다 맡는 일을 정리", tone: "from-[#ede9fe] to-[#f7f5ff]" },
+  {
+    id: "L1",
+    headline: "재고·데이터 연결",
+    sub: "매장에서 쓰는 자료를 한곳으로",
+    tone: "from-[#f1f5f9] to-[#f8fafc]",
+  },
+  {
+    id: "L2",
+    headline: "역할 나누기",
+    sub: "단계마다 맡는 일을 정리",
+    tone: "from-[#ede9fe] to-[#f5f3ff]",
+  },
   { id: "L3", headline: "발주·거래", sub: "채널별 발주를 같은 흐름으로", tone: "from-[#ffedd5] to-[#fff8f0]" },
   { id: "L4", headline: "기록·점검", sub: "규칙 확인과 남길 기록", tone: "from-[#e0f2fe] to-[#f6fbff]" },
 ] as const;

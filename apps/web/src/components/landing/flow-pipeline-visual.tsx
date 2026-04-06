@@ -9,7 +9,7 @@ export function FlowPipelineVisual() {
           {landingFlowSteps.map((s, i) => (
             <Fragment key={s.n}>
               <div className="relative z-10 flex min-w-0 flex-1 flex-col items-center">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border-2 border-white bg-[#6eb89a] text-sm font-bold text-white shadow-lg sm:h-16 sm:w-16 sm:text-base">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border-2 border-white bg-[#a78bfa] text-sm font-bold text-white shadow-lg sm:h-16 sm:w-16 sm:text-base">
                   {s.n}
                 </div>
                 <p className="mx-auto mt-3 w-full max-w-[100px] text-center text-xs font-semibold leading-tight text-[#191f28] sm:max-w-[120px] sm:text-sm">

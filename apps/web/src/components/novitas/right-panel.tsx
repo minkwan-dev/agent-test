@@ -1,9 +1,9 @@
 "use client";
 
-import { GripVertical, MessageSquare, Radio, X } from "lucide-react";
+import { GripVertical, X } from "lucide-react";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { RightPanelParts } from "@/components/novitas/right-panel/index";
-import { aiReplies, seedLogs, type ProcessStep } from "@/lib/mock-data";
+import { aiReplies } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
 const PANEL_WIDTH_KEY = "novitas.panelWidth.v1";
@@ -32,15 +32,6 @@ function readStoredWidth(): number {
   }
 }
 
-type Tab = "chat" | "log";
-
-const liveTemplates: { step: ProcessStep; src: string; msg: string }[] = [
-  { step: "stock", src: "재고 살피기", msg: "한 바퀴 돌아봤는데 눈에 띄는 건 없었어요." },
-  { step: "decide", src: "발주 판단", msg: "가격이랑 납기 보고 어디서 살지 정해볼게요." },
-  { step: "purchase", src: "발주·결제", msg: "지금 공급처에 주문 넣어볼게요." },
-  { step: "record", src: "기록·확인", msg: "금액이랑 정한 규칙 다시 한번 맞춰볼게요." },
-];
-
 export function RightPanel({
   mobileOpen,
   onMobileClose,
@@ -51,35 +42,30 @@ export function RightPanel({
   /** 겹침 여부 + 패널(그립+본체) 픽셀 너비 — 본문에 calc(100% + width)로 가로 스크롤 여유 */
   onLgOverlayMetrics?: (state: { overlaps: boolean; widthPx: number }) => void;
 }) {
-  const [tab, setTab] = useState<Tab>("chat");
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<
     { role: "user" | "ai"; text: string; time: string }[]
   >([
     {
       role: "ai",
-      text: "안녕하세요! **semoso AI**예요.\n\n재고, 자동 발주, 구매 내역 같은 걸 편하게 물어보세요. (답은 화면에 맞춰 둔 예시예요.)",
+      text: "안녕하세요! **semoso AI**예요.\n\n재고 부족이면 발주 후보부터 결제까지 한 흐름으로 같이 잡아볼게요.",
       time: "지금",
     },
     {
       role: "user",
-      text: "서울우유 흰우유 재고 왜 이렇게 적어?",
+      text: "분모자랑 마라 소스가 부족한 것 같은데, 두 품목만 주문부터 결제까지 한 번에 진행해 줄 수 있어?",
       time: "14:22",
     },
     {
       role: "ai",
       text:
-        "**서울우유 흰우유 900ml**\n\n지금 **4개**라서 안전재고(24개)보다 많이 부족해요.\n\n13:05에 재고 살피기에서 잡혔고, 발주 판단을 거쳐 마켓컬리에 **24개 발주**가 진행 중으로 보여요.\n\n입고는 **오늘 저녁 무렵**으로 잡혀 있어요. (실제 연동은 매장 설정에 따라 달라요.)",
+        "**분모자·마라 소스** 둘 다 안전재고 아래로 내려가 있어요.\n\n**분모자**는 **쿠팡**에서 최저가·내일 오전 입고로 **3봉** 추천, **마라 소스**는 **마켓컬리**에서 **2병**이 가장 싸요.\n\n수량 확정하면 장바구니에 담고 **결제 단계까지** 같이 진행할 수 있어요. 지금 그대로 진행할까요?",
       time: "14:22",
     },
   ]);
   const [thinking, setThinking] = useState(false);
-  const [logs, setLogs] = useState<
-    { id: string; step: ProcessStep; src: string; msg: string; t: string }[]
-  >([]);
   const replyIdx = useRef(0);
   const chatEnd = useRef<HTMLDivElement>(null);
-  const liveIdx = useRef(0);
   const panelWidthRef = useRef(DEFAULT_PANEL_W);
   const asideRef = useRef<HTMLElement | null>(null);
   const resizeRafRef = useRef(0);
@@ -119,7 +105,7 @@ export function RightPanel({
     onLgOverlayMetrics?.({ overlaps, widthPx });
   }, [isLg, panelWidth, onLgOverlayMetrics]);
 
-  /** 드래그 중 다른 state(로그 등)로 리렌더되면 React style이 덮어쓰므로 ref 너비를 다시 적용 */
+  /** 드래그 중 다른 state로 리렌더되면 React style이 덮어쓰므로 ref 너비를 다시 적용 */
   useLayoutEffect(() => {
     if (!draggingResizeRef.current || !asideRef.current) return;
     asideRef.current.style.width = `${panelWidthRef.current}px`;
@@ -177,40 +163,6 @@ export function RightPanel({
     },
     [isLg, applyPanelWidthDom, onLgOverlayMetrics],
   );
-
-  useEffect(() => {
-    const recent = seedLogs.slice(-50);
-    const initial = recent.map((l, idx) => ({
-      id: `s-${idx}`,
-      step: l.step,
-      src: l.src,
-      msg: l.msg,
-      t: l.t,
-    }));
-    setLogs(initial);
-  }, []);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      const tpl = liveTemplates[liveIdx.current % liveTemplates.length];
-      liveIdx.current++;
-      const t = new Date().toTimeString().slice(0, 8);
-      setLogs((prev) => {
-        const next = [
-          {
-            id: `l-${Date.now()}`,
-            step: tpl.step,
-            src: tpl.src,
-            msg: tpl.msg,
-            t,
-          },
-          ...prev,
-        ];
-        return next.slice(0, 50);
-      });
-    }, 3500);
-    return () => clearInterval(id);
-  }, []);
 
   useEffect(() => {
     chatEnd.current?.scrollIntoView({ behavior: "smooth" });
@@ -273,8 +225,8 @@ export function RightPanel({
           title="드래그하여 너비 조절"
           onMouseDown={onResizeStart}
           className={cn(
-            "hidden shrink-0 lg:flex lg:w-3 lg:flex-col lg:items-center lg:justify-center lg:border-l lg:border-[#e5e8eb] lg:bg-[#fafbfc]",
-            "lg:cursor-col-resize lg:hover:bg-[#e8f5ee] lg:active:bg-[#c8e4d6]",
+            "hidden shrink-0 lg:flex lg:w-3 lg:flex-col lg:items-center lg:justify-center lg:border-l lg:border-[var(--color-border)] lg:bg-[#f8f9f9]",
+            "lg:cursor-col-resize lg:hover:bg-[#f5f3ff] lg:active:bg-[#ede9fe]",
           )}
         >
           <GripVertical className="h-5 w-5 text-[#b0b8c1]" aria-hidden />
@@ -282,8 +234,8 @@ export function RightPanel({
         <aside
           ref={asideRef}
           className={cn(
-            "flex min-h-0 min-w-0 flex-1 flex-col border-l border-[#e5e8eb] bg-white shadow-xl max-lg:max-h-none max-lg:w-full",
-            "lg:border-l lg:border-[#e5e8eb] lg:shadow-none",
+            "flex min-h-0 min-w-0 flex-1 flex-col border-l border-[var(--color-border)] bg-[var(--color-surface)] shadow-xl max-lg:max-h-none max-lg:w-full",
+            "lg:border-l lg:border-[var(--color-border)] lg:shadow-none",
           )}
           style={
             isLg
@@ -295,7 +247,7 @@ export function RightPanel({
               : undefined
           }
         >
-        <div className="flex shrink-0 items-center justify-between gap-2 border-b border-[#e5e8eb] bg-white px-2 py-2 lg:hidden">
+        <div className="flex shrink-0 items-center justify-between gap-2 border-b border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-2 lg:hidden">
           <span className="min-w-0 truncate pl-1 text-sm font-semibold text-[#191f28]">
             AI 패널
           </span>
@@ -308,47 +260,18 @@ export function RightPanel({
             <X className="h-5 w-5" />
           </button>
         </div>
-        <div className="flex shrink-0 border-b border-[#e5e8eb] bg-white">
-          <button
-            type="button"
-            onClick={() => setTab("chat")}
-            className={cn(
-              "flex flex-1 items-center justify-center gap-2 border-b-2 py-3.5 text-sm font-bold transition",
-              tab === "chat"
-                ? "border-[#6eb89a] text-[#191f28]"
-                : "border-transparent text-[#8b95a1] hover:text-[#191f28]",
-            )}
-          >
-            <MessageSquare className="h-4 w-4" />
-            AI 어시스턴트
-          </button>
-          <button
-            type="button"
-            onClick={() => setTab("log")}
-            className={cn(
-              "flex flex-1 items-center justify-center gap-2 border-b-2 py-3.5 text-sm font-bold transition",
-              tab === "log"
-                ? "border-[#6eb89a] text-[#191f28]"
-                : "border-transparent text-[#8b95a1] hover:text-[#191f28]",
-            )}
-          >
-            <Radio className="h-4 w-4" />
-            플로우 로그
-          </button>
+        <div className="flex shrink-0 items-center border-b border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3">
+          <span className="text-sm font-bold text-[#191f28]">semoso AI</span>
         </div>
 
-        {tab === "chat" && (
-          <RightPanelParts.Chat
-            messages={messages}
-            thinking={thinking}
-            input={input}
-            onInputChange={setInput}
-            onSend={send}
-            chatEndRef={chatEnd}
-          />
-        )}
-
-        {tab === "log" && <RightPanelParts.Log logs={logs} />}
+        <RightPanelParts.Chat
+          messages={messages}
+          thinking={thinking}
+          input={input}
+          onInputChange={setInput}
+          onSend={send}
+          chatEndRef={chatEnd}
+        />
         </aside>
       </div>
     </>
