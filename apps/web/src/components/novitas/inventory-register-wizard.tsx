@@ -2,9 +2,14 @@
 
 import { ArrowLeft, ArrowRight, Check, ClipboardList, Package, Scale } from "lucide-react";
 import Link from "next/link";
+import { useQueryClient } from "@tanstack/react-query";
+import { useAtomValue } from "jotai";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
-import { deriveStockLevel, appendUserInventory } from "@/lib/user-inventory";
+import { accessTokenAtom } from "@/lib/auth-atoms";
+import { recordInventoryBaseline } from "@/lib/autobuy-pipeline";
+import { createInventoryItem } from "@/lib/inventory-api";
+import { deriveStockLevel } from "@/lib/user-inventory";
 import { cn } from "@/lib/utils";
 
 const STEPS = [
@@ -78,6 +83,8 @@ function StepRail({ step }: { step: number }) {
 
 export function InventoryRegisterWizard() {
   const router = useRouter();
+  const queryClient = useQueryClient();
+  const token = useAtomValue(accessTokenAtom);
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [sku, setSku] = useState("");
@@ -85,6 +92,7 @@ export function InventoryRegisterWizard() {
   const [cur, setCur] = useState("");
   const [max, setMax] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [submitErr, setSubmitErr] = useState<string | null>(null);
 
   const curN = Number(cur);
   const maxN = Number(max);
@@ -112,19 +120,42 @@ export function InventoryRegisterWizard() {
 
   const onSubmit = useCallback(() => {
     if (!step1Ok || !step2Ok) return;
+    setSubmitErr(null);
     setSubmitting(true);
-    const id = `user-${Date.now()}`;
-    const row = {
-      id,
-      icon,
-      name: name.trim() + (sku.trim() ? ` · ${sku.trim()}` : ""),
-      cur: Math.floor(curN),
-      max: Math.floor(maxN),
-      level: deriveStockLevel(Math.floor(curN), Math.floor(maxN)),
-    };
-    appendUserInventory(row);
-    router.push("/dashboard/stock?registered=1");
-  }, [step1Ok, step2Ok, icon, name, sku, curN, maxN, router]);
+    void (async () => {
+      if (!token) {
+        setSubmitting(false);
+        router.push("/login?next=/dashboard/stock/register");
+        return;
+      }
+      try {
+        await createInventoryItem(token, {
+          name: name.trim(),
+          sku: sku.trim() || undefined,
+          icon,
+          current_qty: Math.floor(curN),
+          safety_stock_max: Math.floor(maxN),
+        });
+        recordInventoryBaseline("register");
+        await queryClient.invalidateQueries({ queryKey: ["inventory", "items"] });
+        router.push("/dashboard/stock?registered=1");
+      } catch {
+        setSubmitErr("등록에 실패했어요. Supabase에 `inventory_items` 테이블이 있는지 확인한 뒤 다시 시도해 주세요.");
+        setSubmitting(false);
+      }
+    })();
+  }, [
+    step1Ok,
+    step2Ok,
+    icon,
+    name,
+    sku,
+    curN,
+    maxN,
+    router,
+    token,
+    queryClient,
+  ]);
 
   const inputClass =
     "w-full rounded-lg border border-[#e5e8eb] px-3 py-2.5 text-sm text-[#191f28] placeholder:text-[#8b95a1] outline-none transition focus:border-[#6eb89a] focus:ring-2 focus:ring-[#6eb89a]/20";
@@ -291,9 +322,14 @@ export function InventoryRegisterWizard() {
               </dl>
             </div>
             <p className="text-xs leading-relaxed text-[#8b95a1]">
-              등록 후에는 재고 현황 목록 상단에 표시되며, 브라우저에 저장돼요. 재고 기준이 확정되면 그
-              시점부터 자동 발주·알림이 맞춰져요. 나중에 서버에 옮기면 같은 정보를 계정에 맞춰 둘 수 있어요.
+              등록하면 계정에 저장되고 재고 현황 목록 상단에 표시돼요. 재고 기준이 확정되면 그 시점부터 자동
+              발주·알림이 맞춰져요.
             </p>
+            {submitErr ? (
+              <p className="text-xs font-medium text-rose-600" role="alert">
+                {submitErr}
+              </p>
+            ) : null}
           </div>
         ) : null}
 

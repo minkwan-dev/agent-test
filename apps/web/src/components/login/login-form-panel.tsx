@@ -1,13 +1,12 @@
 "use client";
 
 import { Bell, Headset, Lock, LogIn, ShieldCheck } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { motion } from "@/lib/framer-motion";
 import { GoogleMark } from "@/components/login/login-provider-icons";
 import { loginContainerVariants, loginItemVariants } from "@/components/login/login-motion";
-import { setPostOnboardingDestination } from "@/lib/onboarding";
-import { SESSION_COOKIE, SESSION_VALUE } from "@/lib/session";
+import { getApiUrl } from "@/lib/api";
 
 const infoRows = [
   {
@@ -33,16 +32,16 @@ const infoRows = [
 ] as const;
 
 export function LoginFormPanel() {
-  const router = useRouter();
   const searchParams = useSearchParams();
 
-  const onSocialLogin = useCallback(() => {
-    document.cookie = `${SESSION_COOKIE}=${SESSION_VALUE}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
+  const onGoogleLogin = useCallback(() => {
     const next = searchParams.get("next") ?? "/dashboard/overview";
     const safeNext = next.startsWith("/") ? next : "/dashboard/overview";
-    setPostOnboardingDestination(safeNext);
-    router.push("/onboarding");
-  }, [router, searchParams]);
+    const api = getApiUrl();
+    window.location.href = `${api}/auth/google?next=${encodeURIComponent(safeNext)}`;
+  }, [searchParams]);
+
+  const authError = searchParams.get("error");
 
   return (
     <section className="order-1 flex h-full min-h-0 w-full min-w-0 flex-col lg:order-2">
@@ -76,10 +75,28 @@ export function LoginFormPanel() {
           짧은 온보딩 절차만 거치면 서비스를 바로 이용할 수 있어요.
         </motion.p>
 
+        {authError ? (
+          <motion.p
+            variants={loginItemVariants}
+            className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+            role="alert"
+          >
+            {authError === "google"
+              ? "Google 로그인에 실패했어요. 콘솔 리디렉션 URI·클라이언트 ID/시크릿을 확인하거나 다시 시도해 주세요."
+              : authError === "sync"
+                ? "로그인은 됐는데 서버에 프로필을 저장하지 못했어요. Supabase SQL에 마이그레이션을 적용했는지(profiles.onboarding_completed_at 등), apps/api의 SUPABASE_SERVICE_ROLE_KEY(비밀 키)가 맞는지 확인하고, API 터미널 로그의 오류 메시지를 참고해 주세요."
+              : authError === "session"
+                ? "세션이 만료되었거나 더 이상 유효하지 않아요. 다시 로그인해 주세요."
+                : authError === "config"
+                  ? "서버 인증 설정(JWT_SECRET 등)을 확인해 주세요. 웹·API 환경 변수가 맞는지 점검이 필요해요."
+                  : "로그인 처리 중 문제가 생겼어요. 다시 시도해 주세요."}
+          </motion.p>
+        ) : null}
+
         <motion.div variants={loginItemVariants} className="mt-8 flex flex-col gap-3">
           <button
             type="button"
-            onClick={onSocialLogin}
+            onClick={onGoogleLogin}
             className="flex w-full items-center justify-center gap-3 rounded-2xl border border-[#e5e8eb] bg-white py-3.5 text-sm font-bold text-[#191f28] shadow-sm transition hover:bg-[#f9fafb] active:scale-[0.99] sm:py-4 sm:text-base"
           >
             <GoogleMark />

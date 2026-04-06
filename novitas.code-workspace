@@ -1,0 +1,9 @@
+{
+  "folders": [
+    { "path": "apps/web", "name": "web" },
+    { "path": "apps/api", "name": "api" }
+  ],
+  "settings": {
+    "typescript.preferences.includePackageJsonAutoImports": "on"
+  }
+}

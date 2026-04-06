@@ -12,7 +12,8 @@ import {
   orders,
   processStepStyles,
 } from "@/lib/mock-data";
-import { isUserInventoryRowId, loadUserInventory } from "@/lib/user-inventory";
+import { useInventoryServerRows } from "@/lib/use-inventory-items";
+import { canReflectInventoryRow, loadUserInventory } from "@/lib/user-inventory";
 import { cn } from "@/lib/utils";
 
 export function InventoryTableBlock({
@@ -30,6 +31,7 @@ export function InventoryTableBlock({
   const [page, setPage] = useState(1);
   const [userRows, setUserRows] = useState<InventoryAlertRow[]>([]);
   const [reflectRow, setReflectRow] = useState<InventoryAlertRow | null>(null);
+  const { data: serverRows = [] } = useInventoryServerRows();
 
   useEffect(() => {
     const sync = () => setUserRows(loadUserInventory());
@@ -38,7 +40,10 @@ export function InventoryTableBlock({
     return () => window.removeEventListener("novitas-inventory-updated", sync);
   }, []);
 
-  const baseRows = useMemo(() => [...userRows, ...inventoryAlerts], [userRows]);
+  const baseRows = useMemo(
+    () => [...serverRows, ...userRows, ...inventoryAlerts],
+    [serverRows, userRows],
+  );
 
   const rows = useMemo(() => {
     const s = q.trim().toLowerCase();
@@ -151,7 +156,7 @@ export function InventoryTableBlock({
                     )}
                   </td>
                   <td className="py-2.5 text-right align-middle">
-                    {isUserInventoryRowId(row.id) ? (
+                    {canReflectInventoryRow(row.id) ? (
                       <button
                         type="button"
                         onClick={() => setReflectRow(row)}

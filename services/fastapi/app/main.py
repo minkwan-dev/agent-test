@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routes import chat
+from app.routes import chat, inventory_scan
 
 app = FastAPI(
     title="Novitas FastAPI",
@@ -18,6 +18,11 @@ app.add_middleware(
 )
 
 app.include_router(chat.router, prefix="/v1", tags=["chat"])
+app.include_router(
+    inventory_scan.router,
+    prefix="/v1",
+    tags=["inventory-agent"],
+)
 
 
 @app.get("/health")

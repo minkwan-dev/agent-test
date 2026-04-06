@@ -5,7 +5,10 @@ import { CheckCircle2, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
+import { useSetAtom } from "jotai";
+import { accessTokenAtom } from "@/lib/auth-atoms";
 import { consumePostOnboardingDestination } from "@/lib/onboarding";
+import { completeOnboardingAndRefreshSession } from "@/lib/onboarding-api";
 import { cn } from "@/lib/utils";
 
 const TOTAL = 4;
@@ -48,12 +51,22 @@ function TipBox({ children }: { children: React.ReactNode }) {
 
 export function OnboardingWizard() {
   const router = useRouter();
+  const setToken = useSetAtom(accessTokenAtom);
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);
+  const [finishing, setFinishing] = useState(false);
 
-  const finish = useCallback(() => {
-    router.push(consumePostOnboardingDestination());
-  }, [router]);
+  const finish = useCallback(async () => {
+    if (finishing) return;
+    setFinishing(true);
+    try {
+      const newToken = await completeOnboardingAndRefreshSession();
+      setToken(newToken);
+      router.replace(consumePostOnboardingDestination());
+    } catch {
+      setFinishing(false);
+    }
+  }, [router, setToken, finishing]);
 
   const goNext = useCallback(() => {
     setDirection(1);
@@ -76,10 +89,11 @@ export function OnboardingWizard() {
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
           <button
             type="button"
-            onClick={finish}
-            className="rounded-md border border-transparent px-2 py-1 text-[11px] font-medium text-[#8b95a1] transition hover:border-[#e5e8eb] hover:bg-[#fafbfc] hover:text-[#4e5968] sm:text-xs"
+            onClick={() => void finish()}
+            disabled={finishing}
+            className="rounded-md border border-transparent px-2 py-1 text-[11px] font-medium text-[#8b95a1] transition hover:border-[#e5e8eb] hover:bg-[#fafbfc] hover:text-[#4e5968] enabled:cursor-pointer disabled:opacity-50 sm:text-xs"
           >
-            건너뛰기
+            {finishing ? "…" : "건너뛰기"}
           </button>
           <span className="h-3 w-px shrink-0 bg-[#e5e8eb]" aria-hidden />
           <span className="text-base font-bold tabular-nums text-[#8b95a1] sm:text-lg">
@@ -251,10 +265,11 @@ export function OnboardingWizard() {
                   </TipBox>
                   <button
                     type="button"
-                    onClick={finish}
-                    className="w-full rounded-lg bg-[#6eb89a] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#5aa688] sm:text-sm"
+                    onClick={() => void finish()}
+                    disabled={finishing}
+                    className="w-full rounded-lg bg-[#6eb89a] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#5aa688] enabled:cursor-pointer disabled:opacity-60 sm:text-sm"
                   >
-                    대시보드로 이동
+                    {finishing ? "저장 중…" : "대시보드로 이동"}
                   </button>
                 </div>
               ) : null}

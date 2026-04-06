@@ -1,7 +1,11 @@
 "use client";
 
+import { useQueryClient } from "@tanstack/react-query";
+import { useAtomValue } from "jotai";
 import { X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import { accessTokenAtom } from "@/lib/auth-atoms";
+import { patchInventoryItem } from "@/lib/inventory-api";
 import type { InventoryAlertRow } from "@/lib/mock-data";
 import { updateUserInventoryRow } from "@/lib/user-inventory";
 import { cn } from "@/lib/utils";
@@ -18,25 +22,55 @@ export function ReflectInventoryDialog({
   const [cur, setCur] = useState("");
   const [max, setMax] = useState("");
   const [err, setErr] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const token = useAtomValue(accessTokenAtom);
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (!row || !open) return;
     setCur(String(row.cur));
     setMax(String(row.max));
     setErr(null);
+    setSaving(false);
   }, [row, open]);
 
   const save = useCallback(() => {
-    if (!row) return;
+    if (!row || saving) return;
     const curN = Number(cur);
     const maxN = Number(max);
     if (!Number.isFinite(curN) || !Number.isFinite(maxN) || curN < 0 || maxN < 1) {
       setErr("현재고는 0 이상, 안전재고는 1 이상으로 입력해 주세요.");
       return;
     }
-    updateUserInventoryRow(row.id, { cur: Math.floor(curN), max: Math.floor(maxN) });
-    onClose();
-  }, [row, cur, max, onClose]);
+    void (async () => {
+      setSaving(true);
+      setErr(null);
+      try {
+        if (row.id.startsWith("user-")) {
+          updateUserInventoryRow(row.id, {
+            cur: Math.floor(curN),
+            max: Math.floor(maxN),
+          });
+        } else {
+          if (!token) {
+            setErr("로그인이 필요해요.");
+            setSaving(false);
+            return;
+          }
+          await patchInventoryItem(token, row.id, {
+            current_qty: Math.floor(curN),
+            safety_stock_max: Math.floor(maxN),
+          });
+          await queryClient.invalidateQueries({ queryKey: ["inventory", "items"] });
+        }
+        onClose();
+      } catch {
+        setErr("저장에 실패했어요. 다시 시도해 주세요.");
+      } finally {
+        setSaving(false);
+      }
+    })();
+  }, [row, cur, max, onClose, saving, token, queryClient]);
 
   if (!open || !row) return null;
 
@@ -119,9 +153,10 @@ export function ReflectInventoryDialog({
           <button
             type="button"
             onClick={save}
-            className="rounded-lg bg-[#6eb89a] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#5aa688]"
+            disabled={saving}
+            className="rounded-lg bg-[#6eb89a] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#5aa688] disabled:opacity-50"
           >
-            반영하고 자동 발주 기준 맞추기
+            {saving ? "저장 중…" : "반영하고 자동 발주 기준 맞추기"}
           </button>
         </div>
       </div>

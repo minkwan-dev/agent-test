@@ -54,3 +54,11 @@ export function updateUserInventoryRow(
 export function isUserInventoryRowId(id: string): boolean {
   return id.startsWith("user-");
 }
+
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+/** 로컬 데모 행(`user-`) 또는 서버 저장 품목(uuid)만 재고 반영 가능 */
+export function canReflectInventoryRow(id: string): boolean {
+  return id.startsWith("user-") || UUID_RE.test(id);
+}

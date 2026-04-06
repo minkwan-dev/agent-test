@@ -1,15 +1,7 @@
 import type { ReactNode } from "react";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { Novitas } from "@/components/novitas";
-import { SESSION_COOKIE, SESSION_VALUE } from "@/lib/session";
 
-export default async function DashboardLayout({ children }: { children: ReactNode }) {
-  const jar = await cookies();
-  const session = jar.get(SESSION_COOKIE);
-  if (!session || session.value !== SESSION_VALUE) {
-    redirect("/login");
-  }
-
+/** 인증·리다이렉트는 `src/middleware.ts`에서 JWT(HttpOnly 쿠키)로 처리합니다. */
+export default function DashboardLayout({ children }: { children: ReactNode }) {
   return <Novitas.AppShell>{children}</Novitas.AppShell>;
 }

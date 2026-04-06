@@ -1,6 +1,6 @@
 /**
- * 온보딩 완료는 localStorage에 저장하지 않아요. `/onboarding`은 언제든 직접 열어 확인할 수 있어요.
- * 로그인 후 이동 경로만 sessionStorage로 잠깐 넘깁니다.
+ * 온보딩 완료 여부는 Supabase `profiles.onboarding_completed_at` + JWT 클레임으로 관리합니다.
+ * 로그인 직후 이동할 경로만 sessionStorage로 잠깐 넘겨, 마친 뒤 그 경로로 보냅니다.
  */
 
 export const POST_ONBOARDING_DEST_KEY = "novitas-post-onboarding";
