@@ -24,7 +24,6 @@ export const navSystem = [
     id: "notify",
     label: "알림",
     icon: Bell,
-    badge: 93,
   },
   { href: "/dashboard/logs", id: "logs", label: "처리 기록", icon: Menu },
   {
